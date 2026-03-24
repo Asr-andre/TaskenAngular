@@ -12,6 +12,7 @@ import { MessagesData, chatData, chatMessagesData, contactData, groupData } from
 
 @Component({
   selector: 'app-chat',
+  standalone: false,
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })

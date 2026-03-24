@@ -11,6 +11,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-profile',
+  standalone: false,
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })

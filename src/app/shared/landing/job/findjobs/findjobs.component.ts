@@ -5,6 +5,7 @@ import { findjob } from './data';
 
 @Component({
   selector: 'app-findjobs',
+  standalone: false,
   templateUrl: './findjobs.component.html',
   styleUrls: ['./findjobs.component.scss']
 })

@@ -4,6 +4,7 @@ import { jobcategories } from 'src/app/core/data';
 
 @Component({
   selector: 'app-job-categories',
+  standalone: false,
   templateUrl: './job-categories.component.html',
   styleUrls: ['./job-categories.component.scss']
 })

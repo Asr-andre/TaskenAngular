@@ -5,6 +5,7 @@ import { ICOModel } from 'src/app/store/Crypto/crypto_model';
 
 @Component({
   selector: 'app-ico',
+  standalone: false,
   templateUrl: './ico.component.html',
   styleUrls: ['./ico.component.scss']
 })

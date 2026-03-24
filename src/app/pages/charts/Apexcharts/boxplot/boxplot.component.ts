@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-boxplot',
+  standalone: false,
   templateUrl: './boxplot.component.html',
   styleUrls: ['./boxplot.component.scss']
 })

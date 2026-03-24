@@ -15,6 +15,7 @@ import { FuzzyList, dataattribute, existingList, paginationlist } from 'src/app/
 
 @Component({
   selector: 'app-listjs',
+  standalone: false,
   templateUrl: './listjs.component.html',
   styleUrls: ['./listjs.component.scss'],
   providers: [OrdersService, DecimalPipe]

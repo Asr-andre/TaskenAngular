@@ -21,6 +21,7 @@ import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-customers',
+  standalone: false,
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.scss'],
 })

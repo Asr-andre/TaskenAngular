@@ -5,6 +5,7 @@ import { ChartType } from './team-members.model';
 
 @Component({
   selector: 'app-team-members',
+  standalone: false,
   templateUrl: './team-members.component.html',
   styleUrls: ['./team-members.component.scss']
 })

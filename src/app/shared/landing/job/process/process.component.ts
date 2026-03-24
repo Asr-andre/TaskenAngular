@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-process',
+  standalone: false,
   templateUrl: './process.component.html',
   styleUrls: ['./process.component.scss']
 })

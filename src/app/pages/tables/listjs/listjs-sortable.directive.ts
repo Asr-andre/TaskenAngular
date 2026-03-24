@@ -12,6 +12,7 @@ export interface listSortEvent {
 
 @Directive({
   selector: 'th[listsortable]',
+  standalone: false,
   host: {
     '[class.asc]': 'direction === "asc"',
     '[class.desc]': 'direction === "desc"',

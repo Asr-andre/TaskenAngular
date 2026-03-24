@@ -19,6 +19,7 @@ import { deleteProduct, fetchProductListData } from 'src/app/store/Ecommerce/eco
 
 @Component({
   selector: 'app-seller-details',
+  standalone: false,
   templateUrl: './seller-details.component.html',
   styleUrls: ['./seller-details.component.scss']
 })

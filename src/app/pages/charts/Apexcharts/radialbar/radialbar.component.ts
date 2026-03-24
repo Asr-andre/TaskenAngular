@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-radialbar',
+  standalone: false,
   templateUrl: './radialbar.component.html',
   styleUrls: ['./radialbar.component.scss']
 })

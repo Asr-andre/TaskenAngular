@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-layout',
+  standalone: false,
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })

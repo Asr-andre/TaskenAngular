@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scrollbar',
+  standalone: false,
   templateUrl: './scrollbar.component.html',
   styleUrls: ['./scrollbar.component.scss']
 })

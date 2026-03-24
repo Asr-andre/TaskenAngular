@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-job-footer',
+  standalone: false,
   templateUrl: './job-footer.component.html',
   styleUrls: ['./job-footer.component.scss']
 })

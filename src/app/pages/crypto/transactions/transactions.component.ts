@@ -10,6 +10,7 @@ import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-transactions',
+  standalone: false,
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })

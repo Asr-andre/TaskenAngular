@@ -8,6 +8,7 @@ import { BestSelling, Recentelling, TopSelling, statData } from 'src/app/core/da
 
 @Component({
   selector: 'app-dashboard',
+  standalone: false,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })

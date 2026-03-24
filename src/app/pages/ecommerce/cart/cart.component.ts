@@ -5,6 +5,7 @@ import { CartModel } from 'src/app/store/Ecommerce/ecommerce_model';
 
 @Component({
   selector: 'app-cart',
+  standalone: false,
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })

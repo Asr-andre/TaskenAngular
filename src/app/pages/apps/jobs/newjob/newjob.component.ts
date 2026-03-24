@@ -3,6 +3,7 @@ import { UntypedFormBuilder, Validators, UntypedFormGroup, UntypedFormArray, Abs
 
 @Component({
   selector: 'app-newjob',
+  standalone: false,
   templateUrl: './newjob.component.html',
   styleUrls: ['./newjob.component.scss']
 })

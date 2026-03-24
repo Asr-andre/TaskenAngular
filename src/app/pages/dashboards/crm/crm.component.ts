@@ -3,6 +3,7 @@ import { ClosingDeals, DealsStatus, UpcomingActivities, crmstatData } from 'src/
 
 @Component({
     selector: 'app-crm',
+    standalone: false,
     templateUrl: './crm.component.html',
     styleUrls: ['./crm.component.scss']
 })

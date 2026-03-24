@@ -5,6 +5,7 @@ import { joboverview } from 'src/app/core/data/jobList';
 
 @Component({
   selector: 'app-overview',
+  standalone: false,
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss']
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-market-place',
+  standalone: false,
   templateUrl: './market-place.component.html',
   styleUrls: ['./market-place.component.scss']
 })

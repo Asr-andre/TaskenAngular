@@ -10,6 +10,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-gridjs',
+  standalone: false,
   templateUrl: './gridjs.component.html',
   styleUrls: ['./gridjs.component.scss'],
   providers: [GridJsService, DecimalPipe]

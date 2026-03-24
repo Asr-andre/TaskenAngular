@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-polar',
+  standalone: false,
   templateUrl: './polar.component.html',
   styleUrls: ['./polar.component.scss']
 })

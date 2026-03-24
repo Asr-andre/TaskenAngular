@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-heatmap',
+  standalone: false,
   templateUrl: './heatmap.component.html',
   styleUrls: ['./heatmap.component.scss']
 })

@@ -22,6 +22,7 @@ import { InvoiceListModel } from 'src/app/store/Invoice/invoice_model';
 
 @Component({
   selector: 'app-list',
+  standalone: false,
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })

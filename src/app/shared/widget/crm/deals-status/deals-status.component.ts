@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-deals-status',
+  standalone: false,
   templateUrl: './deals-status.component.html',
   styleUrls: ['./deals-status.component.scss']
 })

@@ -8,6 +8,7 @@ import { selectCRMLoading, selectDealData } from 'src/app/store/CRM/crm_selector
 
 @Component({
   selector: 'app-deals',
+  standalone: false,
   templateUrl: './deals.component.html',
   styleUrls: ['./deals.component.scss']
 })

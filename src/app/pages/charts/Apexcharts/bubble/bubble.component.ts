@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-bubble',
+  standalone: false,
   templateUrl: './bubble.component.html',
   styleUrls: ['./bubble.component.scss']
 })

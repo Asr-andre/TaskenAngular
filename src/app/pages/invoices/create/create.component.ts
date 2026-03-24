@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators, Abs
 
 @Component({
   selector: 'app-create',
+  standalone: false,
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scrollspy',
+  standalone: false,
   templateUrl: './scrollspy.component.html',
   styleUrls: ['./scrollspy.component.scss']
 })

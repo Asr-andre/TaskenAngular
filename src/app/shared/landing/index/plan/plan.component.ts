@@ -5,6 +5,7 @@ import { MonthlyPlan, AnnualPlan } from './data';
 
 @Component({
   selector: 'app-plan',
+  standalone: false,
   templateUrl: './plan.component.html',
   styleUrls: ['./plan.component.scss']
 })

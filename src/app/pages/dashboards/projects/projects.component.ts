@@ -3,6 +3,7 @@ import { ActiveProjects, MyTask, TeamMembers, projectstatData } from 'src/app/co
 
 @Component({
   selector: 'app-projects',
+  standalone: false,
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })

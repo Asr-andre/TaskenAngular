@@ -13,6 +13,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-apikey',
+  standalone: false,
   templateUrl: './apikey.component.html',
   styleUrls: ['./apikey.component.scss'],
 })

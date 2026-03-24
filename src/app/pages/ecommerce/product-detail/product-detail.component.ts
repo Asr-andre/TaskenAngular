@@ -14,6 +14,7 @@ import { productListModel } from 'src/app/store/Ecommerce/ecommerce_model';
 
 @Component({
   selector: 'app-product-detail',
+  standalone: false,
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })

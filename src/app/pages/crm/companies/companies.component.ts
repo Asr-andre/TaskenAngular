@@ -16,6 +16,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-companies',
+  standalone: false,
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.scss'],
 })

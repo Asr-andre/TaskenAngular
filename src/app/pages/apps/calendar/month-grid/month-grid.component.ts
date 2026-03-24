@@ -16,6 +16,7 @@ import { calendarEvents, category, createEventId } from 'src/app/core/data/calen
 
 @Component({
   selector: 'app-month-grid',
+  standalone: false,
   templateUrl: './month-grid.component.html',
   styleUrls: ['./month-grid.component.scss']
 })

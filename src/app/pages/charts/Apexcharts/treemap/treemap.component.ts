@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-treemap',
+  standalone: false,
   templateUrl: './treemap.component.html',
   styleUrls: ['./treemap.component.scss']
 })

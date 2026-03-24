@@ -5,6 +5,7 @@ import { candidatelist } from 'src/app/core/data';
 
 @Component({
   selector: 'app-grid-view',
+  standalone: false,
   templateUrl: './grid-view.component.html',
   styleUrls: ['./grid-view.component.scss']
 })

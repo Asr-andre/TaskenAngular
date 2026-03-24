@@ -3,6 +3,7 @@ import { EventService } from '../../core/services/event.service';
 
 @Component({
   selector: 'app-two-column',
+  standalone: false,
   templateUrl: './two-column.component.html',
   styleUrls: ['./two-column.component.scss']
 })

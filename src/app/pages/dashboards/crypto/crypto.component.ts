@@ -4,6 +4,7 @@ import { BitcoinChart, cryptoBinanceChart, cryptoBitcoinChart, cryptoCurrencies,
 
 @Component({
   selector: 'app-crypto',
+  standalone: false,
   templateUrl: './crypto.component.html',
   styleUrls: ['./crypto.component.scss']
 })

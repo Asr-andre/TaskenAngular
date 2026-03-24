@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stat',
+  standalone: false,
   templateUrl: './stat.component.html',
   styleUrls: ['./stat.component.scss']
 })

@@ -13,6 +13,7 @@ import { login } from 'src/app/store/Authentication/authentication.actions';
 
 @Component({
   selector: 'app-login',
+  standalone: false,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

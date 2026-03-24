@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-utilities',
+  standalone: false,
   templateUrl: './utilities.component.html',
   styleUrls: ['./utilities.component.scss']
 })

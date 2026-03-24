@@ -7,6 +7,7 @@ import { MenuItem } from './menu.model';
 
 @Component({
   selector: 'app-two-column-sidebar',
+  standalone: false,
   templateUrl: './two-column-sidebar.component.html',
   styleUrls: ['./two-column-sidebar.component.scss']
 })

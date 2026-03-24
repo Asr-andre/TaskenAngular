@@ -8,6 +8,7 @@ import { creatorsData, creatorsListData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-creators',
+  standalone: false,
   templateUrl: './creators.component.html',
   styleUrls: ['./creators.component.scss']
 })

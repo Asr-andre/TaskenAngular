@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-my-task',
+  standalone: false,
   templateUrl: './my-task.component.html',
   styleUrls: ['./my-task.component.scss']
 })

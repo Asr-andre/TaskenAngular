@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-upcoming-activities',
+  standalone: false,
   templateUrl: './upcoming-activities.component.html',
   styleUrls: ['./upcoming-activities.component.scss']
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ribbons',
+  standalone: false,
   templateUrl: './ribbons.component.html',
   styleUrls: ['./ribbons.component.scss']
 })

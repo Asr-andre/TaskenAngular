@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-mixed',
+  standalone: false,
   templateUrl: './mixed.component.html',
   styleUrls: ['./mixed.component.scss']
 })

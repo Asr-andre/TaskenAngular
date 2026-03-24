@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pie',
+  standalone: false,
   templateUrl: './pie.component.html',
   styleUrls: ['./pie.component.scss']
 })

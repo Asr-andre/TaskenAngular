@@ -7,6 +7,7 @@ import { bank, candidate, hotproducts, otherWidgets, tileBoxs1, tileBoxs2, tileB
 
 @Component({
   selector: 'app-widgets',
+  standalone: false,
   templateUrl: './widgets.component.html',
   styleUrls: ['./widgets.component.scss']
 })

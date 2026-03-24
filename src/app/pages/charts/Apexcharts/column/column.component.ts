@@ -5,6 +5,7 @@ import { arrayData } from "./data";
 
 @Component({
   selector: 'app-column',
+  standalone: false,
   templateUrl: './column.component.html',
   styleUrls: ['./column.component.scss']
 })

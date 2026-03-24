@@ -5,6 +5,7 @@ import { discoverData } from './data';
 
 @Component({
   selector: 'app-discover',
+  standalone: false,
   templateUrl: './discover.component.html',
   styleUrls: ['./discover.component.scss']
 })

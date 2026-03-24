@@ -5,6 +5,7 @@ import { Process } from './data';
 
 @Component({
   selector: 'app-work-process',
+  standalone: false,
   templateUrl: './work-process.component.html',
   styleUrls: ['./work-process.component.scss']
 })

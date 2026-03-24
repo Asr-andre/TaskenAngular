@@ -5,6 +5,7 @@ import { Services } from './data';
 
 @Component({
   selector: 'app-services',
+  standalone: false,
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss']
 })

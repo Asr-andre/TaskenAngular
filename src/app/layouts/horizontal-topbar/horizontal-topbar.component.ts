@@ -10,6 +10,7 @@ import { MenuItem } from './menu.model';
 
 @Component({
   selector: 'app-horizontal-topbar',
+  standalone: false,
   templateUrl: './horizontal-topbar.component.html',
   styleUrls: ['./horizontal-topbar.component.scss']
 })

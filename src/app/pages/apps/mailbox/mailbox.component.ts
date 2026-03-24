@@ -13,6 +13,7 @@ import { emailData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-mailbox',
+  standalone: false,
   templateUrl: './mailbox.component.html',
   styleUrls: ['./mailbox.component.scss']
 })

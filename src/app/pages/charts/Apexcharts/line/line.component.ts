@@ -352,6 +352,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-line',
+  standalone: false,
   templateUrl: './line.component.html',
   styleUrls: ['./line.component.scss']
 })

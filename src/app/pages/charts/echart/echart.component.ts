@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-echart',
+  standalone: false,
   templateUrl: './echart.component.html',
   styleUrls: ['./echart.component.scss']
 })

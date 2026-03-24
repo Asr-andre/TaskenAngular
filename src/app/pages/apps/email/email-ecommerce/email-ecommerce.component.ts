@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-email-ecommerce',
+  standalone: false,
   templateUrl: './email-ecommerce.component.html',
   styleUrls: ['./email-ecommerce.component.scss']
 })

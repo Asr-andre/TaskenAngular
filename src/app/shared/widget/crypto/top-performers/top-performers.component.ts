@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-performers',
+  standalone: false,
   templateUrl: './top-performers.component.html',
   styleUrls: ['./top-performers.component.scss']
 })
