@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   constructor(private router: Router, public translate: TranslateService) {
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('pt');
   }
 
   ngOnInit(): void {

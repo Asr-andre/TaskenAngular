@@ -138,24 +138,7 @@
                     </div>
                 </div>
 
-                <div class="dropdown ms-1 topbar-head-dropdown header-item" ngbDropdown>
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
-                        @if(flagvalue === undefined){
-                        <img src="{{valueset}}" alt="Header Language" height="20" class="rounded">
-                        }@else {
-                        <img src="{{flagvalue}}" alt="Header Language" height="20" class="rounded">
-                        }
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-
-                        <!-- item-->
-                        @for(item of listLang;track $index){
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="eng" (click)="setLanguage(item.text, item.lang, item.flag)" [ngClass]="{'active': cookieValue === item.lang}">
-                            <img src="{{item.flag}}" alt="user-image" class="me-2 rounded" height="18"> <span class="align-middle">{{item.text}}</span>
-                        </a>
-                        }
-                    </div>
-                </div>
+                
 
                 <div class="dropdown topbar-head-dropdown ms-1 header-item" ngbDropdown>
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
