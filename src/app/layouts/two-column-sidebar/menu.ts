@@ -295,18 +295,6 @@ export const MENU: MenuItem[] = [
             label: 'MENUITEMS.APPS.LIST.MYWALLET',
             link: '/crypto/wallet',
             parentId: 36
-          },
-          {
-            id: 40,
-            label: 'MENUITEMS.APPS.LIST.ICOLIST',
-            link: '/crypto/ico',
-            parentId: 36
-          },
-          {
-            id: 41,
-            label: 'MENUITEMS.APPS.LIST.KYCAPPLICATION',
-            link: '/crypto/kyc',
-            parentId: 36
           }
         ]
       },
@@ -840,30 +828,9 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 97,
-    label: 'MENUITEMS.LANDING.TEXT',
-    collapseid: 'sidebarUI',
-    icon: 'ri-rocket-line',
-    subItems: [
-      {
-        id: 85,
-        label: 'MENUITEMS.LANDING.LIST.ONEPAGE',
-        link: '/landing',
-        parentId: 84
-      },
-      {
-        id: 86,
-        label: 'MENUITEMS.LANDING.LIST.NFTLANDING',
-        link: '/landing/nft',
-        parentId: 84
-      },
-      {
-        id: 87,
-        label: 'MENUITEMS.LANDING.LIST.JOB',
-        link: '/landing/job',
-        parentId: 84,
-      },
-    ]
+    id: 96,
+    label: 'MENUITEMS.COMPONENTS.TEXT',
+    isTitle: true
   },
   {
     id: 96,
@@ -1384,23 +1351,32 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 175,
-    label: 'MENUITEMS.MAPS.TEXT',
-    icon: 'ri-map-pin-line',
-    collapseid: 'sidebarMaps',
+    id: 179,
+    label: 'MENUITEMS.MULTILEVEL.TEXT',
+    icon: 'ri-share-line',
+    collapseid: 'sidebarMultilevel',
     subItems: [
       {
-        id: 176,
-        label: 'MENUITEMS.MAPS.LIST.GOOGLE',
-        link: '/maps/google',
-        parentId: 175
+        id: 180,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.1',
+        parentId: 179
       },
       {
-        id: 178,
-        label: 'MENUITEMS.MAPS.LIST.LEAFLET',
-        link: '/maps/leaflet',
-        parentId: 175
-      }
+        id: 181,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.2',
+        subItems: [
+          {
+            id: 182,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.1',
+            parentId: 181,
+          },
+          {
+            id: 183,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.2',
+            parentId: 181,
+          }
+        ]
+      },
     ]
   },
   {

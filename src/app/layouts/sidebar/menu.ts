@@ -1376,23 +1376,32 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 175,
-    label: 'MENUITEMS.MAPS.TEXT',
-    icon: 'ri-map-pin-line',
+    id: 179,
+    label: 'MENUITEMS.MULTILEVEL.TEXT',
+    icon: 'ri-share-line',
     isCollapsed: true,
     subItems: [
       {
-        id: 176,
-        label: 'MENUITEMS.MAPS.LIST.GOOGLE',
-        link: '/maps/google',
-        parentId: 175
+        id: 180,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.1',
+        parentId: 179
       },
       {
-        id: 178,
-        label: 'MENUITEMS.MAPS.LIST.LEAFLET',
-        link: '/maps/leaflet',
-        parentId: 175
-      }
+        id: 181,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.2',
+        subItems: [
+          {
+            id: 182,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.1',
+            parentId: 181,
+          },
+          {
+            id: 183,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.2',
+            parentId: 181,
+          }
+        ]
+      },
     ]
   },
   {

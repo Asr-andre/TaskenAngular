@@ -56,9 +56,6 @@ const routes: Routes = [
       path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)
     },
     {
-      path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule)
-    },
-    {
       path: 'marletplace', loadChildren: () => import('./nft-marketplace/nft-marketplace.module').then(m => m.NftMarketplaceModule)
     },
 ];
