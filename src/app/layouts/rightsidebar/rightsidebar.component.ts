@@ -67,8 +67,10 @@ export class RightsidebarComponent implements OnInit {
    * @param layout Change the layout
    */
   changeLayout(layout: string) {
-    this.attribute = layout;
-    this.store.dispatch(changelayout({ layout }));
+    const validLayouts = new Set(['vertical', 'horizontal']);
+    const nextLayout = validLayouts.has(layout) ? layout : 'vertical';
+    this.attribute = nextLayout;
+    this.store.dispatch(changelayout({ layout: nextLayout }));
     this.store.select(getLayoutTheme).subscribe((layout) => {
       document.documentElement.setAttribute('data-layout', layout)
     })
@@ -105,7 +107,7 @@ export class RightsidebarComponent implements OnInit {
 
     setTimeout(() => {
       this.attribute = document.documentElement.getAttribute('data-layout')
-      if (this.attribute == 'vertical') {
+      if (this.attribute != 'horizontal') {
         var vertical = document.getElementById('customizer-layout01') as HTMLInputElement;
         if (vertical != null) {
           vertical.setAttribute('checked', 'true');
@@ -115,18 +117,6 @@ export class RightsidebarComponent implements OnInit {
         const horizontal = document.getElementById('customizer-layout02');
         if (horizontal != null) {
           horizontal.setAttribute('checked', 'true');
-        }
-      }
-      if (this.attribute == 'twocolumn') {
-        const Twocolumn = document.getElementById('customizer-layout03');
-        if (Twocolumn != null) {
-          Twocolumn.setAttribute('checked', 'true');
-        }
-      }
-      if (this.attribute == 'semibox') {
-        const Twocolumn = document.getElementById('customizer-layout04');
-        if (Twocolumn != null) {
-          Twocolumn.setAttribute('checked', 'true');
         }
       }
     }, 100);

@@ -200,53 +200,6 @@
     }
 }
 
-// Two Column Layouts 
-[data-layout=twocolumn] {
-
-    #page-topbar {
-        right: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
-        left: 0px;
-    }
-
-    .app-menu {
-        right: 70px;
-        left: 0px;
-
-        .navbar-nav {
-            height: calc(100vh - 70px);
-        }
-    }
-
-    .main-content {
-        margin-right: calc(#{$twocolumn-menu-width} + #{$twocolumn-menu-iconview-width});
-        margin-left: 0px;
-    }
-
-    .twocolumn-iconview {
-        right: -70px;
-    }
-
-    .twocolumn-panel {
-        .main-content {
-            margin-right: $twocolumn-menu-iconview-width;
-            margin-left: 0px;
-        }
-
-        .footer,
-        #page-topbar {
-            right: $twocolumn-menu-iconview-width;
-            left: 0px;
-        }
-    }
-
-    @media (min-width:768.1px) {
-        .footer {
-            right: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
-            left: 0px;
-        }
-    }
-}
-
 // Footer 
 .footer {
     left: 0;
@@ -574,21 +527,6 @@
         }
     }
 
-    [data-layout=twocolumn] {
-
-        .main-content {
-            margin-right: 70px;
-        }
-
-        #page-topbar {
-            right: 70px;
-        }
-
-        .footer {
-            right: 70px;
-        }
-    }
-
     [data-layout-width=boxed][data-sidebar-size=sm-hover][data-layout=vertical] {
         .main-content {
             margin-right: 0;
@@ -699,35 +637,6 @@
 }
 
 @media (max-width:575.98px) {
-
-    [data-layout=twocolumn] {
-        .twocolumn-panel {
-
-            .main-content {
-                margin-right: 0;
-            }
-
-            #page-topbar {
-                right: 0;
-            }
-
-            .footer {
-                right: 0;
-            }
-        }
-
-        .main-content {
-            margin-right: 0;
-        }
-
-        #page-topbar {
-            right: 0;
-        }
-
-        .footer {
-            right: 0;
-        }
-    }
 }
 
 @media (max-width:1024px) {
@@ -784,16 +693,3 @@
 
 
 
-[data-layout="semibox"] {
-    @media (min-width: 1440px) {
-        .main-content {
-            margin-left: 0;
-        }
-
-
-        #page-topbar {
-            left: 134px;
-            right: 385px;
-        }
-    }
-}

@@ -1,27 +1,30 @@
 # Velzon
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+Este projeto usa Angular 20 e foi atualizado para a versão atual do Angular CLI.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Execute `npm start` (ou `ng serve`) para iniciar o servidor de desenvolvimento.
+Depois acesse `http://localhost:4200/`.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Execute `ng generate component component-name` para gerar um componente.
+Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute `npm run build` (ou `ng build`) para compilar o projeto.
+Os artefatos ficam em `dist/`.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Execute `npm test` (ou `ng test`) para rodar os testes via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Execute `ng e2e` para rodar testes end-to-end com a ferramenta da sua preferência.
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para ajuda do Angular CLI, use `ng help`.

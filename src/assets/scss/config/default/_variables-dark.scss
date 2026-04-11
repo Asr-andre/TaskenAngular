@@ -132,9 +132,6 @@ $dark-topbar-user-bg-dark:                                          #52639c;
 $dark-topbar-search-bg-dark:                                        rgba($white, .05);
 $dark-topbar-search-color-dark:                                     $white;
 
-//two column
-$twocolumn-menu-box-shadow-dark:                                    0 2px 4px rgba(15,34,58,0.12);
-
 // boxed 
 $boxed-body-bg-dark:                                                darken($body-bg-dark, 4%);
 
@@ -167,7 +164,6 @@ $dark-vertical-menu-sub-item-color-dark:                            #7c7f90;
 $dark-vertical-menu-sub-item-hover-color-dark:                      $white;
 $dark-vertical-menu-sub-item-active-color-dark:                     $white;
 $dark-vertical-menu-title-color-dark:                               #5f6270;
-$dark-twocolumn-menu-iconview-bg-dark:                              #292e32;
 
 //sidebar gradient
 $vertical-menu-item-color-gradient-dark:                            rgba($white, .5);
@@ -183,19 +179,15 @@ $vertical-menu-title-color-gradient-dark:                           rgba($white,
 //gradient one
 $vertical-menu-bg-gradient-dark:                                    linear-gradient(to right, var(--#{$prefix}primary), var(--#{$prefix}success));
 $vertical-menu-border-gradient-dark:                                var(--#{$prefix}success);
-$twocolumn-menu-iconview-bg-gradient-dark:                          var(--#{$prefix}primary);
 
 //gradient-2
 $vertical-menu-bg-gradient-2-dark:                                  linear-gradient(to right, var(--#{$prefix}info), var(--#{$prefix}secondary));
 $vertical-menu-border-gradient-2-dark:                              var(--#{$prefix}secondary);
-$twocolumn-menu-iconview-bg-gradient-2-dark:                        var(--#{$prefix}info);
 
 //gradient-3
 $vertical-menu-bg-gradient-3-dark:                                  linear-gradient(to right, var(--#{$prefix}info), var(--#{$prefix}success));
 $vertical-menu-border-gradient-3-dark:                              var(--#{$prefix}success);
-$twocolumn-menu-iconview-bg-gradient-3-dark:                        var(--#{$prefix}info);
 
 //gradient-4
 $vertical-menu-bg-gradient-4-dark:                                  linear-gradient(to right, #1a1d21, var(--#{$prefix}primary));
 $vertical-menu-border-gradient-4-dark:                              var(--#{$prefix}primary);
-$twocolumn-menu-iconview-bg-gradient-4-dark:                        #1a1d21;

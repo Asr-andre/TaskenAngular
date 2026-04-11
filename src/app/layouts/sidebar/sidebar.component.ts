@@ -28,10 +28,8 @@ export class SidebarComponent implements OnInit {
     // Menu Items
     this.menuItems = MENU;
     this.router.events.subscribe((event) => {
-      if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
-        if (event instanceof NavigationEnd) {
-          this.initActiveMenu();
-        }
+      if (event instanceof NavigationEnd) {
+        this.initActiveMenu();
       }
     });
   }

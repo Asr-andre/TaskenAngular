@@ -55,11 +55,3 @@
         } 
     }
 }
-
-[data-layout="twocolumn"] { 
-    .footer {
-        @media (min-width: 768.1px) {
-            left: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
-        }
-    }
-}

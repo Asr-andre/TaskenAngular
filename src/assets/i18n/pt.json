@@ -98,7 +98,6 @@
       "LIST": {
         "HORIZONTAL": "Horizontal",
         "DETACHED": "Destacado",
-        "TWOCOLUMN": "Duas colunas",
         "HOVERED": "Em foco"
       }
     },
