@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ApplicationRef, Component, EnvironmentInjector, Inject, Injectable, createComponent } from '@angular/core';
+import { ApplicationRef, Component, ComponentRef, EnvironmentInjector, Inject, Injectable, NgZone, createComponent } from '@angular/core';
 
 export type TipoAlerta = 'success' | 'error' | 'info' | 'warning' | 'primary';
 export type TipoAlertaEntrada = TipoAlerta | 'sucesso' | 'erro' | 'aviso' | 'primario';
@@ -21,10 +21,12 @@ export class AlertaService {
   }> = [];
 
   private hostCriado = false;
+  private componenteHost?: ComponentRef<AlertasToastHostComponent>;
 
   constructor(
     private appRef: ApplicationRef,
     private environmentInjector: EnvironmentInjector,
+    private ngZone: NgZone,
     @Inject(DOCUMENT) private document: Document
   ) { }
 
@@ -53,10 +55,11 @@ export class AlertaService {
     };
 
     toast.timeoutOcultar = window.setTimeout(() => {
-      this.fechar(toast.id);
+      this.ngZone.run(() => this.fechar(toast.id));
     }, delay);
 
     this.toasts.push(toast);
+    this.detectarMudancas();
   }
 
   fechar(id: string) {
@@ -73,16 +76,18 @@ export class AlertaService {
     }
 
     toast.visivel = false;
+    this.detectarMudancas();
     toast.timeoutRemover = window.setTimeout(() => {
-      this.remover(id);
+      this.ngZone.run(() => this.remover(id));
     }, 250);
   }
 
-  remover(id: string) {
+  private remover(id: string) {
     const toast = this.toasts.find(t => t.id === id);
     if (toast?.timeoutOcultar) clearTimeout(toast.timeoutOcultar);
     if (toast?.timeoutRemover) clearTimeout(toast.timeoutRemover);
     this.toasts = this.toasts.filter(t => t.id !== id);
+    this.detectarMudancas();
   }
 
   private obterTituloPadrao(tipo: TipoAlerta): string {
@@ -167,7 +172,16 @@ export class AlertaService {
     });
 
     this.appRef.attachView(componentRef.hostView);
+    this.componenteHost = componentRef;
+    this.detectarMudancas();
     this.hostCriado = true;
+  }
+
+  private detectarMudancas() {
+    queueMicrotask(() => {
+      if (this.componenteHost) this.componenteHost.changeDetectorRef.detectChanges();
+      else this.appRef.tick();
+    });
   }
 }
 
@@ -180,7 +194,8 @@ export class AlertaService {
       @for (toast of alerta.toasts; track $index) {
         <div
           class="alert alert-dismissible alert-additional fade"
-          [ngClass]="[toast.classeAlerta, toast.visivel ? 'show' : '']"
+          [ngClass]="toast.classeAlerta"
+          [class.show]="toast.visivel"
           role="alert"
         >
           <div class="alert-body">
