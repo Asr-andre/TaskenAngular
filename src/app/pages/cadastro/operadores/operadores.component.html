@@ -281,7 +281,7 @@
 
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.dismiss('cancelar')">Cancelar</button>
-      <button type="submit" class="btn {{classBotao}}">{{ textoBotaoSalvar }}</button>
+      <button type="submit" class="btn" [ngClass]="classeBotao">{{ textoBotaoSalvar }}</button>
     </div>
   </form>
 </ng-template>

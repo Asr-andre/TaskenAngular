@@ -30,7 +30,6 @@ export class OperadoresComponent implements OnInit {
   modoEdicao = false;
   tituloModal = 'Cadastrar Operador';
   textoBotaoSalvar = 'Criar';
-  classBotao = 'btn-success'
 
   constructor(
     private modalService: NgbModal,
@@ -73,6 +72,10 @@ export class OperadoresComponent implements OnInit {
 
   get fimRegistro(): number {
     return Math.min(Number(this.paginacao.page) * Number(this.paginacao.pageSize), this.totalFiltrado);
+  }
+
+  get classeBotao(): string {
+    return this.modoEdicao ? 'btn-info' : 'btn-success';
   }
 
   carregarOperadores() {
@@ -163,7 +166,6 @@ export class OperadoresComponent implements OnInit {
     this.modoEdicao = false;
     this.tituloModal = 'Cadastrar Operador';
     this.textoBotaoSalvar = 'Criar';
-    this.classBotao = 'btn-success'
 
     this.operadorForm.reset({
       operadorId: '',
@@ -185,7 +187,6 @@ export class OperadoresComponent implements OnInit {
     this.modoEdicao = true;
     this.tituloModal = 'Editar Operador';
     this.textoBotaoSalvar = 'Atualizar';
-    this.classBotao = 'btn-info'
 
     this.operadorForm.reset({
       operadorId: operador.operadorId,
