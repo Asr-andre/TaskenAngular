@@ -117,6 +117,12 @@ export class OperadoresComponent implements OnInit {
     this.aplicarFiltros(true);
   }
 
+  limparFiltros() {
+    this.filtroAdmin = 'todos';
+    this.filtroAtivo = 'todos';
+    this.aplicarFiltros(true);
+  }
+
   onSort(coluna: string) {
     this.operadores = this.paginacao.onSort(coluna, this.operadores);
   }
