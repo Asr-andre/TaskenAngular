@@ -107,7 +107,7 @@
                 <span class="text-muted text-nowrap">Por página:</span>
                 <select
                   class="form-select form-select-sm mb-0"
-                  [ngModel]="paginacao.pageSize"
+                  [ngModel]="_paginacao.pageSize"
                   (ngModelChange)="alterarQuantidadePorPagina($event)"
                 >
                   @for (qtd of opcoesQuantidadePorPagina; track qtd) {
@@ -185,8 +185,8 @@
           <div class="d-flex justify-content-end align-items-center gap-2">
             <ngb-pagination
               [collectionSize]="totalFiltrado"
-              [(page)]="paginacao.page"
-              [pageSize]="paginacao.pageSize"
+              [(page)]="_paginacao.page"
+              [pageSize]="_paginacao.pageSize"
               (pageChange)="mudarPagina()"
             ></ngb-pagination>
           </div>

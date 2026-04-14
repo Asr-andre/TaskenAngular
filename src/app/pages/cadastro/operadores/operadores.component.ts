@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
 import { PaginationService } from 'src/app/core/services/pagination.service';
@@ -26,22 +26,22 @@ export class OperadoresComponent implements OnInit {
 
   opcoesQuantidadePorPagina = [8, 15, 25, 50];
 
-  operadorForm!: UntypedFormGroup;
+  operadorForm!: FormGroup;
   modoEdicao = false;
   tituloModal = 'Cadastrar Operador';
   textoBotaoSalvar = 'Criar';
 
   constructor(
-    private modalService: NgbModal,
-    public paginacao: PaginationService,
-    private formBuilder: UntypedFormBuilder,
-    private operadorService: OperadorService
+    private _modal: NgbModal,
+    public _paginacao: PaginationService,
+    private _fb: FormBuilder,
+    private _operador: OperadorService
   ) {}
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Cadastro' }, { label: 'Operador', active: true }];
 
-    this.operadorForm = this.formBuilder.group({
+    this.operadorForm = this._fb.group({
       operadorId: ['', [Validators.required]],
       nome: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -67,11 +67,11 @@ export class OperadoresComponent implements OnInit {
     if (!this.totalFiltrado) {
       return 0;
     }
-    return (Number(this.paginacao.page) - 1) * Number(this.paginacao.pageSize) + 1;
+    return (Number(this._paginacao.page) - 1) * Number(this._paginacao.pageSize) + 1;
   }
 
   get fimRegistro(): number {
-    return Math.min(Number(this.paginacao.page) * Number(this.paginacao.pageSize), this.totalFiltrado);
+    return Math.min(Number(this._paginacao.page) * Number(this._paginacao.pageSize), this.totalFiltrado);
   }
 
   get classeBotao(): string {
@@ -80,7 +80,7 @@ export class OperadoresComponent implements OnInit {
 
   carregarOperadores() {
     this.carregando = true;
-    this.operadorService.listarTodos().subscribe({
+    this._operador.listarTodos().subscribe({
       next: (resposta) => {
         this.todosOperadores = resposta?.data ?? [];
         this.aplicarFiltros(true);
@@ -102,7 +102,7 @@ export class OperadoresComponent implements OnInit {
   }
 
   mudarPagina() {
-    this.operadores = this.paginacao.changePage(this.operadoresFiltrados);
+    this.operadores = this._paginacao.changePage(this.operadoresFiltrados);
   }
 
   buscar() {
@@ -114,7 +114,7 @@ export class OperadoresComponent implements OnInit {
     if (!Number.isFinite(quantidade) || quantidade <= 0) {
       return;
     }
-    this.paginacao.pageSize = quantidade;
+    this._paginacao.pageSize = quantidade;
     this.aplicarFiltros(true);
   }
 
@@ -125,7 +125,7 @@ export class OperadoresComponent implements OnInit {
   }
 
   onSort(coluna: string) {
-    this.operadores = this.paginacao.onSort(coluna, this.operadores);
+    this.operadores = this._paginacao.onSort(coluna, this.operadores);
   }
 
   aplicarFiltros(redefinirPagina: boolean) {
@@ -156,9 +156,9 @@ export class OperadoresComponent implements OnInit {
 
     this.operadoresFiltrados = lista;
     if (redefinirPagina) {
-      this.paginacao.page = 1;
+      this._paginacao.page = 1;
     }
-    this.operadores = this.paginacao.changePage(this.operadoresFiltrados);
+    this.operadores = this._paginacao.changePage(this.operadoresFiltrados);
   }
 
   abrirModalCadastro(conteudo: any) {
@@ -179,7 +179,7 @@ export class OperadoresComponent implements OnInit {
     });
 
     this.operadorForm.get('operadorId')?.enable();
-    this.modalService.open(conteudo, { size: 'lg', centered: true });
+    this._modal.open(conteudo, { size: 'lg', centered: true });
   }
 
   abrirModalEdicao(operador: Operador, conteudo: any) {
@@ -200,7 +200,7 @@ export class OperadoresComponent implements OnInit {
     });
 
     this.operadorForm.get('operadorId')?.disable();
-    this.modalService.open(conteudo, { size: 'lg', centered: true });
+    this._modal.open(conteudo, { size: 'lg', centered: true });
   }
 
   salvar() {
@@ -224,9 +224,9 @@ export class OperadoresComponent implements OnInit {
         perfilId: valores.perfilId || null
       };
 
-      this.operadorService.atualizar(payload).subscribe({
+      this._operador.atualizar(payload).subscribe({
         next: () => {
-          this.modalService.dismissAll();
+          this._modal.dismissAll();
           Swal.fire({
             title: 'Sucesso',
             text: 'Operador atualizado com sucesso.',
@@ -258,9 +258,9 @@ export class OperadoresComponent implements OnInit {
       perfilId: valores.perfilId || null
     };
 
-    this.operadorService.criar(payload).subscribe({
+    this._operador.criar(payload).subscribe({
       next: () => {
-        this.modalService.dismissAll();
+        this._modal.dismissAll();
         Swal.fire({
           title: 'Sucesso',
           text: 'Operador criado com sucesso.',
