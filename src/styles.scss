@@ -79,13 +79,17 @@
 }
 
 .overlay-carregando {
-    position: fixed;
+    position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(255, 255, 255, 0.45);
-    z-index: 1055;
+    z-index: 10;
+}
+
+.conteiner-carregando {
+    position: relative;
 }
 
 [data-bs-theme="dark"] {
