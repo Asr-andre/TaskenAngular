@@ -2,8 +2,11 @@
 
 @if (carregando) {
   <div class="overlay-carregando">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Carregando...</span>
+    <div class="d-flex flex-column align-items-center gap-2">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+      <div class="text-muted fw-medium">Carregando...</div>
     </div>
   </div>
 }
