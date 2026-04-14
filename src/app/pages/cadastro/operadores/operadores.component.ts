@@ -30,6 +30,7 @@ export class OperadoresComponent implements OnInit {
   modoEdicao = false;
   tituloModal = 'Cadastrar Operador';
   textoBotaoSalvar = 'Criar';
+  classBotao = 'btn-success'
 
   constructor(
     private modalService: NgbModal,
@@ -50,9 +51,6 @@ export class OperadoresComponent implements OnInit {
       seAtivo: ['S', [Validators.required]],
       perfilId: [''],
       perfilSkin: [''],
-      dataUltimoAcesso: [''],
-      usuarioInclusao: [''],
-      usuarioAlteracao: [''],
     });
 
     this.carregarOperadores();
@@ -165,6 +163,7 @@ export class OperadoresComponent implements OnInit {
     this.modoEdicao = false;
     this.tituloModal = 'Cadastrar Operador';
     this.textoBotaoSalvar = 'Criar';
+    this.classBotao = 'btn-success'
 
     this.operadorForm.reset({
       operadorId: '',
@@ -174,18 +173,10 @@ export class OperadoresComponent implements OnInit {
       seAdmin: false,
       seAtivo: 'S',
       perfilId: '',
-      perfilSkin: '',
-      dataUltimoAcesso: '',
-      usuarioInclusao: '',
-      usuarioAlteracao: '',
+      perfilSkin: ''
     });
 
     this.operadorForm.get('operadorId')?.enable();
-    this.operadorForm.get('usuarioInclusao')?.setValidators([Validators.required]);
-    this.operadorForm.get('usuarioAlteracao')?.clearValidators();
-    this.operadorForm.get('usuarioInclusao')?.updateValueAndValidity();
-    this.operadorForm.get('usuarioAlteracao')?.updateValueAndValidity();
-
     this.modalService.open(conteudo, { size: 'lg', centered: true });
   }
 
@@ -194,6 +185,7 @@ export class OperadoresComponent implements OnInit {
     this.modoEdicao = true;
     this.tituloModal = 'Editar Operador';
     this.textoBotaoSalvar = 'Atualizar';
+    this.classBotao = 'btn-info'
 
     this.operadorForm.reset({
       operadorId: operador.operadorId,
@@ -203,18 +195,10 @@ export class OperadoresComponent implements OnInit {
       seAdmin: operador.seAdmin ?? false,
       seAtivo: operador.seAtivo ?? 'S',
       perfilId: operador.perfilId ?? '',
-      perfilSkin: operador.perfilSkin ?? '',
-      dataUltimoAcesso: operador.dataUltimoAcesso ?? '',
-      usuarioInclusao: operador.usuarioInclusao ?? '',
-      usuarioAlteracao: '',
+      perfilSkin: operador.perfilSkin ?? ''
     });
 
     this.operadorForm.get('operadorId')?.disable();
-    this.operadorForm.get('usuarioAlteracao')?.setValidators([Validators.required]);
-    this.operadorForm.get('usuarioInclusao')?.clearValidators();
-    this.operadorForm.get('usuarioAlteracao')?.updateValueAndValidity();
-    this.operadorForm.get('usuarioInclusao')?.updateValueAndValidity();
-
     this.modalService.open(conteudo, { size: 'lg', centered: true });
   }
 
@@ -236,9 +220,7 @@ export class OperadoresComponent implements OnInit {
         seAdmin: valores.seAdmin ?? null,
         seAtivo: valores.seAtivo || null,
         perfilSkin: valores.perfilSkin || null,
-        dataUltimoAcesso: valores.dataUltimoAcesso || null,
-        usuarioAlteracao: valores.usuarioAlteracao,
-        perfilId: valores.perfilId || null,
+        perfilId: valores.perfilId || null
       };
 
       this.operadorService.atualizar(payload).subscribe({
@@ -272,9 +254,7 @@ export class OperadoresComponent implements OnInit {
       seAdmin: valores.seAdmin ?? null,
       seAtivo: valores.seAtivo || null,
       perfilSkin: valores.perfilSkin || null,
-      dataUltimoAcesso: valores.dataUltimoAcesso || null,
-      usuarioInclusao: valores.usuarioInclusao,
-      perfilId: valores.perfilId || null,
+      perfilId: valores.perfilId || null
     };
 
     this.operadorService.criar(payload).subscribe({

@@ -276,52 +276,12 @@
           <label class="form-label">Skin</label>
           <input type="text" class="form-control" placeholder="PerfilSkin" formControlName="perfilSkin" />
         </div>
-
-        <div class="col-lg-6">
-          <label class="form-label">Data último acesso</label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="2026-03-13T11:10:00"
-            formControlName="dataUltimoAcesso"
-          />
-        </div>
-
-        @if (!modoEdicao) {
-          <div class="col-lg-6">
-            <label class="form-label">Usuário inclusão</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Usuário inclusão"
-              formControlName="usuarioInclusao"
-              [ngClass]="{ 'is-invalid': submitted && form['usuarioInclusao'].errors }"
-            />
-            @if (submitted && form['usuarioInclusao'].errors) {
-              <div class="invalid-feedback">Usuário inclusão é obrigatório.</div>
-            }
-          </div>
-        } @else {
-          <div class="col-lg-6">
-            <label class="form-label">Usuário alteração</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Usuário alteração"
-              formControlName="usuarioAlteracao"
-              [ngClass]="{ 'is-invalid': submitted && form['usuarioAlteracao'].errors }"
-            />
-            @if (submitted && form['usuarioAlteracao'].errors) {
-              <div class="invalid-feedback">Usuário alteração é obrigatório.</div>
-            }
-          </div>
-        }
       </div>
     </div>
 
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="modal.dismiss('cancelar')">Cancelar</button>
-      <button type="submit" class="btn btn-info">{{ textoBotaoSalvar }}</button>
+      <button type="submit" class="btn {{classBotao}}">{{ textoBotaoSalvar }}</button>
     </div>
   </form>
 </ng-template>
