@@ -56,6 +56,9 @@ const routes: Routes = [
       path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)
     },
     {
+      path: 'cadastros', loadChildren: () => import('./cadastros/cadastros.module').then(m => m.CadastrosModule)
+    },
+    {
       path: 'marletplace', loadChildren: () => import('./nft-marketplace/nft-marketplace.module').then(m => m.NftMarketplaceModule)
     },
 ];

@@ -62,6 +62,19 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    id: 13,
+    label: 'Cadastros',
+    icon: 'ri-file-list-3-line',
+    subItems: [
+      {
+        id: 14,
+        label: 'Operador',
+        link: '/cadastros/operador',
+        parentId: 13
+      }
+    ]
+  },
+  {
     id: 8,
     label: 'MENUITEMS.APPS.TEXT',
     icon: 'ri-apps-2-line',
