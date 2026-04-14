@@ -86,6 +86,11 @@
       </div>
 
       <div class="card-body">
+        @if (carregando) {
+          <div class="spinner-border text-primary avatar-sm" role="status">
+              <span class="visually-hidden">Carregando...</span>
+          </div>
+        }
         <div class="table-responsive table-card mb-2">
           <table class="table align-middle">
             <thead>
@@ -158,11 +163,6 @@
               [pageSize]="paginacao.pageSize"
               (pageChange)="mudarPagina()"
             ></ngb-pagination>
-            @if (carregando) {
-              <div class="spinner-border text-primary avatar-sm" role="status">
-                <span class="visually-hidden">Carregando...</span>
-              </div>
-            }
           </div>
         </div>
       </div>
