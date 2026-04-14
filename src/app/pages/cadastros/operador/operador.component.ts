@@ -58,9 +58,9 @@ export class OperadorComponent implements OnInit {
           this.todosOperadores = data;
           this.totalRegistros = this.todosOperadores.length;
           this.atualizarLista();
-          this._alert.exibir('success', res.mensagem, 'Testo 2', 3000)
+          this._alert.exibir('success', res.mensagem, 'O retorno da api esta ok!', 3000)
         } else {
-          this._alert.exibir('warning', res.mensagem, 'texto', 3000)
+          this._alert.exibir('warning', res.mensagem, 'O retorno da api esta errado!', 3000)
         }
       },
       error: (err) => console.error(err)

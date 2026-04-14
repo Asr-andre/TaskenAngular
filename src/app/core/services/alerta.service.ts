@@ -1,19 +1,23 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ApplicationRef, Component, EnvironmentInjector, Inject, Injectable, createComponent } from '@angular/core';
-import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
-export type TipoAlerta = 'success' | 'error' | 'info' | 'warning';
-export type TipoAlertaEntrada = TipoAlerta | 'sucesso' | 'erro' | 'aviso';
+export type TipoAlerta = 'success' | 'error' | 'info' | 'warning' | 'primary';
+export type TipoAlertaEntrada = TipoAlerta | 'sucesso' | 'erro' | 'aviso' | 'primario';
 
 @Injectable({ providedIn: 'root' })
 export class AlertaService {
   toasts: Array<{
     id: string;
     tipo: TipoAlerta;
+    visivel: boolean;
     titulo: string;
-    mensagem: string;
-    classeCss: string;
+    mensagemApi: string;
+    mensagemComplementar?: string;
+    classeAlerta: string;
+    icone: string;
     delay: number;
+    timeoutOcultar?: number;
+    timeoutRemover?: number;
   }> = [];
 
   private hostCriado = false;
@@ -31,50 +35,104 @@ export class AlertaService {
     delay: number = 3000
   ) {
     const tipoNormalizado = this.normalizarTipo(tipo);
-    const titulo = mensagemComplementar?.trim() ? mensagemComplementar.trim() : this.obterTituloPadrao(tipoNormalizado);
+    const titulo = this.obterTituloPadrao(tipoNormalizado);
 
     this.criarHostSeNecessario();
-    this.toasts.push({
+    const toast = {
       id: this.gerarId(),
       tipo: tipoNormalizado,
+      visivel: true,
       titulo,
-      mensagem: mensagemApi ?? '',
-      classeCss: this.obterClasseCss(tipoNormalizado),
-      delay
-    });
+      mensagemApi: mensagemApi ?? '',
+      mensagemComplementar: mensagemComplementar?.trim() ? mensagemComplementar.trim() : undefined,
+      classeAlerta: this.obterClasseAlerta(tipoNormalizado),
+      icone: this.obterIcone(tipoNormalizado),
+      delay,
+      timeoutOcultar: undefined as number | undefined,
+      timeoutRemover: undefined as number | undefined
+    };
+
+    toast.timeoutOcultar = window.setTimeout(() => {
+      this.fechar(toast.id);
+    }, delay);
+
+    this.toasts.push(toast);
   }
 
-  remover(toast: { id: string }) {
-    this.toasts = this.toasts.filter(t => t.id !== toast.id);
+  fechar(id: string) {
+    const toast = this.toasts.find(t => t.id === id);
+    if (!toast) return;
+
+    if (toast.timeoutOcultar) {
+      clearTimeout(toast.timeoutOcultar);
+      toast.timeoutOcultar = undefined;
+    }
+    if (toast.timeoutRemover) {
+      clearTimeout(toast.timeoutRemover);
+      toast.timeoutRemover = undefined;
+    }
+
+    toast.visivel = false;
+    toast.timeoutRemover = window.setTimeout(() => {
+      this.remover(id);
+    }, 250);
+  }
+
+  remover(id: string) {
+    const toast = this.toasts.find(t => t.id === id);
+    if (toast?.timeoutOcultar) clearTimeout(toast.timeoutOcultar);
+    if (toast?.timeoutRemover) clearTimeout(toast.timeoutRemover);
+    this.toasts = this.toasts.filter(t => t.id !== id);
   }
 
   private obterTituloPadrao(tipo: TipoAlerta): string {
     switch (tipo) {
       case 'success':
-        return 'Sucesso';
+        return 'Sucesso!';
       case 'error':
-        return 'Falha';
+        return 'Error!';
       case 'info':
         return 'Informação';
       case 'warning':
-        return 'Aviso';
+        return 'Atenção!';
+      case 'primary':
+        return 'Tudo certo!';
       default:
         return 'Alerta';
     }
   }
 
-  private obterClasseCss(tipo: TipoAlerta): string {
+  private obterClasseAlerta(tipo: TipoAlerta): string {
     switch (tipo) {
       case 'success':
-        return 'bg-success text-white';
+        return 'alert-success';
       case 'error':
-        return 'bg-danger text-white';
+        return 'alert-danger';
       case 'info':
-        return 'bg-info text-white';
+        return 'alert-info';
       case 'warning':
-        return 'bg-warning text-dark';
+        return 'alert-warning';
+      case 'primary':
+        return 'alert-primary';
       default:
-        return 'bg-secondary text-white';
+        return 'alert-secondary';
+    }
+  }
+
+  private obterIcone(tipo: TipoAlerta): string {
+    switch (tipo) {
+      case 'success':
+        return 'ri-notification-off-line';
+      case 'error':
+        return 'ri-error-warning-line';
+      case 'info':
+        return 'ri-information-line';
+      case 'warning':
+        return 'ri-alert-line';
+      case 'primary':
+        return 'ri-user-smile-line';
+      default:
+        return 'ri-notification-3-line';
     }
   }
 
@@ -86,6 +144,8 @@ export class AlertaService {
         return 'error';
       case 'aviso':
         return 'warning';
+      case 'primario':
+        return 'primary';
       default:
         return tipo;
     }
@@ -114,27 +174,33 @@ export class AlertaService {
 @Component({
   selector: 'app-alertas-toast-host',
   standalone: true,
-  imports: [CommonModule, NgbToastModule],
+  imports: [CommonModule],
   template: `
-    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1200">
+    <div class="position-fixed top-0 end-0 p-3 d-flex flex-column gap-2" style="z-index: 1200; width: 420px; max-width: calc(100vw - 1.5rem);">
       @for (toast of alerta.toasts; track $index) {
-        <ngb-toast
-          [class]="toast.classeCss"
-          [autohide]="true"
-          [delay]="toast.delay"
-          (hidden)="alerta.remover(toast)"
+        <div
+          class="alert alert-dismissible alert-additional fade"
+          [ngClass]="[toast.classeAlerta, toast.visivel ? 'show' : '']"
+          role="alert"
         >
-          <ng-template ngbToastHeader>
-            <strong class="me-auto">{{ toast.titulo }}</strong>
-            <button
-              type="button"
-              class="btn-close"
-              aria-label="Close"
-              (click)="alerta.remover(toast)"
-            ></button>
-          </ng-template>
-          {{ toast.mensagem }}
-        </ngb-toast>
+          <div class="alert-body">
+            <button type="button" class="btn-close" aria-label="Close" (click)="alerta.fechar(toast.id)"></button>
+            <div class="d-flex">
+              <div class="flex-shrink-0 me-3">
+                <i [class]="toast.icone + ' fs-16 align-middle'"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h5 class="alert-heading">{{ toast.titulo }}</h5>
+                <p class="mb-0">{{ toast.mensagemApi }}</p>
+              </div>
+            </div>
+          </div>
+          @if (toast.mensagemComplementar) {
+            <div class="alert-content">
+              <p class="mb-0">{{ toast.mensagemComplementar }}</p>
+            </div>
+          }
+        </div>
       }
     </div>
   `
