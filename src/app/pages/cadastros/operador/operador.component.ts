@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 import { Operador } from '../../../core/models/operador.model';
 import { OperadorService } from '../../../core/services/operador.service';
+import { AlertaService } from 'src/app/core/services/alerta.service';
 
 @Component({
   selector: 'app-operador',
@@ -26,7 +27,8 @@ export class OperadorComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private formBuilder: FormBuilder,
-    private operadorService: OperadorService
+    private operadorService: OperadorService,
+    private _alert:  AlertaService
   ) { }
 
   ngOnInit(): void {
@@ -56,12 +58,9 @@ export class OperadorComponent implements OnInit {
           this.todosOperadores = data;
           this.totalRegistros = this.todosOperadores.length;
           this.atualizarLista();
+          this._alert.exibir('success', res.mensagem, 'Testo 2', 3000)
         } else {
-          Swal.fire({
-            title: 'Erro ao carregar operadores!',
-            icon: 'error',
-            timer: 2000,
-          });
+          this._alert.exibir('warning', res.mensagem, 'texto', 3000)
         }
       },
       error: (err) => console.error(err)
