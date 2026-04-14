@@ -24,9 +24,6 @@ export class OperadoresComponent implements OnInit {
   filtroAdmin: 'todos' | 'admin' | 'naoAdmin' = 'todos';
   filtroAtivo: 'todos' | 'ativo' | 'inativo' = 'todos';
 
-  campoOrdenacao: 'operadorId' | 'nome' | 'email' | 'perfilId' | 'dataUltimoAcesso' = 'nome';
-  direcaoOrdenacao: 'asc' | 'desc' = 'asc';
-
   opcoesQuantidadePorPagina = [8, 15, 25, 50];
 
   operadorForm!: UntypedFormGroup;
@@ -120,9 +117,8 @@ export class OperadoresComponent implements OnInit {
     this.aplicarFiltros(true);
   }
 
-  alternarDirecaoOrdenacao() {
-    this.direcaoOrdenacao = this.direcaoOrdenacao === 'asc' ? 'desc' : 'asc';
-    this.aplicarFiltros(false);
+  onSort(coluna: string) {
+    this.operadores = this.paginacao.onSort(coluna, this.operadores);
   }
 
   aplicarFiltros(redefinirPagina: boolean) {
@@ -151,40 +147,11 @@ export class OperadoresComponent implements OnInit {
       });
     }
 
-    const multiplicador = this.direcaoOrdenacao === 'asc' ? 1 : -1;
-    lista.sort((a, b) => {
-      const va = this.obterValorOrdenacao(a, this.campoOrdenacao);
-      const vb = this.obterValorOrdenacao(b, this.campoOrdenacao);
-      return this.compararValores(va, vb) * multiplicador;
-    });
-
     this.operadoresFiltrados = lista;
     if (redefinirPagina) {
       this.paginacao.page = 1;
     }
     this.operadores = this.paginacao.changePage(this.operadoresFiltrados);
-  }
-
-  private obterValorOrdenacao(operador: Operador, campo: OperadoresComponent['campoOrdenacao']): string | number {
-    if (campo === 'dataUltimoAcesso') {
-      const data = operador.dataUltimoAcesso ? new Date(operador.dataUltimoAcesso).getTime() : 0;
-      return Number.isFinite(data) ? data : 0;
-    }
-
-    const valor = operador[campo];
-    if (valor === null || valor === undefined) {
-      return '';
-    }
-    return String(valor).toLowerCase();
-  }
-
-  private compararValores(a: string | number, b: string | number): number {
-    if (typeof a === 'number' && typeof b === 'number') {
-      return a < b ? -1 : a > b ? 1 : 0;
-    }
-    const sa = String(a);
-    const sb = String(b);
-    return sa < sb ? -1 : sa > sb ? 1 : 0;
   }
 
   abrirModalCadastro(conteudo: any) {
