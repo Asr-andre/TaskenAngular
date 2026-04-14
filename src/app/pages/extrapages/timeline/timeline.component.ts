@@ -4,7 +4,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-timeline',
-  standalone: false,
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })

@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auction',
-  standalone: false,
   templateUrl: './auction.component.html',
   styleUrls: ['./auction.component.scss']
 })

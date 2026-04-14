@@ -9,7 +9,6 @@ import { changeDataPreloader, changeLayoutPosition, changeLayoutWidth, changeMod
 
 @Component({
   selector: 'app-rightsidebar',
-  standalone: false,
   templateUrl: './rightsidebar.component.html',
   styleUrls: ['./rightsidebar.component.scss']
 })
@@ -67,10 +66,8 @@ export class RightsidebarComponent implements OnInit {
    * @param layout Change the layout
    */
   changeLayout(layout: string) {
-    const validLayouts = new Set(['vertical', 'horizontal']);
-    const nextLayout = validLayouts.has(layout) ? layout : 'vertical';
-    this.attribute = nextLayout;
-    this.store.dispatch(changelayout({ layout: nextLayout }));
+    this.attribute = layout;
+    this.store.dispatch(changelayout({ layout }));
     this.store.select(getLayoutTheme).subscribe((layout) => {
       document.documentElement.setAttribute('data-layout', layout)
     })
@@ -107,7 +104,7 @@ export class RightsidebarComponent implements OnInit {
 
     setTimeout(() => {
       this.attribute = document.documentElement.getAttribute('data-layout')
-      if (this.attribute != 'horizontal') {
+      if (this.attribute == 'vertical') {
         var vertical = document.getElementById('customizer-layout01') as HTMLInputElement;
         if (vertical != null) {
           vertical.setAttribute('checked', 'true');
@@ -117,6 +114,18 @@ export class RightsidebarComponent implements OnInit {
         const horizontal = document.getElementById('customizer-layout02');
         if (horizontal != null) {
           horizontal.setAttribute('checked', 'true');
+        }
+      }
+      if (this.attribute == 'twocolumn') {
+        const Twocolumn = document.getElementById('customizer-layout03');
+        if (Twocolumn != null) {
+          Twocolumn.setAttribute('checked', 'true');
+        }
+      }
+      if (this.attribute == 'semibox') {
+        const Twocolumn = document.getElementById('customizer-layout04');
+        if (Twocolumn != null) {
+          Twocolumn.setAttribute('checked', 'true');
         }
       }
     }, 100);

@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { GlobalComponent } from "../../global-component";
 import { Store } from '@ngrx/store';
 import { RegisterSuccess, loginFailure, loginSuccess, logout, logoutSuccess } from 'src/app/store/Authentication/authentication.actions';
+import { environment } from '../../../environments/environment';
 
 const AUTH_API = GlobalComponent.AUTH_API;
 
@@ -44,18 +45,28 @@ export class AuthenticationService {
         //     return user;
         // });
 
-        // Register Api
-        return this.http.post(AUTH_API + 'signup', {
-            email,
-            first_name,
-            password,
-          }, httpOptions).pipe(
-            map((response: any) => {
-                const user = response;
-                return user;
-            }),
+        if (environment.defaultauth === 'fakebackend') {
+            const payload = {
+                email,
+                username: first_name,
+                firstName: first_name,
+                password,
+            };
+
+            return this.http.post('/users/register', payload, httpOptions).pipe(
+                map((response: any) => response ?? { status: 'success' }),
+                catchError((error: any) => {
+                    const errorMessage = error?.error?.message ?? 'Register failed';
+                    this.store.dispatch(loginFailure({ error: errorMessage }));
+                    return throwError(errorMessage);
+                })
+            );
+        }
+
+        return this.http.post(AUTH_API + 'signup', { email, first_name, password }, httpOptions).pipe(
+            map((response: any) => response),
             catchError((error: any) => {
-                const errorMessage = 'Login failed'; // Customize the error message as needed
+                const errorMessage = error?.error?.message ?? 'Register failed';
                 this.store.dispatch(loginFailure({ error: errorMessage }));
                 return throwError(errorMessage);
             })
@@ -73,16 +84,20 @@ export class AuthenticationService {
         //     return user;
         // });
 
-        return this.http.post(AUTH_API + 'signin', {
-            email,
-            password
-          }, httpOptions).pipe(
-              map((response: any) => {
-                const user = response;
-                return user;
-            }),
+        if (environment.defaultauth === 'fakebackend') {
+            return this.http.post<any>('/users/authenticate', { email, password }, httpOptions).pipe(
+                map((user: any) => ({ status: 'success', data: user, token: user?.token })),
+                catchError((error: any) => {
+                    const errorMessage = error?.error?.message ?? 'Login failed';
+                    return throwError(errorMessage);
+                })
+            );
+        }
+
+        return this.http.post(AUTH_API + 'signin', { email, password }, httpOptions).pipe(
+            map((response: any) => response),
             catchError((error: any) => {
-                const errorMessage = 'Login failed'; // Customize the error message as needed
+                const errorMessage = error?.error?.message ?? 'Login failed';
                 return throwError(errorMessage);
             })
         );

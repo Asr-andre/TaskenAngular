@@ -384,3 +384,15 @@
         }
     }
 }
+
+[data-layout="twocolumn"] {
+    #page-topbar {
+        @media (min-width: 768px) {
+            left: calc(#{$twocolumn-menu-iconview-width} + #{$twocolumn-menu-width});
+        }
+    }
+
+    .horizontal-logo {
+        display: none;
+    }
+}

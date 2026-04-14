@@ -36,13 +36,20 @@
     }
     
     // Horizontal nav
-    --#{$prefix}topnav-bg:                                          #{$topnav-bg};
+    --#{$prefix}topnav-bg:                                          #{$twocolumn-menu-iconview-bg};
     --#{$prefix}topnav-item-color:                                  #{$topnav-item-color};
     --#{$prefix}topnav-item-active-color:                           #{$topnav-item-active-color};
+    
+    // twocolumn menu
+    --#{$prefix}twocolumn-menu-iconview-bg:                         #{$twocolumn-menu-iconview-bg};
+    --#{$prefix}twocolumn-menu-box-shadow:                          #{$twocolumn-menu-box-shadow};
     
     // boxed 
     --#{$prefix}boxed-layout-width:                                 #{$boxed-layout-width};
     --#{$prefix}boxed-body-bg:                                      #{$boxed-body-bg};
+    
+    //semibox layout
+    --#{$prefix}semibox-width:                                      #{$semibox-width};
     
     //footer
     --#{$prefix}footer-bg:                                          #{$footer-bg};
@@ -83,6 +90,7 @@
             --#{$prefix}vertical-menu-sub-item-hover-color:             #{$dark-vertical-menu-sub-item-hover-color};
             --#{$prefix}vertical-menu-sub-item-active-color:            #{$dark-vertical-menu-sub-item-active-color};
             --#{$prefix}vertical-menu-title-color:                      #{$dark-vertical-menu-title-color};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$dark-twocolumn-menu-iconview-bg};
             --#{$prefix}vertical-menu-box-shadow:                       #{$dark-vertical-menu-box-shadow};
             --#{$prefix}vertical-menu-dropdown-box-shadow:              #{$dark-vertical-menu-dropdown-box-shadow};
         }
@@ -110,22 +118,26 @@
         &[data-sidebar="gradient"] {
             --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient};
             --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient};
         }
         
         &[data-sidebar="gradient-2"] {
             --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-2};
             --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-2};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-2};
         }
         
         &[data-sidebar="gradient-3"] {
             --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-3};
             --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-3};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-3};
             
         }
         
         &[data-sidebar="gradient-4"] {
             --#{$prefix}vertical-menu-bg:                               #{$vertical-menu-bg-gradient-4};
             --#{$prefix}vertical-menu-border:                           #{$vertical-menu-border-gradient-4};
+            --#{$prefix}twocolumn-menu-iconview-bg:                     #{$twocolumn-menu-iconview-bg-gradient-4};
         }
     }    
 }
@@ -160,6 +172,9 @@
         //page title 
         --#{$prefix}page-title-box-shadow:                          #{$page-title-box-shadow-dark};
         --#{$prefix}page-title-border:                              #{$page-title-border-dark};
+        
+        //two columns
+        --#{$prefix}twocolumn-menu-box-shadow:                      #{$twocolumn-menu-box-shadow-dark};
         
         // boxed 
         --#{$prefix}boxed-body-bg:                                  #{$boxed-body-bg-dark};
@@ -266,6 +281,7 @@
             --#{$prefix}vertical-menu-sub-item-hover-color:         #{$dark-vertical-menu-sub-item-hover-color-dark};
             --#{$prefix}vertical-menu-sub-item-active-color:        #{$dark-vertical-menu-sub-item-active-color-dark};
             --#{$prefix}vertical-menu-title-color:                  #{$dark-vertical-menu-title-color-dark};
+            --#{$prefix}twocolumn-menu-iconview-bg:                 #{$dark-twocolumn-menu-iconview-bg-dark};
         }
         
     }
@@ -290,22 +306,26 @@
         &[data-sidebar="gradient"] {
             --#{$prefix}vertical-menu-bg:                           #{$vertical-menu-bg-gradient-dark};
             --#{$prefix}vertical-menu-border:                       #{$vertical-menu-border-gradient-dark};
+            --#{$prefix}twocolumn-menu-iconview-bg:                 #{$twocolumn-menu-iconview-bg-gradient-dark};
         }
         
         &[data-sidebar="gradient-2"] {
             --#{$prefix}vertical-menu-bg:                           #{$vertical-menu-bg-gradient-2-dark};
             --#{$prefix}vertical-menu-border:                       #{$vertical-menu-border-gradient-2-dark};
+            --#{$prefix}twocolumn-menu-iconview-bg:                 #{$twocolumn-menu-iconview-bg-gradient-2-dark};
         }
         
         &[data-sidebar="gradient-3"] {
             --#{$prefix}vertical-menu-bg:                           #{$vertical-menu-bg-gradient-3-dark};
             --#{$prefix}vertical-menu-border:                       #{$vertical-menu-border-gradient-3-dark};
+            --#{$prefix}twocolumn-menu-iconview-bg:                 #{$twocolumn-menu-iconview-bg-gradient-3-dark};
         
         }
         
         &[data-sidebar="gradient-4"] {
             --#{$prefix}vertical-menu-bg:                           #{$vertical-menu-bg-gradient-4-dark};
             --#{$prefix}vertical-menu-border:                       #{$vertical-menu-border-gradient-4-dark};
+            --#{$prefix}twocolumn-menu-iconview-bg:                 #{$twocolumn-menu-iconview-bg-gradient-4-dark};
         }
     }
 }

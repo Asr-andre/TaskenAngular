@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-range-area',
-  standalone: false,
   templateUrl: './range-area.component.html',
   styleUrls: ['./range-area.component.scss']
 })

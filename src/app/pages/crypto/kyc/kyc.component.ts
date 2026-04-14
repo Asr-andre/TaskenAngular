@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-kyc',
-  standalone: false,
   templateUrl: './kyc.component.html',
   styleUrls: ['./kyc.component.scss']
 })

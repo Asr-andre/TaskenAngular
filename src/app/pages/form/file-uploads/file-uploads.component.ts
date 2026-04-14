@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-file-uploads',
-  standalone: false,
   templateUrl: './file-uploads.component.html',
   styleUrls: ['./file-uploads.component.scss']
 })

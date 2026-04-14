@@ -10,7 +10,6 @@ import { MenuItem } from './menu.model';
 
 @Component({
   selector: 'app-horizontal-topbar',
-  standalone: false,
   templateUrl: './horizontal-topbar.component.html',
   styleUrls: ['./horizontal-topbar.component.scss']
 })
@@ -22,7 +21,7 @@ export class HorizontalTopbarComponent implements OnInit {
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   constructor(private router: Router, public translate: TranslateService) {
-    translate.setDefaultLang('pt');
+    translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
@@ -55,6 +54,7 @@ export class HorizontalTopbarComponent implements OnInit {
     });
   }
 
+  // remove active items of two-column-menu
   activateParentDropdown(item: any) { // navbar-nav menu add active
     item.classList.add("active");
     let parentCollapseDiv = item.closest(".collapse.menu-dropdown");

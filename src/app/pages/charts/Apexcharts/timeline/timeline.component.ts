@@ -3,7 +3,6 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-timeline',
-  standalone: false,
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss']
 })

@@ -5,7 +5,6 @@ import { walletData } from './data';
 
 @Component({
   selector: 'app-wallet',
-  standalone: false,
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })

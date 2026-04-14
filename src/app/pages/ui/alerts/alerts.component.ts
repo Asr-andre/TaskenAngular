@@ -8,7 +8,6 @@ import { AlertColor } from './alerts.model';
 
 @Component({
   selector: 'app-alerts',
-  standalone: false,
   templateUrl: './alerts.component.html',
   styleUrls: ['./alerts.component.scss']
 })

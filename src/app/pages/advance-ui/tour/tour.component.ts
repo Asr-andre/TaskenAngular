@@ -5,7 +5,6 @@ import { steps as defaultSteps, defaultStepOptions } from './data';
 
 @Component({
   selector: 'app-tour',
-  standalone: false,
   templateUrl: './tour.component.html',
   styleUrls: ['./tour.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

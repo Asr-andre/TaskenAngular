@@ -5,7 +5,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-grid',
-  standalone: false,
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
 })

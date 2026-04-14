@@ -5,7 +5,6 @@ import { marketplaceData, popularData, recentMarketData, tradingData } from 'src
 
 @Component({
   selector: 'app-marketplace',
-  standalone: false,
   templateUrl: './marketplace.component.html',
   styleUrls: ['./marketplace.component.scss']
 })

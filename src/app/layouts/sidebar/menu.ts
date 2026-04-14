@@ -63,20 +63,6 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 13,
-    label: 'Cadastros',
-    icon: 'ri-file-list-3-line',
-    isCollapsed: true,
-    subItems: [
-      {
-        id: 14,
-        label: 'Operador',
-        link: '/cadastros/operador',
-        parentId: 13
-      }
-    ]
-  },
-  {
     id: 8,
     label: 'MENUITEMS.APPS.TEXT',
     icon: 'ri-apps-2-line',
@@ -546,6 +532,20 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    id: 1000,
+    label: 'MENUITEMS.CADASTRO.TEXT',
+    icon: 'ri-file-list-3-line',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 1001,
+        label: 'MENUITEMS.CADASTRO.LIST.OPERADOR',
+        link: '/cadastro/operadores',
+        parentId: 1000
+      }
+    ]
+  },
+  {
     id: 54,
     label: 'MENUITEMS.PAGES.TEXT',
     isTitle: true
@@ -876,6 +876,32 @@ export const MENU: MenuItem[] = [
           }
         ]
       }
+    ]
+  },
+  {
+    id: 131,
+    label: 'MENUITEMS.LANDING.TEXT',
+    icon: 'ri-rocket-line',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 85,
+        label: 'MENUITEMS.LANDING.LIST.ONEPAGE',
+        link: '/landing',
+        parentId: 84
+      },
+      {
+        id: 86,
+        label: 'MENUITEMS.LANDING.LIST.NFTLANDING',
+        link: '/landing/nft',
+        parentId: 84,
+      },
+      {
+        id: 87,
+        label: 'MENUITEMS.LANDING.LIST.JOB',
+        link: '/landing/job',
+        parentId: 84,
+      },
     ]
   },
   {
@@ -1389,4 +1415,54 @@ export const MENU: MenuItem[] = [
       },
     ]
   },
+  {
+    id: 175,
+    label: 'MENUITEMS.MAPS.TEXT',
+    icon: 'ri-map-pin-line',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 176,
+        label: 'MENUITEMS.MAPS.LIST.GOOGLE',
+        link: '/maps/google',
+        parentId: 175
+      },
+      {
+        id: 178,
+        label: 'MENUITEMS.MAPS.LIST.LEAFLET',
+        link: '/maps/leaflet',
+        parentId: 175
+      }
+    ]
+  },
+  {
+    id: 179,
+    label: 'MENUITEMS.MULTILEVEL.TEXT',
+    icon: 'ri-share-line',
+    isCollapsed: true,
+    subItems: [
+      {
+        id: 180,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.1',
+        parentId: 179
+      },
+      {
+        id: 181,
+        label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.2',
+        subItems: [
+          {
+            id: 182,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.1',
+            parentId: 181,
+          },
+          {
+            id: 183,
+            label: 'MENUITEMS.MULTILEVEL.LIST.LEVEL1.LEVEL2.2',
+            parentId: 181,
+          }
+        ]
+      },
+    ]
+  }
+
 ];

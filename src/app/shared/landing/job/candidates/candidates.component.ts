@@ -3,7 +3,6 @@ import { candidates } from './data';
 
 @Component({
   selector: 'app-candidates',
-  standalone: false,
   templateUrl: './candidates.component.html',
   styleUrls: ['./candidates.component.scss']
 })

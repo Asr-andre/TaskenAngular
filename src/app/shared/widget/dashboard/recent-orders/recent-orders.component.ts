@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-recent-orders',
-  standalone: false,
   templateUrl: './recent-orders.component.html',
   styleUrls: ['./recent-orders.component.scss']
 })

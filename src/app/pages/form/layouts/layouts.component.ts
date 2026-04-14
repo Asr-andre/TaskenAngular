@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layouts',
-  standalone: false,
   templateUrl: './layouts.component.html',
   styleUrls: ['./layouts.component.scss']
 })

@@ -4,7 +4,6 @@ import { Lightbox } from 'ngx-lightbox';
 
 @Component({
   selector: 'app-gallery',
-  standalone: false,
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })

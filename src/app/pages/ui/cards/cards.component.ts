@@ -3,7 +3,6 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
   selector: 'app-cards',
-  standalone: false,
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })

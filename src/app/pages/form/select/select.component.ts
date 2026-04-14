@@ -3,7 +3,6 @@ import { UntypedFormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
-  standalone: false,
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss']
 })

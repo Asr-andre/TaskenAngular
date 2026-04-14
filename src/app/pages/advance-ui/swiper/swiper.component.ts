@@ -4,7 +4,6 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 
 @Component({
   selector: 'app-swiper',
-  standalone: false,
   templateUrl: './swiper.component.html',
   styleUrls: ['./swiper.component.scss']
 })
@@ -119,9 +118,8 @@ export class SwipersComponent implements OnInit {
   };
 
   @HostListener('mousewheel', ['$event'])
-  onMouseWheel(event: Event) {
-    if (!('deltaY' in event)) return;
-    const delta = Math.sign((event as WheelEvent).deltaY);
+  onMouseWheel(event: WheelEvent) {
+    const delta = Math.sign(event.deltaY);
     if (delta > 0) {
       // Scroll down (next slide)
       this.slickCarousel.slickNext();

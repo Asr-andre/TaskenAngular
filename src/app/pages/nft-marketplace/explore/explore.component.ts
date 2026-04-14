@@ -11,7 +11,6 @@ import { exploreData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-explore',
-  standalone: false,
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss']
 })

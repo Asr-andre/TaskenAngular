@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-item-details',
-  standalone: false,
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss']
 })

@@ -1,35 +1,31 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Operador } from '../models/operador.model';
+import { environment } from '../../../environments/environment';
+import { Operador, OperadorAtualizacao, OperadorCriacao } from '../models/operador.model';
+import { RespostaApi } from '../models/resposta-api.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class OperadorService {
-  private apiUrl = 'https://localhost:7142/api/Funcionario';
+  private readonly baseUrl = `${environment.apiUrl}/api/Operador`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  listarTodos(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/ListarTodos`);
+  listarTodos(): Observable<RespostaApi<Operador[]>> {
+    return this.http.get<RespostaApi<Operador[]>>(`${this.baseUrl}/ListarTodos`);
   }
 
-  obterPorId(id: number | string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/ObterPorId?id=${id}`);
+  obterPorId(id: string): Observable<RespostaApi<Operador>> {
+    const params = new HttpParams().set('id', id);
+    return this.http.get<RespostaApi<Operador>>(`${this.baseUrl}/ObterPorId`, { params });
   }
 
-  criar(operador: Operador): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/Criar`, operador);
+  criar(dados: OperadorCriacao): Observable<RespostaApi<Operador>> {
+    return this.http.post<RespostaApi<Operador>>(`${this.baseUrl}/Criar`, dados);
   }
 
-  atualizar(operador: Operador): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/Atualizar`, operador);
-  }
-
-  deletar(id: number | string): Observable<any> {
-    // Assuming delete requires the ID as query param or part of the URL
-    // e.g., /Deletar?id=123
-    return this.http.delete<any>(`${this.apiUrl}/Deletar?id=${id}`);
+  atualizar(dados: OperadorAtualizacao): Observable<RespostaApi<Operador>> {
+    return this.http.put<RespostaApi<Operador>>(`${this.baseUrl}/Atualizar`, dados);
   }
 }
+

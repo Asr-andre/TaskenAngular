@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-scatter',
-  standalone: false,
   templateUrl: './scatter.component.html',
   styleUrls: ['./scatter.component.scss']
 })

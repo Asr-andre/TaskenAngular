@@ -5,7 +5,6 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-editors',
-  standalone: false,
   templateUrl: './editors.component.html',
   styleUrls: ['./editors.component.scss']
 })

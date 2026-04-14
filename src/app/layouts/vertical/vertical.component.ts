@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../core/services/event.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getSidebarSize } from 'src/app/store/layouts/layout-selector';
 import { RootReducerState } from 'src/app/store';
@@ -6,7 +7,6 @@ import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-vertical',
-  standalone: false,
   templateUrl: './vertical.component.html',
   styleUrls: ['./vertical.component.scss']
 })
@@ -15,7 +15,7 @@ export class VerticalComponent implements OnInit {
   isCondensed = false;
   getsize:any;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute,private store: Store<RootReducerState>) {
+  constructor(private eventService: EventService, private router: Router, private activatedRoute: ActivatedRoute,private store: Store<RootReducerState>) {
   }
 
   ngOnInit(): void {
@@ -109,6 +109,18 @@ export class VerticalComponent implements OnInit {
       rightBar.classList.toggle('show');
       rightBar.setAttribute('style', "visibility: visible;");
 
+    }
+  }
+
+  onResize(event: any) {
+    if (document.body.getAttribute('layout') == "twocolumn") {
+      if (event.target.innerWidth <= 767) {
+        this.eventService.broadcast('changeLayout', 'vertical');
+      } else {
+        this.eventService.broadcast('changeLayout', 'twocolumn');
+        document.body.classList.remove('twocolumn-panel');
+        document.body.classList.remove('vertical-sidebar-enable');
+      }
     }
   }
 

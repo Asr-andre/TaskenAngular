@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-active-project',
-  standalone: false,
   templateUrl: './active-project.component.html',
   styleUrls: ['./active-project.component.scss']
 })

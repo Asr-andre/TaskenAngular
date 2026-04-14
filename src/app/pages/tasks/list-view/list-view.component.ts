@@ -21,7 +21,6 @@ import { AssignedData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-list-view',
-  standalone: false,
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
 })

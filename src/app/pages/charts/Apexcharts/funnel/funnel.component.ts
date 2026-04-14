@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-funnel',
-  standalone: false,
   templateUrl: './funnel.component.html',
   styleUrls: ['./funnel.component.scss']
 })

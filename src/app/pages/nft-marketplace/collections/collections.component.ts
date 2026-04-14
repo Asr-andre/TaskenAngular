@@ -6,7 +6,6 @@ import { collectionData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-collections',
-  standalone: false,
   templateUrl: './collections.component.html',
   styleUrls: ['./collections.component.scss']
 })

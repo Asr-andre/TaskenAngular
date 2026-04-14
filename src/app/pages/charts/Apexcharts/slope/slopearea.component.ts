@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-slopearea',
-  standalone: false,
   templateUrl: './slopearea.component.html',
   styleUrl: './slopearea.component.scss'
 })

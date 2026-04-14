@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cta',
-  standalone: false,
   templateUrl: './cta.component.html',
   styleUrls: ['./cta.component.scss']
 })

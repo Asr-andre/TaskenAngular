@@ -24,7 +24,6 @@ import { todoAssigned, todoProject } from 'src/app/core/data';
 
 @Component({
   selector: 'app-todo',
-  standalone: false,
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })

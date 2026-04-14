@@ -5,7 +5,6 @@ import { MarketModel } from 'src/app/store/Crypto/crypto_model';
 
 @Component({
   selector: 'app-buy-sell',
-  standalone: false,
   templateUrl: './buy-sell.component.html',
   styleUrls: ['./buy-sell.component.scss'],
 })

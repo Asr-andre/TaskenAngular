@@ -40,7 +40,6 @@ Chart.register(
 
 @Component({
   selector: 'app-chartjs',
-  standalone: false,
   templateUrl: './chartjs.component.html',
   styleUrls: ['./chartjs.component.scss']
 })

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ratings',
-  standalone: false,
   templateUrl: './ratings.component.html',
   styleUrls: ['./ratings.component.scss']
 })

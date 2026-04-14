@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-images',
-  standalone: false,
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.scss']
 })

@@ -5,7 +5,6 @@ import { IconsData } from 'src/app/core/data';
 
 @Component({
   selector: 'app-feather',
-  standalone: false,
   templateUrl: './feather.component.html',
   styleUrls: ['./feather.component.scss']
 })

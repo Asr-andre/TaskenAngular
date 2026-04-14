@@ -3,7 +3,6 @@ import * as Prism from 'prismjs';
 
 @Component({
   selector: 'app-highlight',
-  standalone: false,
   templateUrl: './highlight.component.html',
   styleUrls: ['./highlight.component.scss']
 })

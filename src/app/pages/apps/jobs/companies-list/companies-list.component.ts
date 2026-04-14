@@ -4,7 +4,6 @@ import { companieslist } from 'src/app/core/data';
 
 @Component({
   selector: 'app-companies-list',
-  standalone: false,
   templateUrl: './companies-list.component.html',
   styleUrls: ['./companies-list.component.scss']
 })

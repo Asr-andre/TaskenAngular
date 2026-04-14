@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: false,
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
@@ -21,15 +20,17 @@ export class SidebarComponent implements OnInit {
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
   constructor(private router: Router, public translate: TranslateService) {
-    translate.setDefaultLang('pt');
+    translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {
     // Menu Items
     this.menuItems = MENU;
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.initActiveMenu();
+      if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
+        if (event instanceof NavigationEnd) {
+          this.initActiveMenu();
+        }
       }
     });
   }

@@ -8,7 +8,6 @@ import { gallery, news, swiper, video } from 'src/app/core/data';
 
 @Component({
   selector: 'app-search-results',
-  standalone: false,
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })

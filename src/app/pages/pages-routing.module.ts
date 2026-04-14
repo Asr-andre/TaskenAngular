@@ -28,6 +28,9 @@ const routes: Routes = [
       path: 'crm', loadChildren: () => import('./crm/crm.module').then(m => m.CrmModule)
     },
     {
+      path: 'cadastro', loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
+    },
+    {
       path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule)
     },
     {
@@ -56,7 +59,7 @@ const routes: Routes = [
       path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)
     },
     {
-      path: 'cadastros', loadChildren: () => import('./cadastros/cadastros.module').then(m => m.CadastrosModule)
+      path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule)
     },
     {
       path: 'marletplace', loadChildren: () => import('./nft-marketplace/nft-marketplace.module').then(m => m.NftMarketplaceModule)

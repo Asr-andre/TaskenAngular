@@ -10,7 +10,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-sellers',
-  standalone: false,
   templateUrl: './sellers.component.html',
   styleUrls: ['./sellers.component.scss']
 })

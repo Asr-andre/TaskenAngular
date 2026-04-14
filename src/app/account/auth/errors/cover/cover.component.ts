@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cover',
-  standalone: false,
   templateUrl: './cover.component.html',
   styleUrls: ['./cover.component.scss']
 })

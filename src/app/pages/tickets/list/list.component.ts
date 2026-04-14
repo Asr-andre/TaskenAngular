@@ -21,7 +21,6 @@ import { TicketListModel } from 'src/app/store/Ticket/ticket_model';
 
 @Component({
   selector: 'app-list',
-  standalone: false,
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-pages',
-  standalone: false,
   templateUrl: './top-pages.component.html',
   styleUrls: ['./top-pages.component.scss']
 })

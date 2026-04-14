@@ -3,7 +3,6 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 
 @Component({
   selector: 'app-cover',
-  standalone: false,
   templateUrl: './cover.component.html',
   styleUrls: ['./cover.component.scss']
 })

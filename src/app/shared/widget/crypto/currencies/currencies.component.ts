@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-currencies',
-  standalone: false,
   templateUrl: './currencies.component.html',
   styleUrls: ['./currencies.component.scss']
 })

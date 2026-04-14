@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-progress',
-  standalone: false,
   templateUrl: './progress.component.html',
   styleUrls: ['./progress.component.scss']
 })

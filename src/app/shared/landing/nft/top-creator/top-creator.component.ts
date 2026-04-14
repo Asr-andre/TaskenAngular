@@ -5,7 +5,6 @@ import { creatorData } from './data';
 
 @Component({
   selector: 'app-top-creator',
-  standalone: false,
   templateUrl: './top-creator.component.html',
   styleUrls: ['./top-creator.component.scss']
 })

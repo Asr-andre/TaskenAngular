@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-video',
-  standalone: false,
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss']
 })

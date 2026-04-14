@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-offline',
-  standalone: false,
   templateUrl: './offline.component.html',
   styleUrls: ['./offline.component.scss']
 })

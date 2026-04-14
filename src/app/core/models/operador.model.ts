@@ -1,28 +1,42 @@
-export class Operador {
-    operadorId?: string;
-    nome?: string;
-    senha?: string;
-    email?: string;
-    seAdmin?: boolean;
-    seAtivo?: string;
-    perfilSkin?: string;
-    dataUltimoAcesso?: Date | string;
-    dataInclusao?: Date | string;
-    usuarioInclusao?: string;
-    dataAlteracao?: Date | string;
-    usuarioAlteracao?: string;
-    perfilId?: string;
-    
-    funcionarioId?: number;
-    endereco?: string;
-    numero?: string;
-    complemento?: string;
-    bairro?: string;
-    cidade?: string;
-    uf?: string;
-    dataNascimento?: Date | string;
-    dataAdmissao?: Date | string;
-    funcaoId?: number;
-    cpf?: string;
-    ativo?: string;
+export interface Operador {
+  operadorId: string;
+  nome: string | null;
+  senha: string | null;
+  email: string | null;
+  seAdmin: boolean | null;
+  seAtivo: string | null;
+  perfilSkin: string | null;
+  dataUltimoAcesso: string | null;
+  dataInclusao: string;
+  usuarioInclusao: string;
+  dataAlteracao: string | null;
+  usuarioAlteracao: string | null;
+  perfilId: string | null;
 }
+
+export interface OperadorCriacao {
+  operadorId: string;
+  nome: string | null;
+  senha: string | null;
+  email: string | null;
+  seAdmin: boolean | null;
+  seAtivo: string | null;
+  perfilSkin: string | null;
+  dataUltimoAcesso: string | null;
+  usuarioInclusao: string;
+  perfilId: string | null;
+}
+
+export interface OperadorAtualizacao {
+  operadorId: string;
+  nome: string | null;
+  senha: string | null;
+  email: string | null;
+  seAdmin: boolean | null;
+  seAtivo: string | null;
+  perfilSkin: string | null;
+  dataUltimoAcesso: string | null;
+  usuarioAlteracao: string;
+  perfilId: string | null;
+}
+

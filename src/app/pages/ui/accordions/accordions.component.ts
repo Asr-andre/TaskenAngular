@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-accordions',
-  standalone: false,
   templateUrl: './accordions.component.html',
   styleUrls: ['./accordions.component.scss']
 })

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-radar',
-  standalone: false,
   templateUrl: './radar.component.html',
   styleUrls: ['./radar.component.scss']
 })

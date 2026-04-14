@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-details',
-  standalone: false,
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })

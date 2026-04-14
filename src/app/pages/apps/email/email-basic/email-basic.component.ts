@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-email-basic',
-  standalone: false,
   templateUrl: './email-basic.component.html',
   styleUrls: ['./email-basic.component.scss']
 })

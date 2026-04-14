@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-typography',
-  standalone: false,
   templateUrl: './typography.component.html',
   styleUrls: ['./typography.component.scss']
 })

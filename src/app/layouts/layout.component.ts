@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+import { EventService } from '../core/services/event.service';
+
 // Store
 import { RootReducerState } from '../store';
 import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-layout',
-  standalone: false,
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
@@ -22,17 +23,16 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select('layout').subscribe((data) => {
-      const normalizedLayout = data.LAYOUT === 'horizontal' ? 'horizontal' : 'vertical';
-      this.layoutType = normalizedLayout;
-      document.documentElement.setAttribute('data-layout', normalizedLayout);
+      this.layoutType = data.LAYOUT;
+      document.documentElement.setAttribute('data-layout', data.LAYOUT);
       document.documentElement.setAttribute('data-bs-theme', data.LAYOUT_MODE);
       document.documentElement.setAttribute('data-layout-width', data.LAYOUT_WIDTH);
       document.documentElement.setAttribute('data-layout-position', data.LAYOUT_POSITION);
       document.documentElement.setAttribute('data-topbar', data.TOPBAR);
-      normalizedLayout === "vertical" ? document.documentElement.setAttribute('data-sidebar', data.SIDEBAR_COLOR) : '';
-      normalizedLayout === "vertical" ? document.documentElement.setAttribute('data-sidebar-size', data.SIDEBAR_SIZE) : '';
-      normalizedLayout === "vertical" ? document.documentElement.setAttribute('data-sidebar-image', data.SIDEBAR_IMAGE) : '';
-      normalizedLayout === "vertical" ? document.documentElement.setAttribute('data-layout-style', data.SIDEBAR_VIEW) : '';
+      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar', data.SIDEBAR_COLOR) : '';
+      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar-size', data.SIDEBAR_SIZE) : '';
+      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar-image', data.SIDEBAR_IMAGE) : '';
+      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-layout-style', data.SIDEBAR_VIEW) : '';
       document.documentElement.setAttribute('data-preloader', data.DATA_PRELOADER)
       document.documentElement.setAttribute('data-sidebar-visibility', data.SIDEBAR_VISIBILITY);
     })
@@ -48,10 +48,24 @@ export class LayoutComponent implements OnInit {
   }
 
   /**
+   * Check if the semibox layout is requested
+   */
+  isSemiboxLayoutRequested() {
+    return this.layoutType === 'semibox';
+  }
+
+  /**
    * Check if the horizontal layout is requested
    */
   isHorizontalLayoutRequested() {
     return this.layoutType === 'horizontal';
+  }
+
+  /**
+   * Check if the horizontal layout is requested
+   */
+  isTwoColumnLayoutRequested() {
+    return this.layoutType === 'twocolumn';
   }
 
 }

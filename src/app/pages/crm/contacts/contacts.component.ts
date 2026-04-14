@@ -23,7 +23,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-contacts',
-  standalone: false,
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss'],
 })

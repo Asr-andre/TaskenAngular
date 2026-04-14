@@ -219,6 +219,12 @@ code {
     }
 }
 
+[data-layout="semibox"] {
+    .layout-rightside {
+        margin-right: 0px;
+    }
+}
+
 // text-truncate-two-lines
 .text-truncate-two-lines {
     overflow: hidden;

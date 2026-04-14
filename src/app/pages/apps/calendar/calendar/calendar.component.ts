@@ -23,7 +23,6 @@ import { createEventId } from 'src/app/core/data/calendar';
 
 @Component({
   selector: 'app-calendar',
-  standalone: false,
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })

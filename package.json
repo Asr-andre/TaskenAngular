@@ -10,17 +10,17 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^21.0.0",
-    "@angular/cdk": "^21.0.0",
-    "@angular/common": "^21.0.0",
-    "@angular/compiler": "^21.0.0",
-    "@angular/core": "^21.0.0",
-    "@angular/forms": "^21.0.0",
-    "@angular/google-maps": "^21.0.0",
-    "@angular/material": "^21.0.0",
-    "@angular/platform-browser": "^21.0.0",
-    "@angular/platform-browser-dynamic": "^21.0.0",
-    "@angular/router": "^21.0.0",
+    "@angular/animations": "^18.0.4",
+    "@angular/cdk": "^18.0.4",
+    "@angular/common": "^18.0.4",
+    "@angular/compiler": "^18.0.4",
+    "@angular/core": "^18.0.4",
+    "@angular/forms": "^18.0.4",
+    "@angular/google-maps": "^18.0.4",
+    "@angular/material": "^16.2.14",
+    "@angular/platform-browser": "^18.0.4",
+    "@angular/platform-browser-dynamic": "^18.0.4",
+    "@angular/router": "^18.0.4",
     "@asymmetrik/ngx-leaflet": "^18.0.1",
     "@ckeditor/ckeditor5-angular": "^9.0.0",
     "@ckeditor/ckeditor5-build-classic": "^43.2.0",
@@ -33,11 +33,11 @@
     "@fullcalendar/multimonth": "^6.1.14",
     "@fullcalendar/timegrid": "^6.1.14",
     "@lordicon/element": "^1.6.0",
-    "@ng-bootstrap/ng-bootstrap": "^19.0.0",
+    "@ng-bootstrap/ng-bootstrap": "17.0.1",
     "@ng-select/ng-select": "^13.2.0",
-    "@ngrx/effects": "^21.0.0",
-    "@ngrx/store": "^21.0.0",
-    "@ngrx/store-devtools": "^21.0.0",
+    "@ngrx/effects": "^18.0.0",
+    "@ngrx/store": "^18.0.0",
+    "@ngrx/store-devtools": "^18.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@nicky-lenaers/ngx-scroll-to": "^14.0.0",
@@ -94,14 +94,13 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.12.0",
     "tslib": "^2.6.3",
-    "zone.js": "~0.15.0"
+    "zone.js": "^0.14.7"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^21.0.3",
-    "@angular-devkit/build-angular": "^21.0.0",
-    "@angular/cli": "^21.0.0",
-    "@angular/compiler-cli": "^21.0.0",
-    "@angular/localize": "^21.0.0",
+    "@angular-devkit/build-angular": "^18.0.5",
+    "@angular/cli": "^18.0.5",
+    "@angular/compiler-cli": "^18.0.4",
+    "@angular/localize": "^18.0.4",
     "@types/echarts": "^4.9.22",
     "@types/file-saver": "^2.0.7",
     "@types/jquery": "^3.5.30",
@@ -111,21 +110,14 @@
     "@types/quill": "^2.0.14",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "typescript": "~5.9.3"
+    "typescript": "~5.4.5"
   },
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 ChromeAndroid versions",
-    "last 2 Firefox versions",
-    "last 2 FirefoxAndroid versions",
-    "last 2 Edge versions",
-    "last 2 Safari versions",
-    "last 2 iOS versions",
-    "not ie 11",
-    "not op_mini all"
+    "last 1 version",
+    "> 1%",
+    "IE 11"
   ],
   "overrides": {
-    "autoprefixer": "10.4.5",
-    "sass": "1.79.6"
+    "autoprefixer": "10.4.5"
   }
 }

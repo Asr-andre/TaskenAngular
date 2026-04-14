@@ -6,7 +6,6 @@ import { analyticTopPages, analyticstatData, statData } from 'src/app/core/data'
 
 @Component({
     selector: 'app-analytics',
-    standalone: false,
     templateUrl: './analytics.component.html',
     styleUrls: ['./analytics.component.scss']
 })

@@ -4,7 +4,6 @@ import { Options } from 'ngx-slider-v2';
 
 @Component({
   selector: 'app-range-sliders',
-  standalone: false,
   templateUrl: './range-sliders.component.html',
   styleUrls: ['./range-sliders.component.scss']
 })

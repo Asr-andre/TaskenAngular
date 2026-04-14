@@ -5,7 +5,6 @@ import { MonthlyPlan, SimplePlan, YearlyPlan, pricingPlan } from 'src/app/core/d
 
 @Component({
   selector: 'app-pricing',
-  standalone: false,
   templateUrl: './pricing.component.html',
   styleUrls: ['./pricing.component.scss']
 })

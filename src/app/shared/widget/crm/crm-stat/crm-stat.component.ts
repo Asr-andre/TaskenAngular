@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-crm-stat',
-  standalone: false,
   templateUrl: './crm-stat.component.html',
   styleUrls: ['./crm-stat.component.scss']
 })

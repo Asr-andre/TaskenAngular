@@ -5,7 +5,6 @@ import { ClientLogo } from './data';
 
 @Component({
   selector: 'app-categories',
-  standalone: false,
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })

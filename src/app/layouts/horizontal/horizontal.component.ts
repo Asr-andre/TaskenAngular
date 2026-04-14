@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-horizontal',
-  standalone: false,
   templateUrl: './horizontal.component.html',
   styleUrls: ['./horizontal.component.scss']
 })

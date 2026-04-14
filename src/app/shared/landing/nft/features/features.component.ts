@@ -5,7 +5,6 @@ import { featuresData } from './data';
 
 @Component({
   selector: 'app-features',
-  standalone: false,
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })

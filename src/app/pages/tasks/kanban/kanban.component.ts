@@ -12,7 +12,6 @@ import { selectKanbanData, selectTaskLoading } from 'src/app/store/Task/task_sel
 
 @Component({
   selector: 'app-kanban',
-  standalone: false,
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.scss']
 })

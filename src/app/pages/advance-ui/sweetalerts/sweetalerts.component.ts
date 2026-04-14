@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sweetalerts',
-  standalone: false,
   templateUrl: './sweetalerts.component.html',
   styleUrls: ['./sweetalerts.component.scss']
 })

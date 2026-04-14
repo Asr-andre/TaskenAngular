@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pickers',
-  standalone: false,
   templateUrl: './pickers.component.html',
   styleUrls: ['./pickers.component.scss']
 })

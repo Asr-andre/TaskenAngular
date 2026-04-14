@@ -5,22 +5,30 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
 
-  public languages: string[] = ['pt'];
+  public languages: string[] = ['en', 'es', 'de', 'it', 'ru'];
 
   constructor(public translate: TranslateService, private cookieService: CookieService) {
 
+    let browserLang: any;
+    /***
+     * cookie Language Get
+    */
     this.translate.addLangs(this.languages);
-    this.translate.setDefaultLang('pt');
-    this.translate.use('pt');
-    this.cookieService.set('lang', 'pt');
+    if (this.cookieService.check('lang')) {
+      browserLang = this.cookieService.get('lang');
+    }
+    else {
+      browserLang = translate.getBrowserLang();
+    }
+    translate.use(browserLang.match(/en|es|de|it|ru/) ? browserLang : 'en');
   }
 
   /***
    * Cookie Language set
    */
   public setLanguage(lang: any) {
-    this.translate.use('pt');
-    this.cookieService.set('lang', 'pt');
+    this.translate.use(lang);
+    this.cookieService.set('lang', lang);
   }
 
 }

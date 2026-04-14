@@ -9,7 +9,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-job',
-  standalone: false,
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss'],
 })

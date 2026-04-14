@@ -18,7 +18,6 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-leads',
-  standalone: false,
   templateUrl: './leads.component.html',
   styleUrls: ['./leads.component.scss'],
 })

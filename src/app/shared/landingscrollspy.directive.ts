@@ -2,8 +2,7 @@ import { Directive, Input, EventEmitter, Inject, Output, ElementRef, HostListene
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  selector: '[appScrollspy]',
-  standalone: false,
+  selector: '[appScrollspy]'
 })
 export class LandingScrollspyDirective {
 
