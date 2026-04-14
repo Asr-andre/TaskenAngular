@@ -21,7 +21,6 @@ export interface OperadorCriacao {
   email: string | null;
   seAdmin: boolean | null;
   seAtivo: string | null;
-  perfilSkin: string | null;
   perfilId: string | null;
 }
 
@@ -32,7 +31,5 @@ export interface OperadorAtualizacao {
   email: string | null;
   seAdmin: boolean | null;
   seAtivo: string | null;
-  perfilSkin: string | null;
   perfilId: string | null;
 }
-

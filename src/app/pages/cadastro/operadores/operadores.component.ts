@@ -49,7 +49,6 @@ export class OperadoresComponent implements OnInit {
       seAdmin: [false],
       seAtivo: ['S', [Validators.required]],
       perfilId: [''],
-      perfilSkin: [''],
     });
 
     this.carregarOperadores();
@@ -175,7 +174,6 @@ export class OperadoresComponent implements OnInit {
       seAdmin: false,
       seAtivo: 'S',
       perfilId: '',
-      perfilSkin: ''
     });
 
     this.operadorForm.get('operadorId')?.enable();
@@ -195,8 +193,7 @@ export class OperadoresComponent implements OnInit {
       senha: operador.senha ?? '',
       seAdmin: operador.seAdmin ?? false,
       seAtivo: operador.seAtivo ?? 'S',
-      perfilId: operador.perfilId ?? '',
-      perfilSkin: operador.perfilSkin ?? ''
+      perfilId: operador.perfilId ?? ''
     });
 
     this.operadorForm.get('operadorId')?.disable();
@@ -220,7 +217,6 @@ export class OperadoresComponent implements OnInit {
         email: valores.email || null,
         seAdmin: valores.seAdmin ?? null,
         seAtivo: valores.seAtivo || null,
-        perfilSkin: valores.perfilSkin || null,
         perfilId: valores.perfilId || null
       };
 
@@ -254,7 +250,6 @@ export class OperadoresComponent implements OnInit {
       email: valores.email || null,
       seAdmin: valores.seAdmin ?? null,
       seAtivo: valores.seAtivo || null,
-      perfilSkin: valores.perfilSkin || null,
       perfilId: valores.perfilId || null
     };
 
