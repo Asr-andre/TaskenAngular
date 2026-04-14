@@ -30,12 +30,7 @@ export class AlertaService {
     @Inject(DOCUMENT) private document: Document
   ) { }
 
-  exibir(
-    tipo: TipoAlertaEntrada,
-    mensagemApi: string,
-    mensagemComplementar?: string,
-    delay: number = 3000
-  ) {
+  toast(tipo: TipoAlertaEntrada, mensagemApi: string, mensagemComplementar?: string, delay: number = 3000) {
     const tipoNormalizado = this.normalizarTipo(tipo);
     const titulo = this.obterTituloPadrao(tipoNormalizado);
 
@@ -220,6 +215,4 @@ export class AlertaService {
     </div>
   `
 })
-export class AlertasToastHostComponent {
-  constructor(public alerta: AlertaService) {}
-}
+export class AlertasToastHostComponent { constructor(public alerta: AlertaService) {} }

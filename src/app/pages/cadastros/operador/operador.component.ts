@@ -53,14 +53,14 @@ export class OperadorComponent implements OnInit {
   carregarDados() {
     this.operadorService.listarTodos().subscribe({
       next: (res) => {
-        if (res && res.success == true) {
+        if (res && res.success === true) {
           const data = res.data;
           this.todosOperadores = data;
           this.totalRegistros = this.todosOperadores.length;
           this.atualizarLista();
-          this._alert.exibir('success', res.mensagem, 'O retorno da api esta ok!', 3000)
+          this._alert.toast('success', res.mensagem)
         } else {
-          this._alert.exibir('warning', res.mensagem, 'O retorno da api esta errado!', 3000)
+          this._alert.toast('warning', res.mensagem, 'O retorno da api esta errado!', 3000)
         }
       },
       error: (err) => console.error(err)
