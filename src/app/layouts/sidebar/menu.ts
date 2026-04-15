@@ -542,6 +542,12 @@ export const MENU: MenuItem[] = [
         label: 'MENUITEMS.CADASTRO.LIST.OPERADOR',
         link: '/cadastro/operadores',
         parentId: 1000
+      },
+      {
+        id: 1002,
+        label: 'MENUITEMS.CADASTRO.LIST.FUNCIONARIO',
+        link: '/cadastro/funcionarios',
+        parentId: 1000
       }
     ]
   },

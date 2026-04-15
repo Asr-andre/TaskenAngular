@@ -5,10 +5,11 @@ import { NgbDropdownModule, NgbPaginationModule, NgbTooltipModule, NgbModalModul
 
 import { SharedModule } from '../../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { OperadoresComponent } from './operadores/operadores.component';
 
 @NgModule({
-  declarations: [OperadoresComponent],
+  declarations: [OperadoresComponent, FuncionariosComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,4 +24,3 @@ import { OperadoresComponent } from './operadores/operadores.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CadastroModule {}
-

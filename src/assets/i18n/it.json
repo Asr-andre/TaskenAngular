@@ -105,7 +105,8 @@
     "CADASTRO": {
       "TEXT": "Cadastro",
       "LIST": {
-        "OPERADOR": "Operador"
+        "OPERADOR": "Operador",
+        "FUNCIONARIO": "Dipendente"
       }
     },
     "PAGES": {
