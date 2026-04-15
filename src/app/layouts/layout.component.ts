@@ -27,13 +27,13 @@ export class LayoutComponent implements OnInit {
       this.layoutType = layout;
       document.documentElement.setAttribute('data-layout', layout);
       document.documentElement.setAttribute('data-bs-theme', data.LAYOUT_MODE);
-      document.documentElement.setAttribute('data-layout-width', data.LAYOUT_WIDTH);
+      document.documentElement.setAttribute('data-layout-width', 'fluid');
       document.documentElement.setAttribute('data-layout-position', data.LAYOUT_POSITION);
       document.documentElement.setAttribute('data-topbar', data.TOPBAR);
       layout == "vertical" ? document.documentElement.setAttribute('data-sidebar', data.SIDEBAR_COLOR) : '';
       layout == "vertical" ? document.documentElement.setAttribute('data-sidebar-size', data.SIDEBAR_SIZE) : '';
       layout == "vertical" ? document.documentElement.setAttribute('data-sidebar-image', data.SIDEBAR_IMAGE) : '';
-      layout == "vertical" ? document.documentElement.setAttribute('data-layout-style', data.SIDEBAR_VIEW) : '';
+      layout == "vertical" ? document.documentElement.setAttribute('data-layout-style', 'default') : '';
       document.documentElement.setAttribute('data-preloader', data.DATA_PRELOADER)
       document.documentElement.setAttribute('data-sidebar-visibility', data.SIDEBAR_VISIBILITY);
     })
