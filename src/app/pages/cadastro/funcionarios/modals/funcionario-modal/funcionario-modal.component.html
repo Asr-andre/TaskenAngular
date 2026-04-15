@@ -1,0 +1,159 @@
+<ng-template #modalFuncionario role="document" let-modal>
+  <div class="modal-header bg-info-subtle p-3">
+    <h5 class="modal-title">{{ tituloModal }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('fechar')"></button>
+  </div>
+
+  <form (ngSubmit)="salvar()" [formGroup]="funcionarioForm" autocomplete="off">
+    <div class="modal-body">
+      <div class="row g-3">
+        <div class="col-lg-3">
+          <label class="form-label">ID</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Ex: 1"
+            formControlName="funcionarioId"
+            [ngClass]="{ 'is-invalid': submitted && form['funcionarioId'].errors }"
+          />
+          @if (submitted && form['funcionarioId'].errors) {
+            <div class="invalid-feedback">ID é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-9">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nome"
+            formControlName="nome"
+            [ngClass]="{ 'is-invalid': submitted && form['nome'].errors }"
+          />
+          @if (submitted && form['nome'].errors) {
+            <div class="invalid-feedback">Nome é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">CPF</label>
+          <input type="text" class="form-control" placeholder="CPF" formControlName="cpf" />
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Ativo</label>
+          <select class="form-select" formControlName="ativo">
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Operador</label>
+          <select class="form-select" formControlName="operadorId" [disabled]="carregandoOperadores">
+            <option value="">Selecione...</option>
+            @for (op of operadores; track op.operadorId) {
+              <option [value]="op.operadorId">{{ op.operadorId }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="col-lg-8">
+          <label class="form-label">Endereço</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Endereço"
+            formControlName="endereco"
+            [ngClass]="{ 'is-invalid': submitted && form['endereco'].errors }"
+          />
+          @if (submitted && form['endereco'].errors) {
+            <div class="invalid-feedback">Endereço é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Número</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Número"
+            formControlName="numero"
+            [ngClass]="{ 'is-invalid': submitted && form['numero'].errors }"
+          />
+          @if (submitted && form['numero'].errors) {
+            <div class="invalid-feedback">Número é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Complemento</label>
+          <input type="text" class="form-control" placeholder="Complemento" formControlName="complemento" />
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Bairro</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Bairro"
+            formControlName="bairro"
+            [ngClass]="{ 'is-invalid': submitted && form['bairro'].errors }"
+          />
+          @if (submitted && form['bairro'].errors) {
+            <div class="invalid-feedback">Bairro é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Cidade</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Cidade"
+            formControlName="cidade"
+            [ngClass]="{ 'is-invalid': submitted && form['cidade'].errors }"
+          />
+          @if (submitted && form['cidade'].errors) {
+            <div class="invalid-feedback">Cidade é obrigatória.</div>
+          }
+        </div>
+
+        <div class="col-lg-2">
+          <label class="form-label">UF</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="UF"
+            maxlength="2"
+            formControlName="uf"
+            [ngClass]="{ 'is-invalid': submitted && form['uf'].errors }"
+          />
+          @if (submitted && form['uf'].errors) {
+            <div class="invalid-feedback">UF é obrigatória.</div>
+          }
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Função</label>
+          <input type="number" class="form-control" placeholder="Ex: 3" formControlName="funcaoId" />
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Data nascimento</label>
+          <input type="date" class="form-control" formControlName="dataNascimento" />
+        </div>
+
+        <div class="col-lg-4">
+          <label class="form-label">Data admissão</label>
+          <input type="date" class="form-control" formControlName="dataAdmissao" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.dismiss('cancelar')">Cancelar</button>
+      <button type="submit" class="btn" [ngClass]="classeBotao">{{ textoBotaoSalvar }}</button>
+    </div>
+  </form>
+</ng-template>

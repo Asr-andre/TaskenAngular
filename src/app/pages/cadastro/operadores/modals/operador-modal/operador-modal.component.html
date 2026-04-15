@@ -1,0 +1,84 @@
+<ng-template #modalOperador role="document" let-modal>
+  <div class="modal-header bg-info-subtle p-3">
+    <h5 class="modal-title">{{ tituloModal }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('fechar')"></button>
+  </div>
+
+  <form (ngSubmit)="salvar()" [formGroup]="operadorForm" autocomplete="off">
+    <div class="modal-body">
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <label class="form-label">Operador</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Ex: ANDRE SILVA"
+            formControlName="operadorId"
+            [ngClass]="{ 'is-invalid': submitted && form['operadorId'].errors }"
+          />
+          @if (submitted && form['operadorId'].errors) {
+            <div class="invalid-feedback">Operador é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-8">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nome"
+            formControlName="nome"
+            [ngClass]="{ 'is-invalid': submitted && form['nome'].errors }"
+          />
+          @if (submitted && form['nome'].errors) {
+            <div class="invalid-feedback">Nome é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="email@dominio.com"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && form['email'].errors }"
+          />
+          @if (submitted && form['email'].errors) {
+            <div class="invalid-feedback">Email inválido ou não informado.</div>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <label class="form-label">Senha</label>
+          <input type="text" class="form-control" placeholder="Senha" formControlName="senha" />
+        </div>
+
+        <div class="col-lg-3">
+          <label class="form-label">Ativo</label>
+          <select class="form-select" formControlName="seAtivo">
+            <option value="S">Sim</option>
+            <option value="N">Não</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3 d-flex align-items-end">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="seAdmin" formControlName="seAdmin" />
+            <label class="form-check-label" for="seAdmin">Administrador</label>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <label class="form-label">Perfil</label>
+          <input type="text" class="form-control" placeholder="Ex: A" formControlName="perfilId" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.dismiss('cancelar')">Cancelar</button>
+      <button type="submit" class="btn" [ngClass]="classeBotao">{{ textoBotaoSalvar }}</button>
+    </div>
+  </form>
+</ng-template>
