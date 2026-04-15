@@ -7,6 +7,7 @@ import { Operador } from 'src/app/core/models/operador.model';
 import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 import { OperadorService } from 'src/app/core/services/operador.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 @Component({
   selector: 'app-funcionarios',
@@ -23,10 +24,9 @@ export class FuncionariosComponent implements OnInit {
   funcionarios: Funcionario[] = [];
   todosFuncionarios: Funcionario[] = [];
   funcionariosFiltrados: Funcionario[] = [];
-
   operadores: Operador[] = [];
 
-  filtroAtivo: 'todos' | 'ativo' | 'inativo' = 'todos';
+  filtroAtivo: FiltroAtivoType = FILTRO_ATIVO.TODOS;
 
   opcoesQuantidadePorPagina = [8, 15, 25, 50];
 

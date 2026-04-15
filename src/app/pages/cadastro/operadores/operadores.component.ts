@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { OperadorService } from 'src/app/core/services/operador.service';
 import { Operador } from 'src/app/core/models/operador.model';
+import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 @Component({
   selector: 'app-operadores',
@@ -22,7 +23,7 @@ export class OperadoresComponent implements OnInit {
   operadoresFiltrados: Operador[] = [];
 
   filtroAdmin: 'todos' | 'admin' | 'naoAdmin' = 'todos';
-  filtroAtivo: 'todos' | 'ativo' | 'inativo' = 'todos';
+  filtroAtivo: FiltroAtivoType = FILTRO_ATIVO.TODOS;
 
   opcoesQuantidadePorPagina = [8, 15, 25, 50];
 
