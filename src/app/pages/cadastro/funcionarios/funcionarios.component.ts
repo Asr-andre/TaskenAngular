@@ -63,7 +63,6 @@ export class FuncionariosComponent implements OnInit {
       funcaoId: [''],
     });
 
-    this.carregarOperadores();
     this.carregarFuncionarios();
   }
 
@@ -182,6 +181,7 @@ export class FuncionariosComponent implements OnInit {
   }
 
   abrirModalCadastro(conteudo: any) {
+    this.carregarOperadores();
     this.submitted = false;
     this.modoEdicao = false;
     this.tituloModal = 'Cadastrar Funcionário';
@@ -209,6 +209,7 @@ export class FuncionariosComponent implements OnInit {
   }
 
   abrirModalEdicao(funcionario: Funcionario, conteudo: any) {
+    this.carregarOperadores();
     this.submitted = false;
     this.modoEdicao = true;
     this.tituloModal = 'Editar Funcionário';
