@@ -552,6 +552,12 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
+    id: 1100,
+    label: 'MENUITEMS.CONFIGURACAO.TEXT',
+    icon: 'ri-settings-3-line',
+    link: '/configuracao'
+  },
+  {
     id: 54,
     label: 'MENUITEMS.PAGES.TEXT',
     isTitle: true

@@ -109,6 +109,9 @@
         "FUNCIONARIO": "Dipendente"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "Configurazione"
+    },
     "PAGES": {
       "TEXT": "Pagine"
     },

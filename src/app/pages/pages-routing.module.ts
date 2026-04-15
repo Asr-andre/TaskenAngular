@@ -31,6 +31,9 @@ const routes: Routes = [
       path: 'cadastro', loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
     },
     {
+      path: 'configuracao', loadChildren: () => import('./configuracao/configuracao.module').then(m => m.ConfiguracaoModule)
+    },
+    {
       path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule)
     },
     {

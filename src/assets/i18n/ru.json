@@ -109,6 +109,9 @@
         "FUNCIONARIO": "Сотрудник"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "Настройки"
+    },
     "PAGES": {
       "TEXT": "Страницы"
     },

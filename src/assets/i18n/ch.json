@@ -109,6 +109,9 @@
         "FUNCIONARIO": "员工"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "设置"
+    },
     "PAGES": {
       "TEXT": "页面"
     },

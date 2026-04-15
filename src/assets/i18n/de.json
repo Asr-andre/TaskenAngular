@@ -109,6 +109,9 @@
         "FUNCIONARIO": "Mitarbeiter"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "Einstellungen"
+    },
     "PAGES": {
       "TEXT": "Seiten"
     },

@@ -109,6 +109,9 @@
         "FUNCIONARIO": "Funcionário"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "Configuração"
+    },
     "PAGES": {
       "TEXT": "Pages"
     },

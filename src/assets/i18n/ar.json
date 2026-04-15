@@ -109,6 +109,9 @@
         "FUNCIONARIO": "موظف"
       }
     },
+    "CONFIGURACAO": {
+      "TEXT": "الإعدادات"
+    },
     "PAGES": {
       "TEXT": "الصفحات"
     },
