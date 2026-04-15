@@ -30,7 +30,6 @@ export class RightsidebarComponent implements OnInit {
   sidebarImage: any;
   sidebarVisibility: any;
   preLoader: any;
-  grd: any;
 
   @ViewChild('filtetcontent') filtetcontent!: TemplateRef<any>;
   @Output() settingsButtonClicked = new EventEmitter();
@@ -76,21 +75,6 @@ export class RightsidebarComponent implements OnInit {
     }, 100);
   }
 
-
-  // Add Active Class
-  addActive(grdSidebar: any) {
-    this.grd = grdSidebar;
-    document.documentElement.setAttribute('data-sidebar', grdSidebar)
-    document.getElementById('collapseBgGradient')?.classList.toggle('show');
-    document.getElementById('collapseBgGradient1')?.classList.add('active');
-  }
-
-  // Remove Active Class
-  removeActive() {
-    this.grd = '';
-    document.getElementById('collapseBgGradient1')?.classList.remove('active');
-    document.getElementById('collapseBgGradient')?.classList.remove('show');
-  }
 
   // When the user clicks on the button, scroll to the top of the document
   topFunction() {
