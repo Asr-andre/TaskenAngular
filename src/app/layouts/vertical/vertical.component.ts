@@ -112,16 +112,4 @@ export class VerticalComponent implements OnInit {
     }
   }
 
-  onResize(event: any) {
-    if (document.body.getAttribute('layout') == "twocolumn") {
-      if (event.target.innerWidth <= 767) {
-        this.eventService.broadcast('changeLayout', 'vertical');
-      } else {
-        this.eventService.broadcast('changeLayout', 'twocolumn');
-        document.body.classList.remove('twocolumn-panel');
-        document.body.classList.remove('vertical-sidebar-enable');
-      }
-    }
-  }
-
 }

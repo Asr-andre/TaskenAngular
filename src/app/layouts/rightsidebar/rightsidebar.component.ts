@@ -116,12 +116,6 @@ export class RightsidebarComponent implements OnInit {
           horizontal.setAttribute('checked', 'true');
         }
       }
-      if (this.attribute == 'twocolumn') {
-        const Twocolumn = document.getElementById('customizer-layout03');
-        if (Twocolumn != null) {
-          Twocolumn.setAttribute('checked', 'true');
-        }
-      }
       if (this.attribute == 'semibox') {
         const Twocolumn = document.getElementById('customizer-layout04');
         if (Twocolumn != null) {

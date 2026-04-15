@@ -29,10 +29,10 @@ export class LayoutComponent implements OnInit {
       document.documentElement.setAttribute('data-layout-width', data.LAYOUT_WIDTH);
       document.documentElement.setAttribute('data-layout-position', data.LAYOUT_POSITION);
       document.documentElement.setAttribute('data-topbar', data.TOPBAR);
-      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar', data.SIDEBAR_COLOR) : '';
-      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar-size', data.SIDEBAR_SIZE) : '';
-      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-sidebar-image', data.SIDEBAR_IMAGE) : '';
-      data.LAYOUT == "vertical" || data.LAYOUT == "twocolumn" ? document.documentElement.setAttribute('data-layout-style', data.SIDEBAR_VIEW) : '';
+      data.LAYOUT == "vertical" ? document.documentElement.setAttribute('data-sidebar', data.SIDEBAR_COLOR) : '';
+      data.LAYOUT == "vertical" ? document.documentElement.setAttribute('data-sidebar-size', data.SIDEBAR_SIZE) : '';
+      data.LAYOUT == "vertical" ? document.documentElement.setAttribute('data-sidebar-image', data.SIDEBAR_IMAGE) : '';
+      data.LAYOUT == "vertical" ? document.documentElement.setAttribute('data-layout-style', data.SIDEBAR_VIEW) : '';
       document.documentElement.setAttribute('data-preloader', data.DATA_PRELOADER)
       document.documentElement.setAttribute('data-sidebar-visibility', data.SIDEBAR_VISIBILITY);
     })
@@ -59,13 +59,6 @@ export class LayoutComponent implements OnInit {
    */
   isHorizontalLayoutRequested() {
     return this.layoutType === 'horizontal';
-  }
-
-  /**
-   * Check if the horizontal layout is requested
-   */
-  isTwoColumnLayoutRequested() {
-    return this.layoutType === 'twocolumn';
   }
 
 }

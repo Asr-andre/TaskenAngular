@@ -1,7 +1,6 @@
 const LAYOUT_TYPES = {
   VERTICAL: "vertical",
   HORIZONTAL: "horizontal",
-  TWOCOLUMN: "twocolumn",
   SEMIBOX: "semibox",
 }
 
