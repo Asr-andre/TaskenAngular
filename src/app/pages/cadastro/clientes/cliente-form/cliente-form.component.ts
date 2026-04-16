@@ -10,6 +10,7 @@ import { ClienteContatoService } from 'src/app/core/services/cliente-contato.ser
 import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 import { IndicacaoService } from 'src/app/core/services/indicacao.service';
+import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 type ContatoUi = ClienteContato & { _novo?: boolean; _editado?: boolean };
 
@@ -36,7 +37,10 @@ export class ClienteFormComponent implements OnInit {
   indicacoes: Indicacao[] = [];
   clienteGrupos: ClienteGrupo[] = [];
   contatos: ContatoUi[] = [];
+  contatosFiltrados: ContatoUi[] = [];
   indiceContatoEditando: number | null = null;
+
+  filtroAtivoContato: FiltroAtivoType = FILTRO_ATIVO.ATIVO;
 
   constructor(
     private _fb: FormBuilder,
@@ -170,11 +174,29 @@ export class ClienteFormComponent implements OnInit {
       next: (resposta) => {
         const lista = (resposta?.data ?? []).filter((x) => Number(x.clienteId) === Number(clienteId));
         this.contatos = lista.map((x) => ({ ...x, _novo: false, _editado: false }));
+        this.aplicarFiltroContatos();
       },
       error: () => {
         this.contatos = [];
+        this.contatosFiltrados = [];
       },
     });
+  }
+
+  limparFiltrosContatos() {
+    this.filtroAtivoContato = FILTRO_ATIVO.ATIVO;
+    this.aplicarFiltroContatos();
+  }
+
+  aplicarFiltroContatos() {
+    let lista = [...this.contatos];
+    if (this.filtroAtivoContato === FILTRO_ATIVO.ATIVO) {
+      lista = lista.filter((c) => (c.ativo ?? 'S') === 'S');
+    }
+    if (this.filtroAtivoContato === FILTRO_ATIVO.INATIVO) {
+      lista = lista.filter((c) => (c.ativo ?? 'S') !== 'S');
+    }
+    this.contatosFiltrados = lista;
   }
 
   adicionarOuAtualizarContato() {
@@ -222,9 +244,17 @@ export class ClienteFormComponent implements OnInit {
     }
 
     this.limparContatoForm();
+    this.aplicarFiltroContatos();
   }
 
-  editarContato(index: number) {
+  editarContato(contato: ContatoUi) {
+    const index = this.contatos.findIndex(
+      (c) => Number(c.clienteId) === Number(contato.clienteId) && Number(c.contatoId) === Number(contato.contatoId)
+    );
+    if (index < 0) {
+      return;
+    }
+
     const c = this.contatos[index];
     this.indiceContatoEditando = index;
     this.contatoForm.patchValue({
@@ -408,6 +438,7 @@ export class ClienteFormComponent implements OnInit {
     this.clienteForm.get('clienteId')?.disable();
     this.carregarContatos(clienteId);
     this.limparContatoForm();
+    this.aplicarFiltroContatos();
     Swal.fire('Sucesso', 'Cliente criado com sucesso. Agora você pode cadastrar os contatos.', 'success');
     this._router.navigate(['/cadastro/clientes', clienteId, 'editar'], { replaceUrl: true });
   }
