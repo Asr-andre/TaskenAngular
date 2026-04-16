@@ -39,6 +39,58 @@
           </div>
           <div class="col-md-auto ms-auto">
             <div class="d-flex align-items-center flex-wrap justify-content-end gap-2">
+              <div ngbDropdown>
+                <button type="button" class="btn btn-soft-primary" ngbDropdownToggle>
+                  <i class="ri-filter-2-line me-1 align-bottom"></i>
+                  Filtros
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3" ngbDropdownMenu style="min-width: 260px;">
+                  <div class="mb-3">
+                    <label class="form-label mb-2">Status</label>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="filtroAtivoCliente"
+                        id="filtroClienteAtivo"
+                        value="ativo"
+                        [(ngModel)]="filtroAtivo"
+                        (ngModelChange)="aplicarFiltro(true)"
+                      />
+                      <label class="form-check-label" for="filtroClienteAtivo">Ativo</label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="filtroAtivoCliente"
+                        id="filtroClienteInativo"
+                        value="inativo"
+                        [(ngModel)]="filtroAtivo"
+                        (ngModelChange)="aplicarFiltro(true)"
+                      />
+                      <label class="form-check-label" for="filtroClienteInativo">Inativo</label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="filtroAtivoCliente"
+                        id="filtroClienteTodos"
+                        value="todos"
+                        [(ngModel)]="filtroAtivo"
+                        (ngModelChange)="aplicarFiltro(true)"
+                      />
+                      <label class="form-check-label" for="filtroClienteTodos">Todos</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-sm btn-light" (click)="limparFiltros()">Limpar</button>
+                  </div>
+                </div>
+              </div>
+
               <div class="d-flex align-items-center gap-2">
                 <span class="text-muted text-nowrap">Por página:</span>
                 <select
@@ -65,7 +117,7 @@
                 <th class="sort" (click)="onSort('razaoSocial')">Razão social</th>
                 <th class="sort" (click)="onSort('fantasia')">Fantasia</th>
                 <th class="sort" (click)="onSort('cnpj')">CNPJ</th>
-                <th class="sort" (click)="onSort('ativo')">Ativo</th>
+                <th class="sort text-center" (click)="onSort('ativo')">Ativo</th>
                 <th style="width: 110px;">Ações</th>
               </tr>
             </thead>
@@ -76,7 +128,13 @@
                   <td>{{ item.razaoSocial }}</td>
                   <td>{{ item.fantasia }}</td>
                   <td>{{ item.cnpj }}</td>
-                  <td>{{ item.ativo }}</td>
+                  <td class="text-center">
+                    @if ((item.ativo ?? 'S') === 'S') {
+                      <span class="badge bg-success-subtle text-success">Ativo</span>
+                    } @else {
+                      <span class="badge bg-danger-subtle text-danger">Inativo</span>
+                    }
+                  </td>
                   <td>
                     <a class="btn btn-soft-secondary btn-sm" [routerLink]="['/cadastro/clientes', item.clienteId, 'editar']">
                       <i class="ri-pencil-fill align-middle"></i>
@@ -97,6 +155,9 @@
               [collectionSize]="totalFiltrado"
               [(page)]="_paginacao.page"
               [pageSize]="_paginacao.pageSize"
+              [maxSize]="7"
+              [rotate]="true"
+              [ellipses]="false"
               (pageChange)="mudarPagina()"
             ></ngb-pagination>
           </div>

@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { Cliente } from 'src/app/core/models/cliente.model';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 @Component({
   selector: 'app-clientes',
@@ -17,6 +18,8 @@ export class ClientesComponent implements OnInit {
   clientes: Cliente[] = [];
   todosClientes: Cliente[] = [];
   clientesFiltrados: Cliente[] = [];
+
+  filtroAtivo: FiltroAtivoType = FILTRO_ATIVO.ATIVO;
 
   opcoesQuantidadePorPagina = [8, 15, 25, 50];
 
@@ -72,12 +75,25 @@ export class ClientesComponent implements OnInit {
     this.aplicarFiltro(true);
   }
 
+  limparFiltros() {
+    this.filtroAtivo = FILTRO_ATIVO.ATIVO;
+    this.aplicarFiltro(true);
+  }
+
   aplicarFiltro(redefinirPagina: boolean) {
     let lista = [...this.todosClientes];
+
+    if (this.filtroAtivo === FILTRO_ATIVO.ATIVO) {
+      lista = lista.filter((c) => (c.ativo ?? 'S') === 'S');
+    }
+    if (this.filtroAtivo === FILTRO_ATIVO.INATIVO) {
+      lista = lista.filter((c) => (c.ativo ?? 'S') !== 'S');
+    }
     const termo = (this.termoBusca ?? '').trim().toLowerCase();
     if (termo) {
       lista = lista.filter((c) => {
         return (
+          String(c.clienteId ?? '').toLowerCase().includes(termo) ||
           String(c.clienteId ?? '').toLowerCase().includes(termo) ||
           (c.razaoSocial ?? '').toLowerCase().includes(termo) ||
           (c.fantasia ?? '').toLowerCase().includes(termo) ||
