@@ -1,12 +1,25 @@
-.home-card {
+.home-wrapper {
   min-height: calc(100vh - 220px);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
 }
 
 .home-logo {
-  max-width: 320px;
+  max-width: 380px;
   width: 100%;
   height: auto;
+}
+
+.home-link {
+  color: #0f2b46;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.home-link:hover {
+  text-decoration: underline;
 }
