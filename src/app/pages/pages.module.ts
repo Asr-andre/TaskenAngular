@@ -29,7 +29,6 @@ import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
-import { AppsModule } from "./apps/apps.module";
 import { EcommerceModule } from "./ecommerce/ecommerce.module";
 
 
@@ -56,7 +55,6 @@ import { EcommerceModule } from "./ecommerce/ecommerce.module";
     SlickCarouselModule,
     LightboxModule,
     DashboardsModule,
-    AppsModule,
     EcommerceModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

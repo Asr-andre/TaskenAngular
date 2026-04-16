@@ -1481,4 +1481,4 @@ export const MENU: MenuItem[] = [
     ]
   }
 
-];
+].filter((item) => item.label !== 'MENUITEMS.APPS.TEXT');
