@@ -107,7 +107,8 @@
       "LIST": {
         "OPERADOR": "Operador",
         "FUNCIONARIO": "Mitarbeiter",
-        "INDICACAO": "Empfehlung"
+        "INDICACAO": "Empfehlung",
+        "CLIENTEGRUPO": "Kundengruppe"
       }
     },
     "CONFIGURACAO": {

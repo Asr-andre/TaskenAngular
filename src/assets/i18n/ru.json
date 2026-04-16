@@ -107,7 +107,8 @@
       "LIST": {
         "OPERADOR": "Operador",
         "FUNCIONARIO": "Сотрудник",
-        "INDICACAO": "Рекомендация"
+        "INDICACAO": "Рекомендация",
+        "CLIENTEGRUPO": "Группа клиента"
       }
     },
     "CONFIGURACAO": {

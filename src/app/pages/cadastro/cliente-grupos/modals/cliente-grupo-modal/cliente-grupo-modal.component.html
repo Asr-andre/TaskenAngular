@@ -1,0 +1,59 @@
+<ng-template #modalClienteGrupo role="document" let-modal>
+  <div class="modal-header bg-info-subtle p-3">
+    <h5 class="modal-title">{{ tituloModal }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('fechar')"></button>
+  </div>
+
+  <form (ngSubmit)="salvar()" [formGroup]="clienteGrupoForm" autocomplete="off">
+    <div class="modal-body">
+      <div class="row g-3">
+        <div class="col-lg-3">
+          <label class="form-label">ID</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Ex: 1"
+            formControlName="grupoId"
+            [ngClass]="{ 'is-invalid': submitted && form['grupoId'].errors }"
+          />
+          @if (submitted && form['grupoId'].errors) {
+            <div class="invalid-feedback">ID é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-9">
+          <label class="form-label">Nome</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nome"
+            formControlName="nome"
+            [ngClass]="{ 'is-invalid': submitted && form['nome'].errors }"
+          />
+          @if (submitted && form['nome'].errors) {
+            <div class="invalid-feedback">Nome é obrigatório.</div>
+          }
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Usuário alteração</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Usuário alteração"
+            formControlName="usuarioAlteracao"
+            [ngClass]="{ 'is-invalid': submitted && form['usuarioAlteracao'].errors }"
+          />
+          @if (submitted && form['usuarioAlteracao'].errors) {
+            <div class="invalid-feedback">Usuário alteração é obrigatório.</div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.dismiss('cancelar')">Cancelar</button>
+      <button type="submit" class="btn" [ngClass]="classeBotao">{{ textoBotaoSalvar }}</button>
+    </div>
+  </form>
+</ng-template>

@@ -107,7 +107,8 @@
       "LIST": {
         "OPERADOR": "Operador",
         "FUNCIONARIO": "موظف",
-        "INDICACAO": "ترشيح"
+        "INDICACAO": "ترشيح",
+        "CLIENTEGRUPO": "مجموعة العميل"
       }
     },
     "CONFIGURACAO": {

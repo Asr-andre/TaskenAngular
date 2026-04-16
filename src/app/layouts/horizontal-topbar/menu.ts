@@ -540,6 +540,12 @@ export const MENU: MenuItem[] = [
         label: 'MENUITEMS.CADASTRO.LIST.INDICACAO',
         link: '/cadastro/indicacoes',
         parentId: 1000
+      },
+      {
+        id: 1004,
+        label: 'MENUITEMS.CADASTRO.LIST.CLIENTEGRUPO',
+        link: '/cadastro/cliente-grupos',
+        parentId: 1000
       }
     ]
   },

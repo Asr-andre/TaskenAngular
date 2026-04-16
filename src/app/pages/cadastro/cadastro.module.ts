@@ -5,6 +5,8 @@ import { NgbDropdownModule, NgbPaginationModule, NgbTooltipModule, NgbModalModul
 
 import { SharedModule } from '../../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
+import { ClienteGruposComponent } from './cliente-grupos/cliente-grupos.component';
+import { ClienteGrupoModalComponent } from './cliente-grupos/modals/cliente-grupo-modal/cliente-grupo-modal.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioModalComponent } from './funcionarios/modals/funcionario-modal/funcionario-modal.component';
 import { IndicacoesComponent } from './indicacoes/indicacoes.component';
@@ -20,6 +22,8 @@ import { OperadorModalComponent } from './operadores/modals/operador-modal/opera
     FuncionarioModalComponent,
     IndicacoesComponent,
     IndicacaoModalComponent,
+    ClienteGruposComponent,
+    ClienteGrupoModalComponent,
   ],
   imports: [
     CommonModule,
