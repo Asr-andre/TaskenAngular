@@ -1,0 +1,12 @@
+.home-card {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-logo {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+}

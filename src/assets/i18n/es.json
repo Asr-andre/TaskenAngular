@@ -8,6 +8,9 @@
     "MENU": {
       "TEXT": "MENÚ"
     },
+    "HOME": {
+      "TEXT": "Inicio"
+    },
     "DASHBOARD": {
       "TEXT": "Tableros",
       "BADGE": "Nuevo",

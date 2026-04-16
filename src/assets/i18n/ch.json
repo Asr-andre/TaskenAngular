@@ -8,6 +8,9 @@
     "MENU": {
       "TEXT": "菜单"
     },
+    "HOME": {
+      "TEXT": "首页"
+    },
     "DASHBOARD": {
       "TEXT": "仪表板",
       "BADGE": "新的",

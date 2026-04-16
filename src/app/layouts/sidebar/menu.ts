@@ -7,6 +7,12 @@ export const MENU: MenuItem[] = [
     isTitle: true
   },
   {
+    id: 1.1,
+    label: 'MENUITEMS.HOME.TEXT',
+    icon: 'ri-home-4-line',
+    link: '/'
+  },
+  {
     id: 2,
     label: 'MENUITEMS.DASHBOARD.TEXT',
     icon: 'ri-dashboard-2-line',
@@ -27,7 +33,7 @@ export const MENU: MenuItem[] = [
       {
         id: 5,
         label: 'MENUITEMS.DASHBOARD.LIST.ECOMMERCE',
-        link: '/',
+        link: '/dashboard',
         parentId: 2
       },
       {

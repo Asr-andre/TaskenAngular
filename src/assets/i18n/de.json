@@ -8,6 +8,9 @@
     "MENU": {
       "TEXT": "SPEISEKARTE"
     },
+    "HOME": {
+      "TEXT": "Startseite"
+    },
     "DASHBOARD": {
       "TEXT": "Dashboards",
       "BADGE": "Neu",
