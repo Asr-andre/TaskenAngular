@@ -105,6 +105,7 @@
     "CADASTRO": {
       "TEXT": "Cadastro",
       "LIST": {
+        "CLIENTE": "Cliente",
         "OPERADOR": "Operador",
         "FUNCIONARIO": "Funcionário",
         "INDICACAO": "Indicação",

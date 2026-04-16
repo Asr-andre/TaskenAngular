@@ -525,24 +525,30 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         id: 1001,
+        label: 'MENUITEMS.CADASTRO.LIST.CLIENTE',
+        link: '/cadastro/clientes',
+        parentId: 1000
+      },
+      {
+        id: 1002,
         label: 'MENUITEMS.CADASTRO.LIST.OPERADOR',
         link: '/cadastro/operadores',
         parentId: 1000
       },
       {
-        id: 1002,
+        id: 1003,
         label: 'MENUITEMS.CADASTRO.LIST.FUNCIONARIO',
         link: '/cadastro/funcionarios',
         parentId: 1000
       },
       {
-        id: 1003,
+        id: 1004,
         label: 'MENUITEMS.CADASTRO.LIST.INDICACAO',
         link: '/cadastro/indicacoes',
         parentId: 1000
       },
       {
-        id: 1004,
+        id: 1005,
         label: 'MENUITEMS.CADASTRO.LIST.CLIENTEGRUPO',
         link: '/cadastro/cliente-grupos',
         parentId: 1000

@@ -105,6 +105,7 @@
     "CADASTRO": {
       "TEXT": "Cadastro",
       "LIST": {
+        "CLIENTE": "عميل",
         "OPERADOR": "Operador",
         "FUNCIONARIO": "موظف",
         "INDICACAO": "ترشيح",

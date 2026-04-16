@@ -1,0 +1,257 @@
+<app-breadcrumbs [title]="tituloPagina" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">{{ tituloPagina }}</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="clienteForm" autocomplete="off">
+          <div class="row g-3">
+            <div class="col-md-2">
+              <label class="form-label">ID</label>
+              <input type="number" class="form-control" formControlName="clienteId" [ngClass]="{ 'is-invalid': submitted && form['clienteId'].errors }" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">CNPJ</label>
+              <input type="text" class="form-control" formControlName="cnpj" [ngClass]="{ 'is-invalid': submitted && form['cnpj'].errors }" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Ativo</label>
+              <select class="form-select" formControlName="ativo">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <label class="form-label">Usuário (inclusão/alteração)</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="usuario"
+                [ngClass]="{ 'is-invalid': submitted && form['usuario'].errors }"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Razão Social</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="razaoSocial"
+                [ngClass]="{ 'is-invalid': submitted && form['razaoSocial'].errors }"
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Fantasia</label>
+              <input type="text" class="form-control" formControlName="fantasia" [ngClass]="{ 'is-invalid': submitted && form['fantasia'].errors }" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Endereço</label>
+              <input type="text" class="form-control" formControlName="endereco" [ngClass]="{ 'is-invalid': submitted && form['endereco'].errors }" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Número</label>
+              <input type="text" class="form-control" formControlName="numero" [ngClass]="{ 'is-invalid': submitted && form['numero'].errors }" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Complemento</label>
+              <input type="text" class="form-control" formControlName="complemento" />
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">CEP</label>
+              <input type="text" class="form-control" formControlName="cep" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Cidade</label>
+              <input type="text" class="form-control" formControlName="cidade" [ngClass]="{ 'is-invalid': submitted && form['cidade'].errors }" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">UF</label>
+              <input type="text" maxlength="2" class="form-control" formControlName="uf" [ngClass]="{ 'is-invalid': submitted && form['uf'].errors }" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Bairro</label>
+              <input type="text" class="form-control" formControlName="bairro" [ngClass]="{ 'is-invalid': submitted && form['bairro'].errors }" />
+            </div>
+
+            <div class="col-md-4">
+              <label class="form-label">Grupo Cliente</label>
+              <select class="form-select" formControlName="grupoId">
+                <option value="">Selecione...</option>
+                @for (g of clienteGrupos; track g.grupoId) {
+                  <option [value]="g.grupoId">{{ g.grupoId }} - {{ g.nome }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Indicação</label>
+              <select class="form-select" formControlName="indicacaoId">
+                <option value="">Selecione...</option>
+                @for (i of indicacoes; track i.indicacaoId) {
+                  <option [value]="i.indicacaoId">{{ i.indicacaoId }} - {{ i.nome }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Score</label>
+              <input type="number" class="form-control" formControlName="score" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">SLA</label>
+              <input type="number" class="form-control" formControlName="sla" />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Inscrição</label>
+              <input type="text" class="form-control" formControlName="inscricao" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Contatos do Cliente</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="contatoForm">
+          <div class="row g-3">
+            <div class="col-md-2">
+              <label class="form-label">Contato ID</label>
+              <input type="number" class="form-control" formControlName="contatoId" [ngClass]="{ 'is-invalid': submittedContato && formContato['contatoId'].errors }" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" formControlName="nome" [ngClass]="{ 'is-invalid': submittedContato && formContato['nome'].errors }" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Função</label>
+              <input type="text" class="form-control" formControlName="funcao" [ngClass]="{ 'is-invalid': submittedContato && formContato['funcao'].errors }" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Data Nasc.</label>
+              <input type="date" class="form-control" formControlName="dataNasc" />
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Fone</label>
+              <input type="text" class="form-control" formControlName="fone" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Fone 2</label>
+              <input type="text" class="form-control" formControlName="fone2" />
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Email</label>
+              <input type="text" class="form-control" formControlName="email" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Ativo</label>
+              <select class="form-select" formControlName="ativo">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Senha</label>
+              <input type="text" class="form-control" formControlName="senha" />
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Qtde Acesso</label>
+              <input type="number" class="form-control" formControlName="qtdeAcesso" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Se recebe email versão</label>
+              <select class="form-select" formControlName="seRecebeEmailVersao">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Se cria chamado</label>
+              <select class="form-select" formControlName="seCriaChamado">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Se autoriza orçamento</label>
+              <select class="form-select" formControlName="seAutorizaOrcamento">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label class="form-label">Se recebe email chamado</label>
+              <select class="form-select" formControlName="seRecebeEmailChamado">
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Data último acesso</label>
+              <input type="date" class="form-control" formControlName="dataUltimoAcesso" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Aniversário</label>
+              <input type="text" class="form-control" formControlName="aniversario" />
+            </div>
+            <div class="col-md-3 d-flex align-items-end justify-content-end gap-2">
+              <button type="button" class="btn btn-light" (click)="limparContatoForm()">Limpar</button>
+              <button type="button" class="btn btn-info" (click)="adicionarOuAtualizarContato()">
+                {{ indiceContatoEditando !== null ? 'Atualizar Contato' : 'Adicionar Contato' }}
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="table-responsive table-card mt-4">
+          <table class="table align-middle mb-0">
+            <thead class="bg-light">
+              <tr>
+                <th>Contato ID</th>
+                <th>Nome</th>
+                <th>Função</th>
+                <th>Email</th>
+                <th>Ativo</th>
+                <th style="width: 90px;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (c of contatos; track c.contatoId) {
+                <tr>
+                  <td>{{ c.contatoId }}</td>
+                  <td>{{ c.nome }}</td>
+                  <td>{{ c.funcao }}</td>
+                  <td>{{ c.email }}</td>
+                  <td>{{ c.ativo }}</td>
+                  <td>
+                    <button type="button" class="btn btn-soft-secondary btn-sm" (click)="editarContato($index)">
+                      <i class="ri-pencil-fill align-middle"></i>
+                    </button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 d-flex justify-content-end gap-2 mb-4">
+    <a class="btn btn-light" routerLink="/cadastro/clientes">Cancelar</a>
+    <button type="button" class="btn btn-success" [disabled]="salvando" (click)="salvarCliente()">
+      {{ textoBotaoSalvar }}
+    </button>
+  </div>
+</div>
