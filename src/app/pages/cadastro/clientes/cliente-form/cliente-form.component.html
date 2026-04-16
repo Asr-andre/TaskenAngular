@@ -4,7 +4,15 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title mb-0">{{ tituloPagina }}</h5>
+        <div class="d-flex align-items-center justify-content-between gap-2">
+          <h5 class="card-title mb-0">{{ tituloPagina }}</h5>
+          <div class="d-flex gap-2">
+            <a class="btn btn-light" routerLink="/cadastro/clientes">Cancelar</a>
+            <button type="button" class="btn" [ngClass]="classeBotao" [disabled]="salvando" (click)="salvarCliente()">
+              {{ textoBotaoSalvar }}
+            </button>
+          </div>
+        </div>
       </div>
       <div class="card-body">
         <form [formGroup]="clienteForm" autocomplete="off">
@@ -246,12 +254,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="col-12 d-flex justify-content-end gap-2 mb-4">
-    <a class="btn btn-light" routerLink="/cadastro/clientes">Cancelar</a>
-    <button type="button" class="btn btn-success" [disabled]="salvando" (click)="salvarCliente()">
-      {{ textoBotaoSalvar }}
-    </button>
   </div>
 </div>

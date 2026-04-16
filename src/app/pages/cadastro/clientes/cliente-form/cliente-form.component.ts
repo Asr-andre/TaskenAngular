@@ -65,6 +65,10 @@ export class ClienteFormComponent implements OnInit {
     }
   }
 
+  get classeBotao(): string {
+    return this.modoEdicao ? 'btn-info' : 'btn-success';
+  }
+
   get form() {
     return this.clienteForm.controls;
   }
