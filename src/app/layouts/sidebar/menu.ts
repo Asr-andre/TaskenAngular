@@ -1446,26 +1446,6 @@ export const MENU: MenuItem[] = [
     ]
   },
   {
-    id: 175,
-    label: 'MENUITEMS.MAPS.TEXT',
-    icon: 'ri-map-pin-line',
-    isCollapsed: true,
-    subItems: [
-      {
-        id: 176,
-        label: 'MENUITEMS.MAPS.LIST.GOOGLE',
-        link: '/maps/google',
-        parentId: 175
-      },
-      {
-        id: 178,
-        label: 'MENUITEMS.MAPS.LIST.LEAFLET',
-        link: '/maps/leaflet',
-        parentId: 175
-      }
-    ]
-  },
-  {
     id: 179,
     label: 'MENUITEMS.MULTILEVEL.TEXT',
     icon: 'ri-share-line',

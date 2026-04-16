@@ -285,14 +285,6 @@
         "CRYPTOSVG": "加密 SVG"
       }
     },
-    "MAPS": {
-      "TEXT": "地图",
-      "LIST": {
-        "GOOGLE": "谷歌",
-        "VECTOR": "向量",
-        "LEAFLET": "传单"
-      }
-    },
     "MULTILEVEL": {
       "TEXT": "多层次",
       "LIST": {

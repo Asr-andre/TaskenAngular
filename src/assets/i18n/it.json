@@ -285,14 +285,6 @@
         "CRYPTOSVG": "Cripto SVG"
       }
     },
-    "MAPS": {
-      "TEXT": "Mappe",
-      "LIST": {
-        "GOOGLE": "Google",
-        "VECTOR": "Vettore",
-        "LEAFLET": "Volantino"
-      }
-    },
     "MULTILEVEL": {
       "TEXT": "Multilivello",
       "LIST": {

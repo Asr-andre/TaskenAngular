@@ -284,14 +284,6 @@
         "CRYPTOSVG": "تشفير SVG"
       }
     },
-    "MAPS": {
-      "TEXT": "خرائط",
-      "LIST": {
-        "GOOGLE": "جوجل",
-        "VECTOR": "المتجه",
-        "LEAFLET": "منشور"
-      }
-    },
     "MULTILEVEL": {
       "TEXT": "متعدد المستويات",
       "LIST": {

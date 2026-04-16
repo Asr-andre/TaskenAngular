@@ -285,14 +285,6 @@
         "CRYPTOSVG": "Krypto-SVG"
       }
     },
-    "MAPS": {
-      "TEXT": "Karten",
-      "LIST": {
-        "GOOGLE": "Google",
-        "VECTOR": "Vektor",
-        "LEAFLET": "Flugblatt"
-      }
-    },
     "MULTILEVEL": {
       "TEXT": "Mehrstufig",
       "LIST": {
