@@ -331,7 +331,7 @@ export class ClienteFormComponent implements OnInit {
       sla: this.toNumberOrNull(v.sla),
     };
     this._cliente.criar(payload).subscribe({
-      next: () => this.salvarContatos(payload.clienteId),
+      next: () => this.tornarEdicao(payload.clienteId),
       error: () => {
         this.salvando = false;
         Swal.fire('Erro', 'Não foi possível criar o cliente.', 'error');
@@ -397,7 +397,19 @@ export class ClienteFormComponent implements OnInit {
   private finalizarSucesso() {
     this.salvando = false;
     Swal.fire('Sucesso', `Cliente ${this.modoEdicao ? 'atualizado' : 'criado'} com sucesso.`, 'success');
-    this._router.navigate(['/cadastro/clientes']);
+  }
+
+  private tornarEdicao(clienteId: number) {
+    this.salvando = false;
+    this.modoEdicao = true;
+    this.clienteIdEdicao = clienteId;
+    this.tituloPagina = 'Editar Cliente';
+    this.textoBotaoSalvar = 'Atualizar Cliente';
+    this.clienteForm.get('clienteId')?.disable();
+    this.carregarContatos(clienteId);
+    this.limparContatoForm();
+    Swal.fire('Sucesso', 'Cliente criado com sucesso. Agora você pode cadastrar os contatos.', 'success');
+    this._router.navigate(['/cadastro/clientes', clienteId, 'editar'], { replaceUrl: true });
   }
 
   private get usuarioAtual(): string {

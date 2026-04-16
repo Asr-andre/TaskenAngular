@@ -123,30 +123,46 @@
     </div>
   </div>
 
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="card-title mb-0">Contatos do Cliente</h5>
-      </div>
-      <div class="card-body">
-        <form [formGroup]="contatoForm">
-          <div class="row g-3">
-            <div class="col-md-2">
-              <label class="form-label">Contato ID</label>
-              <input type="number" class="form-control" formControlName="contatoId" [ngClass]="{ 'is-invalid': submittedContato && formContato['contatoId'].errors }" />
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">Nome</label>
-              <input type="text" class="form-control" formControlName="nome" [ngClass]="{ 'is-invalid': submittedContato && formContato['nome'].errors }" />
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Função</label>
-              <input type="text" class="form-control" formControlName="funcao" [ngClass]="{ 'is-invalid': submittedContato && formContato['funcao'].errors }" />
-            </div>
-            <div class="col-md-3">
-              <label class="form-label">Data Nasc.</label>
-              <input type="date" class="form-control" formControlName="dataNasc" />
-            </div>
+  @if (modoEdicao) {
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title mb-0">Contatos do Cliente</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="contatoForm">
+            <div class="row g-3">
+              <div class="col-md-2">
+                <label class="form-label">Contato ID</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="contatoId"
+                  [ngClass]="{ 'is-invalid': submittedContato && formContato['contatoId'].errors }"
+                />
+              </div>
+              <div class="col-md-4">
+                <label class="form-label">Nome</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="nome"
+                  [ngClass]="{ 'is-invalid': submittedContato && formContato['nome'].errors }"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Função</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="funcao"
+                  [ngClass]="{ 'is-invalid': submittedContato && formContato['funcao'].errors }"
+                />
+              </div>
+              <div class="col-md-3">
+                <label class="form-label">Data Nasc.</label>
+                <input type="date" class="form-control" formControlName="dataNasc" />
+              </div>
 
             <div class="col-md-3">
               <label class="form-label">Fone</label>
@@ -213,46 +229,47 @@
               <label class="form-label">Aniversário</label>
               <input type="text" class="form-control" formControlName="aniversario" />
             </div>
-            <div class="col-md-3 d-flex align-items-end justify-content-end gap-2">
-              <button type="button" class="btn btn-light" (click)="limparContatoForm()">Limpar</button>
-              <button type="button" class="btn btn-info" (click)="adicionarOuAtualizarContato()">
-                {{ indiceContatoEditando !== null ? 'Atualizar Contato' : 'Adicionar Contato' }}
-              </button>
+              <div class="col-md-3 d-flex align-items-end justify-content-end gap-2">
+                <button type="button" class="btn btn-light" (click)="limparContatoForm()">Limpar</button>
+                <button type="button" class="btn btn-info" (click)="adicionarOuAtualizarContato()">
+                  {{ indiceContatoEditando !== null ? 'Atualizar Contato' : 'Adicionar Contato' }}
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
 
-        <div class="table-responsive table-card mt-4">
-          <table class="table align-middle mb-0">
-            <thead class="bg-light">
-              <tr>
-                <th>Contato ID</th>
-                <th>Nome</th>
-                <th>Função</th>
-                <th>Email</th>
-                <th>Ativo</th>
-                <th style="width: 90px;">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (c of contatos; track c.contatoId) {
+          <div class="table-responsive table-card mt-4">
+            <table class="table align-middle mb-0">
+              <thead class="bg-light">
                 <tr>
-                  <td>{{ c.contatoId }}</td>
-                  <td>{{ c.nome }}</td>
-                  <td>{{ c.funcao }}</td>
-                  <td>{{ c.email }}</td>
-                  <td>{{ c.ativo }}</td>
-                  <td>
-                    <button type="button" class="btn btn-soft-secondary btn-sm" (click)="editarContato($index)">
-                      <i class="ri-pencil-fill align-middle"></i>
-                    </button>
-                  </td>
+                  <th>Contato ID</th>
+                  <th>Nome</th>
+                  <th>Função</th>
+                  <th>Email</th>
+                  <th>Ativo</th>
+                  <th style="width: 90px;">Ações</th>
                 </tr>
-              }
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                @for (c of contatos; track c.contatoId) {
+                  <tr>
+                    <td>{{ c.contatoId }}</td>
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.funcao }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.ativo }}</td>
+                    <td>
+                      <button type="button" class="btn btn-soft-secondary btn-sm" (click)="editarContato($index)">
+                        <i class="ri-pencil-fill align-middle"></i>
+                      </button>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 </div>
