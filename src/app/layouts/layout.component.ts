@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventService } from '../core/services/event.service';
-
 // Store
 import { RootReducerState } from '../store';
 import { Store } from '@ngrx/store';
+import { AuthenticationService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-layout',
@@ -19,11 +18,16 @@ export class LayoutComponent implements OnInit {
 
   layoutType!: string;
 
-  constructor(private store: Store<RootReducerState>) { }
+  constructor(
+    private store: Store<RootReducerState>,
+    private autenticacao: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
     this.store.select('layout').subscribe((data) => {
-      const layout = data.LAYOUT === 'semibox' ? 'vertical' : data.LAYOUT;
+      const tipo = (this.autenticacao.usuarioAtual?.tipo ?? '').toString().trim().toLowerCase();
+      const layoutPorTipo = tipo === 'cliente' ? 'horizontal' : 'vertical';
+      const layout = layoutPorTipo;
       this.layoutType = layout;
       document.documentElement.setAttribute('data-layout', layout);
       document.documentElement.setAttribute('data-bs-theme', data.LAYOUT_MODE);
