@@ -3,50 +3,34 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable, catchError, throwError } from 'rxjs';
 
 import { AuthenticationService } from '../services/auth.service';
-import { AuthfakeauthenticationService } from '../services/authfake.service';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
     constructor(
-        private authenticationService: AuthenticationService,
-        private authfackservice: AuthfakeauthenticationService,
-        public router:Router
+        private autenticacao: AuthenticationService,
+        private router: Router
     ) { }
 
-    intercept(
-        request: HttpRequest<any>,
-        next: HttpHandler
-    ): Observable<HttpEvent<any>> {
-        if (environment.defaultauth === 'firebase') {
-            // add authorization header with jwt token if available
-            let currentUser = this.authenticationService.currentUser();
-            if (currentUser && currentUser.token) {
-                request = request.clone({
-                    setHeaders: {
-                        Authorization: `Bearer ${currentUser.token}`,
-                    },
-                });
-            }
-        } else {
-            // add authorization header with jwt token if available
-            const currentUser = this.authfackservice.currentUserValue;
-            if (currentUser && currentUser.token) {
-                request = request.clone({
-                    setHeaders: {
-                        Authorization: `Bearer ${currentUser.token}`,
-                    },
-                });
-            }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const isRotaToken = request.url.includes('/api/Auth/Token');
+        const token = this.autenticacao.obterToken();
+
+        if (!isRotaToken && token) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
         }
         return next.handle(request).pipe(
             catchError((error) => {
               if (error.status === 401) {
+                this.autenticacao.logout();
                 this.router.navigate(['/auth/login']);
               }
               return throwError(error);
             })
-          );;
+          );
     }
 }
