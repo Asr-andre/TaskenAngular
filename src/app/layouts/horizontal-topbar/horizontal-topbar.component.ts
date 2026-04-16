@@ -22,8 +22,27 @@ export class HorizontalTopbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // Menu Items
-    this.menuItems = MENU;
+    const itens = (MENU ?? []).filter((x: MenuItem) => !x?.isTitle);
+    const limite = 6;
+
+    if (itens.length > limite) {
+      const visiveis = itens.slice(0, limite);
+      const extras = itens.slice(limite).map((x) => ({ ...x, icon: undefined, parentId: 999999 }));
+
+      this.menuItems = [
+        ...visiveis,
+        {
+          id: 999999,
+          label: 'Mais',
+          icon: 'ri-more-2-fill',
+          isCollapsed: true,
+          subItems: extras,
+        },
+      ];
+      return;
+    }
+
+    this.menuItems = itens;
   }
 
   /***
