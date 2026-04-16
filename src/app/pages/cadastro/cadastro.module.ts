@@ -7,11 +7,20 @@ import { SharedModule } from '../../shared/shared.module';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { FuncionarioModalComponent } from './funcionarios/modals/funcionario-modal/funcionario-modal.component';
+import { IndicacoesComponent } from './indicacoes/indicacoes.component';
+import { IndicacaoModalComponent } from './indicacoes/modals/indicacao-modal/indicacao-modal.component';
 import { OperadoresComponent } from './operadores/operadores.component';
 import { OperadorModalComponent } from './operadores/modals/operador-modal/operador-modal.component';
 
 @NgModule({
-  declarations: [OperadoresComponent, OperadorModalComponent, FuncionariosComponent, FuncionarioModalComponent],
+  declarations: [
+    OperadoresComponent,
+    OperadorModalComponent,
+    FuncionariosComponent,
+    FuncionarioModalComponent,
+    IndicacoesComponent,
+    IndicacaoModalComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,

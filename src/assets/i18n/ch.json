@@ -106,7 +106,8 @@
       "TEXT": "Cadastro",
       "LIST": {
         "OPERADOR": "Operador",
-        "FUNCIONARIO": "员工"
+        "FUNCIONARIO": "员工",
+        "INDICACAO": "推荐"
       }
     },
     "CONFIGURACAO": {

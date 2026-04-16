@@ -534,6 +534,12 @@ export const MENU: MenuItem[] = [
         label: 'MENUITEMS.CADASTRO.LIST.FUNCIONARIO',
         link: '/cadastro/funcionarios',
         parentId: 1000
+      },
+      {
+        id: 1003,
+        label: 'MENUITEMS.CADASTRO.LIST.INDICACAO',
+        link: '/cadastro/indicacoes',
+        parentId: 1000
       }
     ]
   },

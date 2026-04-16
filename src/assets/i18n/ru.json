@@ -106,7 +106,8 @@
       "TEXT": "Cadastro",
       "LIST": {
         "OPERADOR": "Operador",
-        "FUNCIONARIO": "Сотрудник"
+        "FUNCIONARIO": "Сотрудник",
+        "INDICACAO": "Рекомендация"
       }
     },
     "CONFIGURACAO": {

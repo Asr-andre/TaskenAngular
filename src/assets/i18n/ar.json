@@ -106,7 +106,8 @@
       "TEXT": "Cadastro",
       "LIST": {
         "OPERADOR": "Operador",
-        "FUNCIONARIO": "موظف"
+        "FUNCIONARIO": "موظف",
+        "INDICACAO": "ترشيح"
       }
     },
     "CONFIGURACAO": {
