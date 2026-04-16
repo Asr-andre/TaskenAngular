@@ -7,10 +7,6 @@ import { AuthenticationService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../core/services/token-storage.service';
 
-// Language
-import { CookieService } from 'ngx-cookie-service';
-import { LanguageService } from '../../core/services/language.service';
-import { TranslateService } from '@ngx-translate/core';
 import { allNotification, messages } from './data'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -25,10 +21,6 @@ export class TopbarComponent implements OnInit {
   mode: string | undefined;
   @Output() mobileMenuButtonClicked = new EventEmitter();
   allnotifications: any
-  flagvalue: any;
-  valueset: any;
-  countryName: any;
-  cookieValue: any;
   userData: any;
   totalNotify: number = 0;
   newNotify: number = 0;
@@ -37,23 +29,13 @@ export class TopbarComponent implements OnInit {
   @ViewChild('removenotification') removenotification !: TemplateRef<any>;
   notifyId: any;
 
-  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService, private modalService: NgbModal,
-    public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService,
+  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, private modalService: NgbModal,
+    private authService: AuthenticationService,
     private router: Router, private TokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
-
-    // Cookies wise Language set
-    this.cookieValue = this._cookiesService.get('lang');
-    const val = this.listLang.filter(x => x.lang === this.cookieValue);
-    this.countryName = val.map(element => element.text);
-    if (val.length === 0) {
-      if (this.flagvalue === undefined) { this.valueset = 'assets/images/flags/us.svg'; }
-    } else {
-      this.flagvalue = val.map(element => element.flag);
-    }
 
     // Fetch Data
     this.allnotifications = allNotification;
@@ -132,30 +114,6 @@ export class TopbarComponent implements OnInit {
         document.documentElement.setAttribute('data-bs-theme', "light");
         break;
     }
-  }
-
-  /***
-   * Language Listing
-   */
-  listLang = [
-    { text: 'English', flag: 'assets/images/flags/us.svg', lang: 'en' },
-    { text: 'Española', flag: 'assets/images/flags/spain.svg', lang: 'es' },
-    { text: 'Deutsche', flag: 'assets/images/flags/germany.svg', lang: 'de' },
-    { text: 'Italiana', flag: 'assets/images/flags/italy.svg', lang: 'it' },
-    { text: 'русский', flag: 'assets/images/flags/russia.svg', lang: 'ru' },
-    { text: '中国人', flag: 'assets/images/flags/china.svg', lang: 'ch' },
-    { text: 'français', flag: 'assets/images/flags/french.svg', lang: 'fr' },
-    { text: 'Arabic', flag: 'assets/images/flags/ar.svg', lang: 'ar' },
-  ];
-
-  /***
-   * Language Value Set
-   */
-  setLanguage(text: string, lang: string, flag: string) {
-    this.countryName = text;
-    this.flagvalue = flag;
-    this.cookieValue = lang;
-    this.languageService.setLanguage(lang);
   }
 
   /**

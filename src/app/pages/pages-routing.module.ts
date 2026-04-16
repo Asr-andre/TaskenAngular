@@ -27,16 +27,10 @@ const routes: Routes = [
       path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule)
     },
     {
-      path: 'crm', loadChildren: () => import('./crm/crm.module').then(m => m.CrmModule)
-    },
-    {
       path: 'cadastro', loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
     },
     {
       path: 'configuracao', loadChildren: () => import('./configuracao/configuracao.module').then(m => m.ConfiguracaoModule)
-    },
-    {
-      path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule)
     },
     {
       path: 'invoices', loadChildren: () => import('./invoices/invoices.module').then(m => m.InvoicesModule)
@@ -55,16 +49,10 @@ const routes: Routes = [
       path: 'forms', loadChildren: () => import('./form/form.module').then(m => m.FormModule)
     },
     {
-      path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule)
-    },
-    {
       path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule)
     },
     {
       path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)
-    },
-    {
-      path: 'marletplace', loadChildren: () => import('./nft-marketplace/nft-marketplace.module').then(m => m.NftMarketplaceModule)
     },
 ];
 

@@ -29,8 +29,6 @@ import { WidgetModule } from '../../shared/widget/widget.module';
 
 // Component
 import { AnalyticsComponent } from './analytics/analytics.component';
-import { CrmComponent } from './crm/crm.component';
-import { CryptoComponent } from './crypto/crypto.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
@@ -38,8 +36,6 @@ import { JobComponent } from './job/job.component';
 @NgModule({
   declarations: [
     AnalyticsComponent,
-    CrmComponent,
-    CryptoComponent,
     ProjectsComponent,
     NftComponent,
     JobComponent
