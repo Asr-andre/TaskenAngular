@@ -101,17 +101,6 @@ export const MENU_UNIFICADO = [
     ],
   },
   {
-    id: 16,
-    label: 'Faturas',
-    icon: 'ri-bill-line',
-    isCollapsed: true,
-    subItems: [
-      { id: 161, label: 'Lista', link: '/invoices/list', parentId: 16 },
-      { id: 162, label: 'Detalhes', link: '/invoices/details', parentId: 16 },
-      { id: 163, label: 'Criar', link: '/invoices/create', parentId: 16 },
-    ],
-  },
-  {
     id: 17,
     label: 'Suporte',
     icon: 'ri-customer-service-2-line',
