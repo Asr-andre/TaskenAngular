@@ -32,7 +32,8 @@
                 <div class="row g-3 mt-1">
                   @for (cliente of clientesFiltrados; track cliente.clienteId) {
                     <div class="col-12 col-md-6 col-lg-4">
-                      <button type="button" class="card cliente-card w-100 text-start" (click)="selecionarCliente(cliente.clienteId)">
+                      <button type="button" class="card cliente-card w-100 text-start" (click)="selecionarCliente(cliente.clienteId)"
+                      style="margin-bottom: 10px;">
                         <div class="card-body">
                           <div class="d-flex align-items-start justify-content-between gap-2">
                             <div class="text-truncate">
