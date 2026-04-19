@@ -65,21 +65,6 @@ export class SelecionarClienteComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
-  buscar() {
-    const termo = (this.termoBusca ?? '').trim().toLowerCase();
-    if (!termo) {
-      this.clientesFiltrados = [...this.clientes];
-      return;
-    }
-    this.clientesFiltrados = this.clientes.filter((c) => {
-      return (
-        String(c.clienteId).toLowerCase().includes(termo) ||
-        (c.nome ?? '').toLowerCase().includes(termo) ||
-        String(c.cnpj ?? '').toLowerCase().includes(termo)
-      );
-    });
-  }
-
   private carregarClientes(ids: number[]) {
     this.carregando = true;
 

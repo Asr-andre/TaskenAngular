@@ -12,27 +12,13 @@
               <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
                 <div class="d-flex align-items-center gap-3">
                   <img src="assets/images/logo-dark.png" alt="Logo" class="selecao-logo" />
-                </div>
-                <button type="button" class="btn btn-outline-danger btn-sm" (click)="sair()">Sair</button>
-              </div>
-
-              <div class="row g-3 mt-3 align-items-center">
-                <div class="col-12 col-md-6">
-                  <div class="search-box">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Buscar por id, nome ou CNPJ..."
-                      [(ngModel)]="termoBusca"
-                      (ngModelChange)="buscar()"
-                    />
-                    <i class="ri-search-line search-icon"></i>
+                  <div>
+                    <div class="fs-5 fw-medium">Cliente associado</div>
+                    <div class="text-muted">Selecione o cliente desejado para continuar.</div>
                   </div>
                 </div>
-                <div class="col-12 col-md-6 text-md-end">
-                  <span class="text-muted">Total: </span>
-                  <span class="fw-semibold">{{ clientesFiltrados.length }}</span>
-                </div>
+                
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="sair()">Sair</button>
               </div>
 
               @if (carregando) {
@@ -54,9 +40,6 @@
                               @if (cliente.cnpj) {
                                 <div class="text-muted mt-1 text-truncate">CNPJ: {{ cliente.cnpj }}</div>
                               }
-                            </div>
-                            <div class="text-end">
-                              <span class="badge bg-primary-subtle text-primary">#{{ cliente.clienteId }}</span>
                             </div>
                           </div>
                         </div>
