@@ -13,7 +13,7 @@
                 <div class="d-flex align-items-center gap-3">
                   <img src="assets/images/logo-dark.png" alt="Logo" class="selecao-logo" />
                   <div>
-                    <div class="fs-5 fw-medium">Cliente associado</div>
+                    <div class="fs-15 fw-medium">Clientes associados</div>
                     <div class="text-muted">Selecione o cliente desejado para continuar.</div>
                   </div>
                 </div>
@@ -36,9 +36,9 @@
                         <div class="card-body">
                           <div class="d-flex align-items-start justify-content-between gap-2">
                             <div class="text-truncate">
-                              <div class="fw-semibold fs-16 text-truncate">{{ cliente.nome }}</div>
+                              <div class="fw-semibold fs-13 text-truncate">{{ cliente.nome }}</div>
                               @if (cliente.cnpj) {
-                                <div class="text-muted mt-1 text-truncate">CNPJ: {{ cliente.cnpj }}</div>
+                                <div class="text-muted mt-1 fs-11 text-truncate">CNPJ: {{ cliente.cnpj }}</div>
                               }
                             </div>
                           </div>
