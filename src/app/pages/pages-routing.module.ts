@@ -4,11 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 // Component pages
 import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 import { HomeComponent } from './home/home.component';
+import { SelecionarClienteComponent } from './selecionar-cliente/selecionar-cliente.component';
 
 const routes: Routes = [
     {
         path: "",
         component: HomeComponent
+    },
+    {
+      path: "selecionar-cliente",
+      component: SelecionarClienteComponent
     },
     {
       path: "dashboard",

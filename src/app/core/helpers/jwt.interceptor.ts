@@ -15,11 +15,20 @@ export class JwtInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const isRotaToken = request.url.includes('/api/Auth/Token');
         const token = this.autenticacao.obterToken();
+        const clienteSelecionadoId = this.autenticacao.obterClienteSelecionadoId();
 
         if (!isRotaToken && token) {
             request = request.clone({
                 setHeaders: {
                     Authorization: `Bearer ${token}`,
+                },
+            });
+        }
+
+        if (!isRotaToken && clienteSelecionadoId) {
+            request = request.clone({
+                setHeaders: {
+                    'X-Cliente-Id': String(clienteSelecionadoId),
                 },
             });
         }

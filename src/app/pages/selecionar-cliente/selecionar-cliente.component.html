@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
+          <h4 class="mb-0">Selecione o cliente</h4>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="sair()">Sair</button>
+        </div>
+
+        @if (carregando) {
+          <div class="d-flex flex-column align-items-center gap-2 py-5">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Carregando...</span>
+            </div>
+            <div class="text-muted fw-medium">Carregando clientes...</div>
+          </div>
+        } @else {
+          <div class="row g-3">
+            @for (cliente of clientes; track cliente.clienteId) {
+              <div class="col-12 col-md-6 col-lg-4">
+                <button type="button" class="card cliente-card w-100 text-start" (click)="selecionarCliente(cliente.clienteId)">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between gap-2">
+                      <div class="fw-semibold fs-16 text-truncate">{{ cliente.nome }}</div>
+                      <span class="badge bg-primary-subtle text-primary">#{{ cliente.clienteId }}</span>
+                    </div>
+                    @if (cliente.cnpj) {
+                      <div class="text-muted mt-2">CNPJ: {{ cliente.cnpj }}</div>
+                    }
+                  </div>
+                </button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+

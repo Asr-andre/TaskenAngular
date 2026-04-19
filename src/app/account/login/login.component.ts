@@ -62,8 +62,17 @@ export class LoginComponent implements OnInit {
     const senha = String(this.f['senha'].value ?? '');
 
     this.autenticacao.login(login, senha).subscribe({
-      next: () => {
-        this.router.navigate(['/']);
+      next: (dados) => {
+        const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
+        const variosCliente = Boolean(dados?.variosCliente);
+        const clienteIds = dados?.clienteIds ?? [];
+
+        if (tipo === 'cliente' && variosCliente && clienteIds.length > 1) {
+          this.router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
+          return;
+        }
+
+        this.router.navigateByUrl(this.returnUrl);
       },
       error: (mensagem) => {
         this.toastService.show(String(mensagem ?? 'Falha ao realizar login.'), {

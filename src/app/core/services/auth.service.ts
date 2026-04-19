@@ -10,6 +10,8 @@ export interface DadosAutenticacao {
   token: string;
   nome: string;
   tipo: string;
+  variosCliente?: boolean;
+  clienteIds?: number[];
 }
 
 const httpOptions = {
@@ -20,6 +22,7 @@ const httpOptions = {
 export class AuthenticationService {
   private readonly chaveUsuario = 'currentUser';
   private readonly chaveToken = 'token';
+  private readonly chaveClienteSelecionado = 'clienteSelecionadoId';
   private readonly urlToken = `${environment.apiUrl}/api/Auth/Token`;
 
   private readonly usuarioSubject: BehaviorSubject<DadosAutenticacao | null>;
@@ -44,6 +47,12 @@ export class AuthenticationService {
           const dados = resposta.data;
           sessionStorage.setItem(this.chaveUsuario, JSON.stringify(dados));
           sessionStorage.setItem(this.chaveToken, dados.token);
+          sessionStorage.removeItem(this.chaveClienteSelecionado);
+
+          if (this.normalizarTipo(dados.tipo) === 'cliente' && (dados.clienteIds?.length ?? 0) === 1 && !dados.variosCliente) {
+            this.definirClienteSelecionadoId(dados.clienteIds![0]);
+          }
+
           this.usuarioSubject.next(dados);
           return dados;
         }),
@@ -65,11 +74,48 @@ export class AuthenticationService {
   logout(): void {
     sessionStorage.removeItem(this.chaveUsuario);
     sessionStorage.removeItem(this.chaveToken);
+    sessionStorage.removeItem(this.chaveClienteSelecionado);
     this.usuarioSubject.next(null);
   }
 
   obterToken(): string | null {
     return sessionStorage.getItem(this.chaveToken);
+  }
+
+  obterClienteSelecionadoId(): number | null {
+    const valor = sessionStorage.getItem(this.chaveClienteSelecionado);
+    if (!valor) {
+      return null;
+    }
+    const id = Number(valor);
+    return Number.isFinite(id) && id > 0 ? id : null;
+  }
+
+  definirClienteSelecionadoId(clienteId: number): void {
+    const id = Number(clienteId);
+    if (!Number.isFinite(id) || id <= 0) {
+      return;
+    }
+    sessionStorage.setItem(this.chaveClienteSelecionado, String(id));
+  }
+
+  precisaSelecionarCliente(): boolean {
+    const usuario = this.usuarioAtual;
+    if (!usuario) {
+      return false;
+    }
+    const tipo = this.normalizarTipo(usuario.tipo);
+    if (tipo !== 'cliente') {
+      return false;
+    }
+    if (!usuario.variosCliente) {
+      return false;
+    }
+    const ids = usuario.clienteIds ?? [];
+    if (ids.length <= 1) {
+      return false;
+    }
+    return !this.obterClienteSelecionadoId();
   }
 
   private lerUsuarioStorage(): DadosAutenticacao | null {
@@ -82,6 +128,10 @@ export class AuthenticationService {
     } catch {
       return null;
     }
+  }
+
+  private normalizarTipo(tipo: string): string {
+    return String(tipo ?? '').trim().toLowerCase();
   }
 }
 
