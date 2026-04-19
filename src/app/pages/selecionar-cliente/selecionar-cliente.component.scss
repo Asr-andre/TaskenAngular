@@ -1,7 +1,13 @@
+.selecao-logo {
+  height: 40px;
+  width: auto;
+}
+
 .cliente-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
   background: #fff;
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  cursor: pointer;
 }
 
 .cliente-card:hover {
@@ -9,4 +15,3 @@
   box-shadow: 0 10px 24px rgba(15, 43, 70, 0.12);
   border-color: rgba(15, 43, 70, 0.22);
 }
-

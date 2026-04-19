@@ -1,40 +1,83 @@
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex flex-wrap align-items-center gap-2 justify-content-between mb-3">
-          <h4 class="mb-0">Selecione o cliente</h4>
-          <button type="button" class="btn btn-outline-danger btn-sm" (click)="sair()">Sair</button>
-        </div>
+<div class="auth-page-wrapper pt-5">
+  <div class="auth-one-bg-position auth-one-bg">
+    <div class="bg-overlay"></div>
+  </div>
 
-        @if (carregando) {
-          <div class="d-flex flex-column align-items-center gap-2 py-5">
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Carregando...</span>
-            </div>
-            <div class="text-muted fw-medium">Carregando clientes...</div>
-          </div>
-        } @else {
-          <div class="row g-3">
-            @for (cliente of clientes; track cliente.clienteId) {
-              <div class="col-12 col-md-6 col-lg-4">
-                <button type="button" class="card cliente-card w-100 text-start" (click)="selecionarCliente(cliente.clienteId)">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between gap-2">
-                      <div class="fw-semibold fs-16 text-truncate">{{ cliente.nome }}</div>
-                      <span class="badge bg-primary-subtle text-primary">#{{ cliente.clienteId }}</span>
-                    </div>
-                    @if (cliente.cnpj) {
-                      <div class="text-muted mt-2">CNPJ: {{ cliente.cnpj }}</div>
-                    }
+  <div class="auth-page-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <div class="card mt-4">
+            <div class="card-body p-4">
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <div class="d-flex align-items-center gap-3">
+                  <img src="assets/images/logo-dark.png" alt="Logo" class="selecao-logo" />
+                  <div>
+                    <h4 class="mb-1">Selecione o cliente</h4>
+                    <div class="text-muted">Escolha um cliente para continuar</div>
                   </div>
-                </button>
+                </div>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="sair()">Sair</button>
               </div>
-            }
+
+              <div class="row g-3 mt-3 align-items-center">
+                <div class="col-12 col-md-6">
+                  <div class="search-box">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Buscar por id, nome ou CNPJ..."
+                      [(ngModel)]="termoBusca"
+                      (ngModelChange)="buscar()"
+                    />
+                    <i class="ri-search-line search-icon"></i>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 text-md-end">
+                  <span class="text-muted">Total: </span>
+                  <span class="fw-semibold">{{ clientesFiltrados.length }}</span>
+                </div>
+              </div>
+
+              @if (carregando) {
+                <div class="d-flex flex-column align-items-center gap-2 py-5">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                  </div>
+                  <div class="text-muted fw-medium">Carregando clientes...</div>
+                </div>
+              } @else {
+                <div class="row g-3 mt-1">
+                  @for (cliente of clientesFiltrados; track cliente.clienteId) {
+                    <div class="col-12 col-md-6 col-lg-4">
+                      <button type="button" class="card cliente-card w-100 text-start" (click)="selecionarCliente(cliente.clienteId)">
+                        <div class="card-body">
+                          <div class="d-flex align-items-start justify-content-between gap-2">
+                            <div class="text-truncate">
+                              <div class="fw-semibold fs-16 text-truncate">{{ cliente.nome }}</div>
+                              @if (cliente.cnpj) {
+                                <div class="text-muted mt-1 text-truncate">CNPJ: {{ cliente.cnpj }}</div>
+                              }
+                            </div>
+                            <div class="text-end">
+                              <span class="badge bg-primary-subtle text-primary">#{{ cliente.clienteId }}</span>
+                              <div class="mt-2 text-primary fw-medium">Selecionar</div>
+                            </div>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  }
+                </div>
+
+                @if (!clientesFiltrados.length) {
+                  <div class="text-center text-muted py-5">Nenhum cliente encontrado.</div>
+                }
+              }
+            </div>
           </div>
-        }
+        </div>
       </div>
     </div>
   </div>
 </div>
-

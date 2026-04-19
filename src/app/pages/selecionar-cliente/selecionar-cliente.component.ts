@@ -20,6 +20,8 @@ type ClienteSelecionavel = {
 export class SelecionarClienteComponent implements OnInit {
   carregando = true;
   clientes: ClienteSelecionavel[] = [];
+  clientesFiltrados: ClienteSelecionavel[] = [];
+  termoBusca = '';
   private returnUrl = '/';
 
   constructor(
@@ -63,6 +65,21 @@ export class SelecionarClienteComponent implements OnInit {
     this.router.navigate(['/auth/login']);
   }
 
+  buscar() {
+    const termo = (this.termoBusca ?? '').trim().toLowerCase();
+    if (!termo) {
+      this.clientesFiltrados = [...this.clientes];
+      return;
+    }
+    this.clientesFiltrados = this.clientes.filter((c) => {
+      return (
+        String(c.clienteId).toLowerCase().includes(termo) ||
+        (c.nome ?? '').toLowerCase().includes(termo) ||
+        String(c.cnpj ?? '').toLowerCase().includes(termo)
+      );
+    });
+  }
+
   private carregarClientes(ids: number[]) {
     this.carregando = true;
 
@@ -88,10 +105,12 @@ export class SelecionarClienteComponent implements OnInit {
     ).subscribe({
       next: (lista) => {
         this.clientes = lista.sort((a, b) => a.nome.localeCompare(b.nome));
+        this.clientesFiltrados = [...this.clientes];
         this.carregando = false;
       },
       error: () => {
         this.clientes = ids.map((id) => ({ clienteId: id, nome: `Cliente ${id}` }));
+        this.clientesFiltrados = [...this.clientes];
         this.carregando = false;
         Swal.fire({
           title: 'Atenção',
@@ -103,4 +122,3 @@ export class SelecionarClienteComponent implements OnInit {
     });
   }
 }
-
