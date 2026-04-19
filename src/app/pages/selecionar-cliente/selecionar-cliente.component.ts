@@ -68,8 +68,7 @@ export class SelecionarClienteComponent implements OnInit {
   private carregarClientes(ids: number[]) {
     this.carregando = true;
 
-    forkJoin(
-      ids.map((id) =>
+    forkJoin(ids.map((id) =>
         this.clienteService.obterPorId(id).pipe(
           map((r) => {
             const c = r?.data;

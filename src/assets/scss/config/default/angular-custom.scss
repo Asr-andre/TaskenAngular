@@ -97,6 +97,19 @@ File: Custom Css File
   }
 }
 
+//alteração do tamanho da font e icon dos menus
+.app-menu {
+  .navbar-nav {
+    .nav-link {
+      font-size: 13px;
+    }
+
+    .nav-icon {
+      font-size: 13px !important;
+    }
+  }
+}
+
 // [data-layout="horizontal"] .main-content{
 //   min-height: 100vh;
 // }
