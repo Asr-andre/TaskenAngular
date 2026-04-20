@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../core/services/auth.service';
-import { ToastService } from './toast-service';
+import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   fieldTextType!: boolean;
   returnUrl!: string;
 
-  toast!: false;
+  toast = inject(ToastService);
 
   year: number = new Date().getFullYear();
 
@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     private autenticacao: AuthenticationService,
     private router: Router,
-    private route: ActivatedRoute,
-    public toastService: ToastService
+    private route: ActivatedRoute
   ) {
     if (this.autenticacao.usuarioAtual) {
       this.router.navigate(['/']);
@@ -63,23 +62,21 @@ export class LoginComponent implements OnInit {
 
     this.autenticacao.login(login, senha).subscribe({
       next: (dados) => {
+        
         const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
         const variosCliente = Boolean(dados?.variosCliente);
         const clienteIds = dados?.clienteIds ?? [];
 
         if (tipo === 'cliente' && variosCliente && clienteIds.length > 1) {
+          this.toast.success('Login realizado com sucesso.', 'Sucesso');
           this.router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
           return;
         }
 
+        this.toast.success('Login realizado com sucesso.', 'Sucesso');
         this.router.navigateByUrl(this.returnUrl);
       },
-      error: (mensagem) => {
-        this.toastService.show(String(mensagem ?? 'Falha ao realizar login.'), {
-          classname: 'bg-danger text-white',
-          delay: 15000,
-        });
-      },
+      error: () => {},
     });
   }
 
