@@ -11,7 +11,11 @@ export interface DadosAutenticacao {
   nome: string;
   tipo: string;
   variosCliente?: boolean;
-  clienteIds?: number[];
+  clientes?: Array<{
+    clienteId: number;
+    fantasia?: string;
+    cnpj?: string;
+  }>;
 }
 
 const httpOptions = {
@@ -49,8 +53,11 @@ export class AuthenticationService {
           sessionStorage.setItem(this.chaveToken, dados.token);
           sessionStorage.removeItem(this.chaveClienteSelecionado);
 
-          if (this.normalizarTipo(dados.tipo) === 'cliente' && (dados.clienteIds?.length ?? 0) === 1 && !dados.variosCliente) {
-            this.definirClienteSelecionadoId(dados.clienteIds![0]);
+          if (this.normalizarTipo(dados.tipo) === 'cliente') {
+            const clientes = dados.clientes ?? [];
+            if (clientes.length === 1 && !dados.variosCliente) {
+              this.definirClienteSelecionadoId(clientes[0].clienteId);
+            }
           }
 
           this.usuarioSubject.next(dados);
@@ -111,8 +118,8 @@ export class AuthenticationService {
     if (!usuario.variosCliente) {
       return false;
     }
-    const ids = usuario.clienteIds ?? [];
-    if (ids.length <= 1) {
+    const clientes = usuario.clientes ?? [];
+    if (clientes.length <= 1) {
       return false;
     }
     return !this.obterClienteSelecionadoId();

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { forkJoin, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import Swal from 'sweetalert2';
-import { ClienteService } from '../../core/services/cliente.service';
 import { AuthenticationService } from '../../core/services/auth.service';
 
 type ClienteSelecionavel = {
@@ -27,8 +23,7 @@ export class SelecionarClienteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private autenticacao: AuthenticationService,
-    private clienteService: ClienteService
+    private autenticacao: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -37,22 +32,30 @@ export class SelecionarClienteComponent implements OnInit {
     const usuario = this.autenticacao.usuarioAtual;
     const tipo = String(usuario?.tipo ?? '').trim().toLowerCase();
     const variosCliente = Boolean(usuario?.variosCliente);
-    const ids = usuario?.clienteIds ?? [];
+    const clientes = usuario?.clientes ?? [];
 
     if (!usuario || tipo !== 'cliente') {
       this.router.navigateByUrl('/');
       return;
     }
 
-    if (!variosCliente || ids.length <= 1) {
-      if (ids.length === 1) {
-        this.autenticacao.definirClienteSelecionadoId(ids[0]);
+    if (!variosCliente || clientes.length <= 1) {
+      if (clientes.length === 1) {
+        this.autenticacao.definirClienteSelecionadoId(clientes[0].clienteId);
       }
       this.router.navigateByUrl(this.returnUrl);
       return;
     }
 
-    this.carregarClientes(ids);
+    this.clientes = clientes
+      .map((c) => ({
+        clienteId: c.clienteId,
+        nome: c.fantasia || `Cliente ${c.clienteId}`,
+        cnpj: c.cnpj || undefined,
+      }))
+      .sort((a, b) => a.nome.localeCompare(b.nome));
+    this.clientesFiltrados = [...this.clientes];
+    this.carregando = false;
   }
 
   selecionarCliente(clienteId: number) {
@@ -63,46 +66,5 @@ export class SelecionarClienteComponent implements OnInit {
   sair() {
     this.autenticacao.logout();
     this.router.navigate(['/auth/login']);
-  }
-
-  private carregarClientes(ids: number[]) {
-    this.carregando = true;
-
-    forkJoin(ids.map((id) =>
-        this.clienteService.obterPorId(id).pipe(
-          map((r) => {
-            const c = r?.data;
-            return {
-              clienteId: id,
-              nome: c?.fantasia || c?.razaoSocial || `Cliente ${id}`,
-              cnpj: c?.cnpj || undefined,
-            } as ClienteSelecionavel;
-          }),
-          catchError(() =>
-            of({
-              clienteId: id,
-              nome: `Cliente ${id}`,
-            } as ClienteSelecionavel)
-          )
-        )
-      )
-    ).subscribe({
-      next: (lista) => {
-        this.clientes = lista.sort((a, b) => a.nome.localeCompare(b.nome));
-        this.clientesFiltrados = [...this.clientes];
-        this.carregando = false;
-      },
-      error: () => {
-        this.clientes = ids.map((id) => ({ clienteId: id, nome: `Cliente ${id}` }));
-        this.clientesFiltrados = [...this.clientes];
-        this.carregando = false;
-        Swal.fire({
-          title: 'Atenção',
-          text: 'Não foi possível carregar os dados dos clientes. Selecione um cliente para continuar.',
-          icon: 'warning',
-          confirmButtonText: 'Ok',
-        });
-      },
-    });
   }
 }

@@ -63,9 +63,9 @@ export class LoginComponent implements OnInit {
         
         const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
         const variosCliente = Boolean(dados?.variosCliente);
-        const clienteIds = dados?.clienteIds ?? [];
+        const clientes = dados?.clientes ?? [];
 
-        if (tipo === 'cliente' && variosCliente && clienteIds.length > 1) {
+        if (tipo === 'cliente' && variosCliente && clientes.length > 1) {
           this.toast.success('Login realizado com sucesso.', 'Sucesso');
           this._router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
           return;
