@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { AuthenticationService } from '../../core/services/auth.service';
@@ -11,44 +11,42 @@ import { ToastService } from '../../core/services/toast.service';
   styleUrls: ['./login.component.scss']
 })
 
-/**
- * Login Component
- */
 export class LoginComponent implements OnInit {
-
-  loginForm!: UntypedFormGroup;
+  loginForm!: FormGroup<{
+    login: FormControl<string>;
+    senha: FormControl<string>;
+  }>;
   submitted = false;
-  fieldTextType!: boolean;
+  mostrarSenha !: boolean;
   returnUrl!: string;
-
   toast = inject(ToastService);
 
-  year: number = new Date().getFullYear();
-
   constructor(
-    private formBuilder: UntypedFormBuilder,
-    private autenticacao: AuthenticationService,
-    private router: Router,
-    private route: ActivatedRoute
+    private _fb: FormBuilder,
+    private _aut: AuthenticationService,
+    private _router: Router,
+    private _route: ActivatedRoute
   ) {
-    if (this.autenticacao.usuarioAtual) {
-      this.router.navigate(['/']);
+    if (this._aut.usuarioAtual) {
+      this._router.navigate(['/']);
     }
   }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')) {
-      this.router.navigate(['/']);
+      this._router.navigate(['/']);
     }
 
-    this.loginForm = this.formBuilder.group({
-      login: ['', [Validators.required]],
-      senha: ['', [Validators.required]],
+    this.loginForm = this._fb.nonNullable.group({
+      login: ['', Validators.required],
+      senha: ['', Validators.required],
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get f() { return this.loginForm.controls; }
+  get form() {
+    return this.loginForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -57,10 +55,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const login = String(this.f['login'].value ?? '').trim();
-    const senha = String(this.f['senha'].value ?? '');
+    const login = this.form.login.value.trim();
+    const senha = this.form.senha.value;
 
-    this.autenticacao.login(login, senha).subscribe({
+    this._aut.login(login, senha).subscribe({
       next: (dados) => {
         
         const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
@@ -69,12 +67,12 @@ export class LoginComponent implements OnInit {
 
         if (tipo === 'cliente' && variosCliente && clienteIds.length > 1) {
           this.toast.success('Login realizado com sucesso.', 'Sucesso');
-          this.router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
+          this._router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
           return;
         }
 
         this.toast.success('Login realizado com sucesso.', 'Sucesso');
-        this.router.navigateByUrl(this.returnUrl);
+        this._router.navigateByUrl(this.returnUrl);
       },
       error: (mensagem) => {
         this.toast.error(String(mensagem ?? 'Falha ao realizar login.'), 'Erro');
@@ -82,11 +80,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  /**
-   * Password Hide/Show
-   */
-   toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
+   alternarVisibilidadeSenha() {
+    this.mostrarSenha  = !this.mostrarSenha ;
   }
-
 }
