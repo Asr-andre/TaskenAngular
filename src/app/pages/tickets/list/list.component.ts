@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Suporte' }, { label: 'Chamados', active: true }];
+    this.breadCrumbItems = [{ label: 'Tickets' }, { label: 'Geral', active: true }];
     this.carregarChamados();
   }
 

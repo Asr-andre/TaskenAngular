@@ -84,11 +84,11 @@ export const MENU_UNIFICADO = [
   },
   {
     id: 17,
-    label: 'Suporte',
+    label: 'Tickets',
     icon: 'ri-customer-service-2-line',
     isCollapsed: true,
     subItems: [
-      { id: 171, label: 'Chamados', link: '/tickets/list', parentId: 17 },
+      { id: 171, label: 'Geral', link: '/tickets/list', parentId: 17 },
     ],
   },
 
