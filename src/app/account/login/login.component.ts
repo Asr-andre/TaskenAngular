@@ -59,19 +59,21 @@ export class LoginComponent implements OnInit {
     const senha = this.form.senha.value;
 
     this._aut.login(login, senha).subscribe({
-      next: (dados) => {
+      next: (resultado) => {
+        const dados = resultado.dados;
+        const mensagem = String(resultado.mensagem ?? 'Login realizado com sucesso.');
         
         const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
         const variosCliente = Boolean(dados?.variosCliente);
         const clientes = dados?.clientes ?? [];
 
         if (tipo === 'cliente' && variosCliente && clientes.length > 1) {
-          this.toast.success('Login realizado com sucesso.', 'Sucesso');
+          this.toast.success(mensagem, 'Sucesso');
           this._router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
           return;
         }
 
-        this.toast.success('Login realizado com sucesso.', 'Sucesso');
+        this.toast.success(mensagem, 'Sucesso');
         this._router.navigateByUrl(this.returnUrl);
       },
       error: (mensagem) => {

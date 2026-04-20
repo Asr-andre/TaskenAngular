@@ -29,7 +29,8 @@ export class AuthenticationEffects {
     ofType(login),
     exhaustMap(({ email, password }) =>
       this.AuthenticationService.login(email, password).pipe(
-        map((dados) => {
+        map((resultado) => {
+          const dados = resultado.dados;
           this.router.navigate(['/']);
           return loginSuccess({
             user: {

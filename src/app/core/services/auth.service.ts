@@ -18,6 +18,11 @@ export interface DadosAutenticacao {
   }>;
 }
 
+export interface ResultadoLogin {
+  dados: DadosAutenticacao;
+  mensagem: string;
+}
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -39,7 +44,7 @@ export class AuthenticationService {
     return this.usuarioSubject.value;
   }
 
-  login(login: string, senha: string): Observable<DadosAutenticacao> {
+  login(login: string, senha: string): Observable<ResultadoLogin> {
     return this.http
       .post<RespostaApi<DadosAutenticacao>>(this.urlToken, { login, senha }, httpOptions)
       .pipe(
@@ -48,6 +53,7 @@ export class AuthenticationService {
             throw new Error(resposta?.mensagem || 'Não foi possível autenticar.');
           }
 
+          const mensagem = String(resposta?.mensagem ?? 'Login realizado com sucesso.');
           const dados = resposta.data;
           sessionStorage.setItem(this.chaveUsuario, JSON.stringify(dados));
           sessionStorage.setItem(this.chaveToken, dados.token);
@@ -61,7 +67,7 @@ export class AuthenticationService {
           }
 
           this.usuarioSubject.next(dados);
-          return dados;
+          return { dados, mensagem };
         }),
         catchError((erro: any) => {
           const mensagem = erro?.error?.mensagem || erro?.error?.message || erro?.message || 'Falha ao realizar login.';
