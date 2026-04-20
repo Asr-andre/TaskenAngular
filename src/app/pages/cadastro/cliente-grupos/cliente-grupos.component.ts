@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { ClienteGrupo } from 'src/app/core/models/cliente-grupo.model';
 import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
@@ -55,7 +54,6 @@ export class ClienteGruposComponent implements OnInit {
             this.todosClienteGrupos = resposta?.data ?? [];
             this.aplicarFiltro(true);
             this.carregando = false;
-            this.toast.success(resposta.mensagem , 'Sucesso');
         } else {
            this.toast.warning(resposta.mensagem, 'Atenção');
         } 
