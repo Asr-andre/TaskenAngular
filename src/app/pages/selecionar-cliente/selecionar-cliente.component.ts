@@ -6,6 +6,7 @@ type ClienteSelecionavel = {
   clienteId: number;
   nome: string;
   cnpj?: string;
+  qtdeChamadosAbertos?: number;
 };
 
 @Component({
@@ -52,6 +53,7 @@ export class SelecionarClienteComponent implements OnInit {
         clienteId: c.clienteId,
         nome: c.fantasia || `Cliente ${c.clienteId}`,
         cnpj: c.cnpj || undefined,
+        qtdeChamadosAbertos: c.qtdeChamadosAbertos ?? 0,
       }))
       .sort((a, b) => a.nome.localeCompare(b.nome));
     this.clientesFiltrados = [...this.clientes];

@@ -15,6 +15,7 @@ export interface DadosAutenticacao {
     clienteId: number;
     fantasia?: string;
     cnpj?: string;
+    qtdeChamadosAbertos?: number;
   }>;
 }
 

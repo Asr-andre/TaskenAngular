@@ -42,6 +42,11 @@
                                 <div class="text-muted mt-1 fs-11 text-truncate">CNPJ: {{ cliente.cnpj }}</div>
                               }
                             </div>
+                            <div class="text-end">
+                              @if ((cliente.qtdeChamadosAbertos ?? 0) > 0) {
+                                <span class="badge bg-success-subtle text-success">Abertos: {{ cliente.qtdeChamadosAbertos }}</span>
+                              } 
+                            </div>
                           </div>
                         </div>
                       </button>
