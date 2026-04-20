@@ -29,8 +29,11 @@ export class AuthenticationEffects {
     ofType(login),
     exhaustMap(({ email, password }) =>
       this.AuthenticationService.login(email, password).pipe(
-        map((resultado) => {
-          const dados = resultado.dados;
+        map((resposta) => {
+          if (!resposta?.success || !resposta?.data?.token) {
+            throw new Error(resposta?.mensagem || 'Falha ao realizar login.');
+          }
+          const dados = resposta.data;
           this.router.navigate(['/']);
           return loginSuccess({
             user: {

@@ -62,7 +62,16 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-primary w-100" type="submit">Entrar</button>
+                                        <button class="btn btn-primary w-100 btn-load" type="submit" [disabled]="carregando">
+                                          <span class="d-flex align-items-center justify-content-center gap-2">
+                                            @if (carregando) {
+                                              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                              <span>Entrando...</span>
+                                            } @else {
+                                              <span>Entrar</span>
+                                            }
+                                          </span>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

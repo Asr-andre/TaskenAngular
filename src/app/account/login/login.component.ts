@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     senha: FormControl<string>;
   }>;
   submitted = false;
+  carregando = false;
   mostrarSenha !: boolean;
   returnUrl!: string;
   toast = inject(ToastService);
@@ -55,13 +56,31 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    if (this.carregando) {
+      return;
+    }
+    this.carregando = true;
+
     const login = this.form.login.value.trim();
     const senha = this.form.senha.value;
 
     this._aut.login(login, senha).subscribe({
-      next: (resultado) => {
-        const dados = resultado.dados;
-        const mensagem = String(resultado.mensagem ?? 'Login realizado com sucesso.');
+      next: (resposta) => {
+        if (!resposta?.success) {
+          this.toast.warning(String(resposta?.mensagem ?? 'Não foi possível autenticar.'), 'Atenção');
+          this.carregando = false;
+          return;
+        }
+
+        const dados = resposta.data;
+        if (!dados?.token) {
+          this.toast.warning(String(resposta?.mensagem ?? 'Não foi possível autenticar.'), 'Atenção');
+          this.carregando = false;
+          return;
+        }
+
+        this._aut.aplicarLogin(dados);
+        const mensagem = String(resposta?.mensagem ?? 'Login realizado com sucesso.');
         
         const tipo = String(dados?.tipo ?? '').trim().toLowerCase();
         const variosCliente = Boolean(dados?.variosCliente);
@@ -70,14 +89,17 @@ export class LoginComponent implements OnInit {
         if (tipo === 'cliente' && variosCliente && clientes.length > 1) {
           this.toast.success(mensagem, 'Sucesso');
           this._router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.returnUrl } });
+          this.carregando = false;
           return;
         }
 
         this.toast.success(mensagem, 'Sucesso');
         this._router.navigateByUrl(this.returnUrl);
+        this.carregando = false;
       },
       error: (mensagem) => {
         this.toast.error(String(mensagem ?? 'Falha ao realizar login.'), 'Erro');
+        this.carregando = false;
       },
     });
   }

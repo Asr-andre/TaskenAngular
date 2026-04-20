@@ -19,11 +19,6 @@ export interface DadosAutenticacao {
   }>;
 }
 
-export interface ResultadoLogin {
-  dados: DadosAutenticacao;
-  mensagem: string;
-}
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -45,36 +40,30 @@ export class AuthenticationService {
     return this.usuarioSubject.value;
   }
 
-  login(login: string, senha: string): Observable<ResultadoLogin> {
-    return this.http
-      .post<RespostaApi<DadosAutenticacao>>(this.urlToken, { login, senha }, httpOptions)
-      .pipe(
-        map((resposta) => {
-          if (!resposta?.success || !resposta?.data?.token) {
-            throw new Error(resposta?.mensagem || 'Não foi possível autenticar.');
-          }
+  login(login: string, senha: string): Observable<RespostaApi<DadosAutenticacao>> {
+    const payload = { login, senha };
 
-          const mensagem = String(resposta?.mensagem ?? 'Login realizado com sucesso.');
-          const dados = resposta.data;
-          sessionStorage.setItem(this.chaveUsuario, JSON.stringify(dados));
-          sessionStorage.setItem(this.chaveToken, dados.token);
-          sessionStorage.removeItem(this.chaveClienteSelecionado);
+    return this.http.post<RespostaApi<DadosAutenticacao>>(this.urlToken, payload, httpOptions).pipe(
+      catchError((erro: any) => {
+        const mensagem = erro?.error?.mensagem || erro?.error?.message || erro?.message || 'Falha ao realizar login.';
+        return throwError(() => mensagem);
+      })
+    );
+  }
 
-          if (this.normalizarTipo(dados.tipo) === 'cliente') {
-            const clientes = dados.clientes ?? [];
-            if (clientes.length === 1 && !dados.variosCliente) {
-              this.definirClienteSelecionadoId(clientes[0].clienteId);
-            }
-          }
+  aplicarLogin(dados: DadosAutenticacao): void {
+    sessionStorage.setItem(this.chaveUsuario, JSON.stringify(dados));
+    sessionStorage.setItem(this.chaveToken, dados.token);
+    sessionStorage.removeItem(this.chaveClienteSelecionado);
 
-          this.usuarioSubject.next(dados);
-          return { dados, mensagem };
-        }),
-        catchError((erro: any) => {
-          const mensagem = erro?.error?.mensagem || erro?.error?.message || erro?.message || 'Falha ao realizar login.';
-          return throwError(() => mensagem);
-        })
-      );
+    if (this.normalizarTipo(dados.tipo) === 'cliente') {
+      const clientes = dados.clientes ?? [];
+      if (clientes.length === 1 && !dados.variosCliente) {
+        this.definirClienteSelecionadoId(clientes[0].clienteId);
+      }
+    }
+
+    this.usuarioSubject.next(dados);
   }
 
   register(email: string, first_name: string, password: string): Observable<never> {
