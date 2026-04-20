@@ -43,6 +43,18 @@ export class TopbarComponent implements OnInit {
     this.messages = messages;
   }
 
+  get ocultaSininho(): boolean {
+    const usuario = this.authService.usuarioAtual;
+    if (!usuario) {
+      return false;
+    }
+    const tipo = this.normalizarTipo(usuario.tipo);
+    if (tipo !== 'cliente') {
+      return false;
+    }
+    return true;
+  }
+
   get mostrarClienteTopo(): boolean {
     const usuario = this.authService.usuarioAtual;
     if (!usuario) {
