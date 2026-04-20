@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 // Store
 import { rootReducer } from './store';
@@ -41,6 +42,12 @@ import { AuthenticationEffects } from './store/Authentication/authentication.eff
         BrowserModule,
         AppRoutingModule,
         LayoutsModule,
+        ToastrModule.forRoot({
+            positionClass: 'toast-top-right',
+            preventDuplicates: true,
+            closeButton: true,
+            progressBar: true
+        }),
         StoreModule.forRoot(rootReducer),
         StoreDevtoolsModule.instrument({
             maxAge: 25, // Retains last 25 states

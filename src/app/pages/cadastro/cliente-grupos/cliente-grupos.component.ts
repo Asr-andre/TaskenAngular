@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ClienteGrupo } from 'src/app/core/models/cliente-grupo.model';
 import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-cliente-grupos',
@@ -11,6 +12,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 })
 export class ClienteGruposComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
+  toast = inject(ToastService);
   carregando = true;
 
   termoBusca = '';
@@ -49,21 +51,18 @@ export class ClienteGruposComponent implements OnInit {
     this.carregando = true;
     this._clienteGrupo.listarTodos().subscribe({
       next: (resposta) => {
-        this.todosClienteGrupos = resposta?.data ?? [];
-        this.aplicarFiltro(true);
-        this.carregando = false;
+        if(resposta.success === true) {
+            this.todosClienteGrupos = resposta?.data ?? [];
+            this.aplicarFiltro(true);
+            this.carregando = false;
+            this.toast.success(resposta.mensagem , 'Sucesso');
+        } else {
+           this.toast.warning(resposta.mensagem, 'Atenção');
+        } 
       },
       error: () => {
-        this.todosClienteGrupos = [];
-        this.clienteGrupos = [];
-        this.clienteGruposFiltrados = [];
         this.carregando = false;
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível carregar os grupos de cliente.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível carregar os grupos de cliente', 'Error');
       },
     });
   }
