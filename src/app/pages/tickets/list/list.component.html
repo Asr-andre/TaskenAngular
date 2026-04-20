@@ -49,7 +49,7 @@
                         [(ngModel)]="filtroStatus"
                         (ngModelChange)="carregarChamados()"
                       />
-                      <label class="form-check-label" for="filtroChamadoAtivo">Ativo</label>
+                      <label class="form-check-label" for="filtroChamadoAtivo">Aberto</label>
                     </div>
                     <div class="form-check">
                       <input
@@ -101,27 +101,25 @@
                 <th>Inclusão</th>
                 <th>Última atualização</th>
                 <th class="text-end">Atraso</th>
-                <th class="text-end">Iterações</th>
               </tr>
             </thead>
             <tbody>
               @for (item of chamados; track item.chamadoId) {
-                <tr>
+                <tr (click)="abrirDetalhes(item)" class="cursor-pointer">
                   <td class="fw-medium">{{ item.chamadoId }}</td>
-                  <td class="text-truncate chamado-titulo" [title]="item.titulo ?? ''">{{ item.titulo }}</td>
+                  <td class="text-truncate chamado-titulo" [title]="item.titulo ?? ''"><span class="badge bg-primary-subtle text-primary">{{ item.qtdeIteracao ?? 0 }}</span> - {{ item.titulo ?? '-' }}</td>
                   <td>{{ item.fantasia }}</td>
                   <td>
                     @if ((item.status ?? '').toUpperCase() === 'F') {
-                      <span class="badge bg-success-subtle text-success">Fechado</span>
+                      <span class="badge bg-danger-subtle text-danger">Fechado</span>
                     } @else {
-                      <span class="badge bg-warning-subtle text-warning">Ativo</span>
+                      <span class="badge bg-success-subtle text-success">Aberto</span>
                     }
                   </td>
                   <td>{{ item.responsavel || '-' }}</td>
                   <td>{{ item.dataInclusao | date: 'dd/MM/yyyy' }}</td>
                   <td>{{ item.dataUltimaAtualizacao | date: 'dd/MM/yyyy HH:mm' }}</td>
                   <td class="text-end">{{ item.atraso ?? 0 }}</td>
-                  <td class="text-end">{{ item.qtdeIteracao ?? 0 }}</td>
                 </tr>
               }
             </tbody>
@@ -148,4 +146,3 @@
     </div>
   </div>
 </div>
-

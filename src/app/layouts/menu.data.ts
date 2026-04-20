@@ -72,17 +72,6 @@ export const MENU_UNIFICADO = [
     ],
   },
   {
-    id: 13,
-    label: 'Tarefas',
-    icon: 'ri-task-line',
-    isCollapsed: true,
-    subItems: [
-      { id: 131, label: 'Kanban', link: '/tasks/kanban', parentId: 13 },
-      { id: 132, label: 'Lista', link: '/tasks/list-view', parentId: 13 },
-      { id: 133, label: 'Detalhes', link: '/tasks/details', parentId: 13 },
-    ],
-  },
-  {
     id: 17,
     label: 'Tickets',
     icon: 'ri-customer-service-2-line',

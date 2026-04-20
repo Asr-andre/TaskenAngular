@@ -21,9 +21,6 @@ const routes: Routes = [
       path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
     },
     {
-      path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule)
-    },
-    {
       path: 'cadastro', loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
     },
     {

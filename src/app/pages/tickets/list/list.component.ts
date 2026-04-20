@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Chamado } from 'src/app/core/models/chamado.model';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 import { ChamadoService } from 'src/app/core/services/chamado.service';
@@ -29,7 +30,8 @@ export class ListComponent implements OnInit {
   constructor(
     public _paginacao: PaginationService,
     private _chamado: ChamadoService,
-    private _autenticacao: AuthenticationService
+    private _autenticacao: AuthenticationService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -124,5 +126,10 @@ export class ListComponent implements OnInit {
     this._paginacao.pageSize = quantidade;
     this.aplicarFiltro(true);
   }
-}
 
+  abrirDetalhes(chamado: Chamado) {
+    this._router.navigate(['/tickets/details', chamado.chamadoId], {
+      state: { chamado },
+    });
+  }
+}
