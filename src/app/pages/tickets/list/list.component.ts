@@ -70,7 +70,8 @@ export class ListComponent implements OnInit {
           this.carregando = false;
         } else {
           this.aplicarFiltro(true);
-          this.toast.error(String(resposta.mensagem), 'Erro');
+          this.carregando = false;
+          this.toast.warning(String(resposta.mensagem), 'Atenção');
         }
       },
       error: () => {
