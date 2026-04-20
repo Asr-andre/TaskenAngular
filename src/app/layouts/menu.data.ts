@@ -88,8 +88,7 @@ export const MENU_UNIFICADO = [
     icon: 'ri-customer-service-2-line',
     isCollapsed: true,
     subItems: [
-      { id: 171, label: 'Lista', link: '/tickets/list', parentId: 17 },
-      { id: 172, label: 'Detalhes', link: '/tickets/details', parentId: 17 },
+      { id: 171, label: 'Chamados', link: '/tickets/list', parentId: 17 },
     ],
   },
 
