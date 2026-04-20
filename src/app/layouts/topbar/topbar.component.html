@@ -138,6 +138,17 @@
                     </div>
                 </div>
 
+                @if (mostrarClienteTopo) {
+                    <div class="d-none d-xl-flex align-items-center ms-3">
+                        <span class="fw-medium badge bg-primary-subtle text-primary">Cliente: {{ clienteFantasia }}</span>
+                        @if (mostrarBotaoTrocarCliente) {
+                            <a href="javascript:void(0);" class="ms-2" (click)="trocarCliente()" ngbTooltip="Trocar cliente" placement="bottom">
+                                <i class="ri-arrow-go-back-line align-middle"></i>
+                            </a>
+                        }
+                    </div>
+                }
+
                 <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-toggle="fullscreen" (click)="fullscreen()">
                         <i class='bx bx-fullscreen fs-22'></i>

@@ -43,6 +43,53 @@ export class TopbarComponent implements OnInit {
     this.messages = messages;
   }
 
+  get mostrarClienteTopo(): boolean {
+    const usuario = this.authService.usuarioAtual;
+    if (!usuario) {
+      return false;
+    }
+    const tipo = this.normalizarTipo(usuario.tipo);
+    if (tipo !== 'cliente') {
+      return false;
+    }
+    if (usuario.variosCliente) {
+      return Boolean(this.authService.obterClienteSelecionadoId() && this.clienteFantasia);
+    }
+    return Boolean(this.clienteFantasia);
+  }
+
+  get clienteFantasia(): string {
+    const usuario = this.authService.usuarioAtual;
+    if (!usuario) {
+      return '';
+    }
+    const tipo = this.normalizarTipo(usuario.tipo);
+    if (tipo !== 'cliente') {
+      return '';
+    }
+    const clienteSelecionadoId = this.authService.obterClienteSelecionadoId();
+    const clientes = usuario.clientes ?? [];
+    const clienteSelecionado = clienteSelecionadoId ? clientes.find((c) => Number(c.clienteId) === Number(clienteSelecionadoId)) : null;
+    const fantasia = clienteSelecionado?.fantasia || (clientes.length === 1 ? clientes[0]?.fantasia : '');
+    return String(fantasia ?? '').trim();
+  }
+
+  get mostrarBotaoTrocarCliente(): boolean {
+    const usuario = this.authService.usuarioAtual;
+    if (!usuario) {
+      return false;
+    }
+    const tipo = this.normalizarTipo(usuario.tipo);
+    if (tipo !== 'cliente') {
+      return false;
+    }
+    return Boolean(usuario.variosCliente && this.authService.obterClienteSelecionadoId() && this.clienteFantasia);
+  }
+
+  trocarCliente() {
+    this.router.navigate(['/selecionar-cliente'], { queryParams: { returnUrl: this.router.url } });
+  }
+
   /**
    * Toggle the menu bar when having mobile screen
    */
@@ -122,6 +169,10 @@ export class TopbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/auth/login']);
+  }
+
+  private normalizarTipo(tipo: string): string {
+    return String(tipo ?? '').trim().toLowerCase();
   }
 
   windowScroll() {
