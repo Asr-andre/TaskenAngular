@@ -1,10 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { RespostaApi } from '../models/resposta-api.model';
-import { ToastService } from './toast.service';
 
 export interface DadosAutenticacao {
   login: string;
@@ -25,7 +24,6 @@ export class AuthenticationService {
   private readonly chaveToken = 'token';
   private readonly chaveClienteSelecionado = 'clienteSelecionadoId';
   private readonly urlToken = `${environment.apiUrl}/api/Auth/Token`;
-  private readonly toast = inject(ToastService);
 
   private readonly usuarioSubject: BehaviorSubject<DadosAutenticacao | null>;
 
@@ -60,7 +58,6 @@ export class AuthenticationService {
         }),
         catchError((erro: any) => {
           const mensagem = erro?.error?.mensagem || erro?.error?.message || erro?.message || 'Falha ao realizar login.';
-          this.toast.error(String(mensagem), 'Erro');
           return throwError(() => mensagem);
         })
       );

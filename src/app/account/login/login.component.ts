@@ -76,7 +76,9 @@ export class LoginComponent implements OnInit {
         this.toast.success('Login realizado com sucesso.', 'Sucesso');
         this.router.navigateByUrl(this.returnUrl);
       },
-      error: () => {},
+      error: (mensagem) => {
+        this.toast.error(String(mensagem ?? 'Falha ao realizar login.'), 'Erro');
+      },
     });
   }
 
