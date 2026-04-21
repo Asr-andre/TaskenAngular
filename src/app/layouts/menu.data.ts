@@ -12,21 +12,9 @@ export const MENU_UNIFICADO = [
     subItems: [
       { id: 31, label: 'Painel', link: '/dashboard', parentId: 3, },
       { id: 32, label: 'Analytics', link: '/analytics', parentId: 3, },
-      { id: 33, label: 'Projetos', link: '/projects', parentId: 3, },
       { id: 34, label: 'NFT', link: '/nft', parentId: 3, },
       { id: 35, label: 'Vagas', link: '/job', parentId: 3, },
       { id: 36, label: 'Blog', link: '/dashboard-blog', parentId: 3, },
-    ],
-  },
-  {
-    id: 12,
-    label: 'Projetos',
-    icon: 'ri-folder-3-line',
-    isCollapsed: true,
-    subItems: [
-      { id: 121, label: 'Lista', link: '/projects/list', parentId: 12 },
-      { id: 122, label: 'Visão geral', link: '/projects/overview', parentId: 12 },
-      { id: 123, label: 'Criar', link: '/projects/create', parentId: 12 },
     ],
   },
   {

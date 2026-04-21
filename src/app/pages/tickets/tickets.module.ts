@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbTooltipModule, NgbNavModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Counter
 import { CountUpModule } from 'ngx-countup';
@@ -36,6 +36,8 @@ import { DatePipe } from '@angular/common';
     NgbTypeaheadModule,
     NgbDropdownModule,
     NgbTooltipModule,
+    NgbNavModule,
+    NgbModalModule,
     CountUpModule,
     FlatpickrModule,
     SimplebarAngularModule,

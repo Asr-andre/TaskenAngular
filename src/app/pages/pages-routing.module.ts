@@ -20,9 +20,6 @@ const routes: Routes = [
       path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
     },
     {
-      path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
-    },
-    {
       path: 'cadastro', loadChildren: () => import('./cadastro/cadastro.module').then(m => m.CadastroModule)
     },
     {

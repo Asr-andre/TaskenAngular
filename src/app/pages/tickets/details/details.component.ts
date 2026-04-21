@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Chamado } from 'src/app/core/models/chamado.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { projectDocument, ProjectTeam } from 'src/app/core/data';
 
 @Component({
   selector: 'app-details',
@@ -14,24 +15,26 @@ import { Chamado } from 'src/app/core/models/chamado.model';
  */
 export class DetailsComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
-  chamado: Chamado | null = null;
+  projectListWidgets!: any;
+  teamOverviewList: any;
+  submitted = false;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
     this.breadCrumbItems = [{ label: 'Tickets' }, { label: 'Detalhes', active: true }];
-
-    const navigation = this.router.getCurrentNavigation();
-    const chamadoState = navigation?.extras?.state?.['chamado'] as Chamado | undefined;
-    const chamadoId = Number(this.route.snapshot.paramMap.get('id'));
-
-    if (chamadoState && Number(chamadoState.chamadoId) === chamadoId) {
-      this.chamado = chamadoState;
-      return;
-    }
+    this.projectListWidgets = projectDocument;
+    this.teamOverviewList = ProjectTeam;
   }
 
+  openModal(content: any) {
+    this.submitted = false;
+    this.modalService.open(content, { size: 'md', centered: true });
+  }
+
+  activeMenu(id: any) {
+    document.querySelector('.star_' + id)?.classList.toggle('active');
+  }
 }

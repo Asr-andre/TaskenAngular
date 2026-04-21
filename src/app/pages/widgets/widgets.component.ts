@@ -61,12 +61,12 @@ export class WidgetsComponent implements OnInit {
       link: '/cadastro/clientes',
     },
     {
-      title: 'Projetos',
+      title: 'Tickets fechados',
       value: '7',
-      icon: 'ri-folder-3-line',
+      icon: 'ri-checkbox-circle-line',
       persantage: '-1.2%',
       profit: 'down',
-      link: '/projects/list',
+      link: '/tickets/list',
     },
     {
       title: 'SLA no prazo',
@@ -81,7 +81,7 @@ export class WidgetsComponent implements OnInit {
   topPages = [
     { page: '/tickets/list', active: '1m', users: '132' },
     { page: '/cadastro/clientes', active: '2m', users: '84' },
-    { page: '/projects/list', active: '45s', users: '61' },
+    { page: '/dashboard', active: '45s', users: '61' },
   ];
 
   dealsStatus = [
@@ -94,4 +94,3 @@ export class WidgetsComponent implements OnInit {
     this.breadCrumbItems = [{ label: 'Componentes' }, { label: 'Widgets', active: true }];
   }
 }
-
