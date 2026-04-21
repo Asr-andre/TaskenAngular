@@ -12,9 +12,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
-// Swiper Slider
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-
 import { LightboxModule } from 'ngx-lightbox';
 
 // Load Icons
@@ -51,7 +48,6 @@ import { DashboardsModule } from "./dashboards/dashboards.module";
     PagesRoutingModule,
     SharedModule,
     WidgetModule,
-    SlickCarouselModule,
     LightboxModule,
     DashboardsModule,
   ],

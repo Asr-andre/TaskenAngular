@@ -14,8 +14,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { SimplebarAngularModule } from 'simplebar-angular';
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';
-// Swiper Slider
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 // Flat Picker
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -50,7 +48,6 @@ import { JobComponent } from './job/job.component';
     NgbNavModule,
     SimplebarAngularModule,
     NgApexchartsModule,
-    SlickCarouselModule,
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
     SharedModule,

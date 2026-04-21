@@ -38,17 +38,12 @@
               "node_modules/shepherd.js/dist/css/shepherd.css",
               "node_modules/flatpickr/dist/flatpickr.css",
               "src/styles.scss",
-              "node_modules/slick-carousel/slick/slick.scss",
-              "node_modules/slick-carousel/slick/slick-theme.scss",
               "node_modules/@ctrl/ngx-emoji-mart/picker.css",
               "src/assets/scss/config/default/bootstrap.scss",
               "src/assets/scss/config/default/app.scss",
               "src/assets/scss/icons.scss"
             ],
-            "scripts":[
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/slick-carousel/slick/slick.min.js"
-            ],
+            "scripts": [],
             "allowedCommonJsDependencies": [
               "ev-emitter/ev-emitter",
               "can-use-dom",

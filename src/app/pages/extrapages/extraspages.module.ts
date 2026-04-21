@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbNavModule, NgbDropdownModule, NgbAccordionModule, NgbTooltipModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Swiper Slider
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-
 // Select Droup down
 import { NgSelectModule } from '@ng-select/ng-select';
 // Flatpicker
@@ -62,7 +59,6 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     NgbAccordionModule,
     NgbTooltipModule,
     NgbPaginationModule,
-    SlickCarouselModule,
     NgSelectModule,
     FlatpickrModule,
     ExtraPagesRoutingModule,

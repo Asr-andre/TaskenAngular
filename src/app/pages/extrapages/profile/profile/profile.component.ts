@@ -47,23 +47,6 @@ export class ProfileComponent {
     this.allprojectList = projectList;
   }
 
-  /**
-   * Swiper setting
-   */
-  config = {
-    slidesPerView: 3,
-    initialSlide: 0,
-    spaceBetween: 25,
-    breakpoints: {
-      768: {
-        slidesPerView: 2,
-      },
-      1200: {
-        slidesPerView: 3,
-      }
-    }
-  };
-
   // Pagination
   changePage() {
     this.projectList = this.service.changePage(this.allprojectList)

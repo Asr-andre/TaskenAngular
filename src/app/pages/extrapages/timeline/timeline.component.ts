@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-timeline',
@@ -27,16 +25,4 @@ export class TimelineComponent implements OnInit {
       { label: 'Timeline', active: true }
     ];
   }
-
-  /**
- * Swiper setting
- */
-  config = {
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: false
-  };
-
 }

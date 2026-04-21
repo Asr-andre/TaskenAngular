@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Light Box
 import { Lightbox } from 'ngx-lightbox';
@@ -51,17 +51,6 @@ export class SearchResultsComponent implements OnInit {
 
     // Chat Data Get Function
     this._fetchData();
-
-    setTimeout(() => {
-      this.slideConfig = {
-        infinite: true,
-        slidesToShow: 6,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 100,
-        arrows: false
-      };
-    }, 0);
   }
 
   // Chat Data Fetch
@@ -77,19 +66,5 @@ export class SearchResultsComponent implements OnInit {
     // open lightbox
     this.lightbox.open(this.images, index, {});
   }
-
-
-  /**
-   * Swiper setting
-   */
-  slideConfig = {
-    infinite: true,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 100,
-    arrows: false
-  };
-
 
 }

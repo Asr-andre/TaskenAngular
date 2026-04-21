@@ -159,28 +159,6 @@ export class NftComponent implements OnInit {
     }
 
     /**
-     * Swiper Responsive setting
-     */
-    public Responsive = {
-        infinite: true,
-        slidesToShow: 3,
-        autoplay: true,
-        dots: false,
-        arrows: true,
-    };
-
-    /**
-     * Top CollectionSwiper Responsive setting
-     */
-    public collection = {
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        arrows: false
-    };
-
-    /**
     * Market Place Chart
     */
     setmarketplacevalue(value: any) {

@@ -328,19 +328,6 @@ export class DashboardComponent implements OnInit {
   ];
 
   /**
- * Swiper Vertical  
-   */
-  Vertical = {
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    arrows: false,
-    vertical: true // Enable vertical sliding
-  };
-
-  /**
    * Recent Activity
    */
   toggleActivity() {
