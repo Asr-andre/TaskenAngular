@@ -23,18 +23,6 @@
     --#{$prefix}page-title-box-shadow:                              #{$page-title-box-shadow};
     --#{$prefix}page-title-border:                                  #{$page-title-border};
     
-    // Topbar - Dark
-    &[data-topbar="dark"] {
-        --#{$prefix}header-bg:                                      #{$dark-header-bg};
-        --#{$prefix}header-item-color:                              #{$dark-header-item-color};
-        --#{$prefix}header-item-bg:                                 #{$dark-header-item-bg};
-        --#{$prefix}header-item-sub-color:                          #{$dark-header-item-sub-color};
-        --#{$prefix}topbar-user-bg:                                 #{$dark-topbar-user-bg};
-        --#{$prefix}topbar-search-bg:                               #{$dark-topbar-search-bg};
-        --#{$prefix}topbar-search-color:                            #{$dark-topbar-search-color};
-        --#{$prefix}header-border:                                  #{$dark-header-border};
-    }
-    
     // Horizontal nav
     --#{$prefix}topnav-bg:                                          #{$twocolumn-menu-iconview-bg};
     --#{$prefix}topnav-item-color:                                  #{$topnav-item-color};
@@ -58,6 +46,18 @@
     //form
         --#{$prefix}input-bg-custom:                                #{$input-bg-custom};
         --#{$prefix}input-border-custom:                            #{$input-border-custom};
+
+    // Topbar - Dark
+    &[data-topbar="dark"] {
+        --#{$prefix}header-bg:                                      #{$dark-header-bg};
+        --#{$prefix}header-item-color:                              #{$dark-header-item-color};
+        --#{$prefix}header-item-bg:                                 #{$dark-header-item-bg};
+        --#{$prefix}header-item-sub-color:                          #{$dark-header-item-sub-color};
+        --#{$prefix}topbar-user-bg:                                 #{$dark-topbar-user-bg};
+        --#{$prefix}topbar-search-bg:                               #{$dark-topbar-search-bg};
+        --#{$prefix}topbar-search-color:                            #{$dark-topbar-search-color};
+        --#{$prefix}header-border:                                  #{$dark-header-border};
+    }
 }
 
 //sidebar light theme
@@ -178,6 +178,10 @@
         
         // boxed 
         --#{$prefix}boxed-body-bg:                                  #{$boxed-body-bg-dark};
+
+        //form
+        --#{$prefix}input-bg-custom:                                #{$input-bg-custom-dark};
+        --#{$prefix}input-border-custom:                            #{$input-border-custom-dark};
         
         .table-light {
             --#{$prefix}table-color:                                #{lighten($light-dark, 100%)};
@@ -217,10 +221,6 @@
             --#{$prefix}dropdown-link-active-color:                 #{$dropdown-link-active-color-dark};
             --#{$prefix}dropdown-link-active-bg:                    #{$dropdown-link-active-bg-dark};
         }
-
-        //form
-        --#{$prefix}input-bg-custom:                                #{$input-bg-custom-dark};
-        --#{$prefix}input-border-custom:                            #{$input-border-custom-dark};
     }
 }
 

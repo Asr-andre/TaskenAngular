@@ -258,11 +258,11 @@
         }
 
         .completed {
+            background-color: var(--vz-light);//rgba(var(--vz-primary-rgb), 0.15);
+
             .nav-link {
                 color: var(--vz-primary);
             }
-
-            background-color: var(--vz-light);//rgba(var(--vz-primary-rgb), 0.15);
         }
 
         .active {
@@ -306,31 +306,31 @@
                 border-radius: 0.25rem;
 
                 &.active {
+                    border-color: rgba(var(--vz-primary-rgb), 1);
+
                     .nav-link {
+                        color: var(--vz-primary);
+
                         .step-title {
                             i {
                                 color: var(--vz-primary);
                             }
                         }
-
-                        color: var(--vz-primary);
                     }
-
-                    border-color: rgba(var(--vz-primary-rgb), 1);
                 }
 
                 &.completed {
+                    border-color: rgba(var(--vz-success-rgb), 1);
+
                     .nav-link {
+                        color: var(--vz-success);
+
                         .step-title {
                             i {
                                 color: var(--vz-success);
                             }
                         }
-
-                        color: var(--vz-success);
                     }
-
-                    border-color: rgba(var(--vz-success-rgb), 1);
                 }
             }
         }

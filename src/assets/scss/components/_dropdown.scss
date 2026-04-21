@@ -117,11 +117,11 @@
         border: 0;
 
         .nav-link {
+            color: rgba($white, 0.6);
+
             &::after {
                 display: none;
             }
-
-            color: rgba($white, 0.6);
 
             &.active {
                 background-color: var(--#{$prefix}dropdown-bg);
