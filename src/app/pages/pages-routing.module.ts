@@ -7,12 +7,10 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     {
-        path: "",
-        component: HomeComponent
+        path: "", component: HomeComponent
     },
     {
-      path: "dashboard",
-      component: DashboardComponent
+      path: "dashboard", component: DashboardComponent
     },
     {
       path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
@@ -34,13 +32,7 @@ const routes: Routes = [
     },
     { path: 'ui', loadChildren: () => import('./ui/ui.module').then(m => m.UiModule) },
     {
-      path: 'advance-ui', loadChildren: () => import('./advance-ui/advance-ui.module').then(m => m.AdvanceUiModule)
-    },
-    {
       path: 'forms', loadChildren: () => import('./form/form.module').then(m => m.FormModule)
-    },
-    {
-      path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule)
     },
     {
       path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)

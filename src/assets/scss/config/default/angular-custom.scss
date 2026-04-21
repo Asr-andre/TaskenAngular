@@ -110,6 +110,24 @@ File: Custom Css File
   }
 }
 
+[data-layout="horizontal"] {
+  .navbar-menu {
+    .navbar-nav {
+      > li:nth-of-type(1) {
+        > .nav-link.menu-link {
+          padding-left: 0;
+        }
+      }
+
+      > li:nth-of-type(2) {
+        > .nav-link.menu-link {
+          padding-left: $horizontal-menu-item-padding-x;
+        }
+      }
+    }
+  }
+}
+
 // [data-layout="horizontal"] .main-content{
 //   min-height: 100vh;
 // }
