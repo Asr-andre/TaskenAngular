@@ -100,7 +100,7 @@
               <select class="form-select" formControlName="indicacaoId">
                 <option value="">Selecione...</option>
                 @for (i of indicacoes; track i.indicacaoId) {
-                  <option [value]="i.indicacaoId">{{ i.indicacaoId }} - {{ i.nome }}</option>
+                  <option [value]="i.indicacaoId">{{ i.nome }}</option>
                 }
               </select>
             </div>
