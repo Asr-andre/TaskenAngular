@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-closing-deals',
+  standalone: false,
   templateUrl: './closing-deals.component.html',
   styleUrls: ['./closing-deals.component.scss']
 })

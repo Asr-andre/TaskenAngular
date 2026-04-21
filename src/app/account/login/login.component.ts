@@ -7,6 +7,7 @@ import { ToastService } from '../../core/services/toast.service';
 
 @Component({
   selector: 'app-login',
+  standalone: false,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

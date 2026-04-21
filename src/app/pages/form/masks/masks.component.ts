@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-masks',
+  standalone: false,
   templateUrl: './masks.component.html',
   styleUrls: ['./masks.component.scss']
 })

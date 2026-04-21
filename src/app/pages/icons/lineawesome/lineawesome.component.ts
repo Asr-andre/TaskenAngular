@@ -3,6 +3,7 @@ import { ToastService } from '../toast-service';
 
 @Component({
   selector: 'app-lineawesome',
+  standalone: false,
   templateUrl: './lineawesome.component.html',
   styleUrls: ['./lineawesome.component.scss']
 })

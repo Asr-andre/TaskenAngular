@@ -7,6 +7,7 @@ import { AuthenticationService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-layout',
+  standalone: false,
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })

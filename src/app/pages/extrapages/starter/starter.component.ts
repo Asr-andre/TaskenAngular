@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-starter',
+  standalone: false,
   templateUrl: './starter.component.html',
   styleUrls: ['./starter.component.scss']
 })

@@ -7,6 +7,7 @@ import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service
 
 @Component({
   selector: 'app-cliente-grupo-modal',
+  standalone: false,
   templateUrl: './cliente-grupo-modal.component.html',
   styleUrls: ['./cliente-grupo-modal.component.scss'],
 })

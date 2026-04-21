@@ -7,6 +7,7 @@ import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-stat
 
 @Component({
   selector: 'app-operadores',
+  standalone: false,
   templateUrl: './operadores.component.html',
   styleUrls: ['./operadores.component.scss'],
 })

@@ -8,6 +8,7 @@ import { nftfeaturedData, nftpopularData, nftrecentData, nftstatData, nfttopColl
 
 @Component({
     selector: 'app-nft',
+  standalone: false,
     templateUrl: './nft.component.html',
     styleUrls: ['./nft.component.scss']
 })

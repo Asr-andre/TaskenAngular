@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-maintenance',
+  standalone: false,
   templateUrl: './maintenance.component.html',
   styleUrls: ['./maintenance.component.scss']
 })

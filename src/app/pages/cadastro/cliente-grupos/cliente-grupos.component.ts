@@ -6,6 +6,7 @@ import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-cliente-grupos',
+  standalone: false,
   templateUrl: './cliente-grupos.component.html',
   styleUrls: ['./cliente-grupos.component.scss'],
 })

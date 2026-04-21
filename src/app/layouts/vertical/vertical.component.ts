@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-vertical',
+  standalone: false,
   templateUrl: './vertical.component.html',
   styleUrls: ['./vertical.component.scss']
 })

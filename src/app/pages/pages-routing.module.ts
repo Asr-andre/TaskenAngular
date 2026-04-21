@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Component pages
 import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 import { HomeComponent } from './home/home.component';
+import { WidgetsComponent } from './widgets/widgets.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,9 @@ const routes: Routes = [
     },
     {
       path: "dashboard", component: DashboardComponent
+    },
+    {
+      path: "widgets", component: WidgetsComponent
     },
     {
       path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)

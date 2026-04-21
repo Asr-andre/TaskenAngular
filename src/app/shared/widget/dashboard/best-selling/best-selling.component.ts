@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-best-selling',
+  standalone: false,
   templateUrl: './best-selling.component.html',
   styleUrls: ['./best-selling.component.scss']
 })

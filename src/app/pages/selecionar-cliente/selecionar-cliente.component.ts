@@ -11,6 +11,7 @@ type ClienteSelecionavel = {
 
 @Component({
   selector: 'app-selecionar-cliente',
+  standalone: false,
   templateUrl: './selecionar-cliente.component.html',
   styleUrls: ['./selecionar-cliente.component.scss'],
 })

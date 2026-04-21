@@ -5,6 +5,7 @@ import { projectDocument, ProjectTeam } from 'src/app/core/data';
 
 @Component({
   selector: 'app-overview',
+  standalone: false,
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
 })

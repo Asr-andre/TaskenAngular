@@ -26,13 +26,15 @@ import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
+import { WidgetsComponent } from './widgets/widgets.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ToastsContainer,
-    HomeComponent
+    HomeComponent,
+    WidgetsComponent
   ],
   imports: [
     CommonModule,

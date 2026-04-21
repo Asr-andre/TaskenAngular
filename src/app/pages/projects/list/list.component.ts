@@ -11,6 +11,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-list',
+  standalone: false,
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })

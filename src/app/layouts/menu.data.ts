@@ -124,6 +124,12 @@ export const MENU_UNIFICADO = [
     ],
   },
   {
+    id: 3100,
+    label: 'Widgets',
+    icon: 'ri-layout-masonry-line',
+    link: '/widgets',
+  },
+  {
     id: 3200,
     label: 'Formulários',
     icon: 'ri-file-edit-line',

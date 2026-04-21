@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-placeholder',
+  standalone: false,
   templateUrl: './placeholder.component.html',
   styleUrls: ['./placeholder.component.scss']
 })

@@ -3,6 +3,7 @@ import { remixicons } from 'src/app/core/data';
 
 @Component({
   selector: 'app-remix',
+  standalone: false,
   templateUrl: './remix.component.html',
   styleUrls: ['./remix.component.scss']
 })

@@ -7,6 +7,7 @@ import { IndicacaoService } from 'src/app/core/services/indicacao.service';
 
 @Component({
   selector: 'app-indicacao-modal',
+  standalone: false,
   templateUrl: './indicacao-modal.component.html',
   styleUrls: ['./indicacao-modal.component.scss'],
 })

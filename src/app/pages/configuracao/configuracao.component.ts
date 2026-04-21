@@ -24,6 +24,7 @@ import {
 
 @Component({
   selector: 'app-configuracao',
+  standalone: false,
   templateUrl: './configuracao.component.html',
   styleUrls: ['./configuracao.component.scss'],
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-terms-condition',
+  standalone: false,
   templateUrl: './terms-condition.component.html',
   styleUrls: ['./terms-condition.component.scss']
 })

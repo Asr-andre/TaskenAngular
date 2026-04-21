@@ -6,6 +6,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 
 @Component({
   selector: 'app-indicacoes',
+  standalone: false,
   templateUrl: './indicacoes.component.html',
   styleUrls: ['./indicacoes.component.scss'],
 })
@@ -110,4 +111,3 @@ export class IndicacoesComponent implements OnInit {
     this.indicacoes = this._paginacao.onSort(coluna, this.indicacoes);
   }
 }
-

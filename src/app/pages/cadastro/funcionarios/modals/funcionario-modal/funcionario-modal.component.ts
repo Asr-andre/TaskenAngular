@@ -9,6 +9,7 @@ import { OperadorService } from 'src/app/core/services/operador.service';
 
 @Component({
   selector: 'app-funcionario-modal',
+  standalone: false,
   templateUrl: './funcionario-modal.component.html',
   styleUrls: ['./funcionario-modal.component.scss'],
 })

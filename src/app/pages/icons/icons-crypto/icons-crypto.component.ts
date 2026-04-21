@@ -3,6 +3,7 @@ import { ToastService } from '../toast-service';
 
 @Component({
   selector: 'app-icons-crypto',
+  standalone: false,
   templateUrl: './icons-crypto.component.html',
   styleUrls: ['./icons-crypto.component.scss']
 })

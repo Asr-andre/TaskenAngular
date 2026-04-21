@@ -4,6 +4,7 @@ import { ToastService } from './toast-service';
 
 @Component({
   selector: 'app-boxicons',
+  standalone: false,
   templateUrl: './boxicons.component.html',
   styleUrls: ['./boxicons.component.scss']
 })

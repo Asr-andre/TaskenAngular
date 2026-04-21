@@ -16,6 +16,7 @@ type ContatoUi = ClienteContato & { _novo?: boolean; _editado?: boolean };
 
 @Component({
   selector: 'app-cliente-form',
+  standalone: false,
   templateUrl: './cliente-form.component.html',
   styleUrls: ['./cliente-form.component.scss'],
 })

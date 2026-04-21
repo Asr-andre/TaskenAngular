@@ -12,6 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-topbar',
+  standalone: false,
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss']
 })

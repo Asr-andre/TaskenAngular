@@ -4,6 +4,7 @@ import { TokenStorageService } from '../../../../core/services/token-storage.ser
 
 @Component({
   selector: 'app-settings',
+  standalone: false,
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })

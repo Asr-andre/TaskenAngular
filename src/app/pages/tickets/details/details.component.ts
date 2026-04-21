@@ -4,6 +4,7 @@ import { Chamado } from 'src/app/core/models/chamado.model';
 
 @Component({
   selector: 'app-details',
+  standalone: false,
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
