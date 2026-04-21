@@ -1,5 +1,3 @@
-import { EventInput } from '@fullcalendar/core';
-
 let eventGuid = 0;
 export function createEventId() {
     return String(eventGuid++);
@@ -35,7 +33,7 @@ var date = new Date();
 var d = date.getDate();
 var m = date.getMonth();
 var y = date.getFullYear();
-const calendarEvents: EventInput[] = [
+const calendarEvents: any[] = [
     {
         id: createEventId(),
         title: "All Day Event 1",

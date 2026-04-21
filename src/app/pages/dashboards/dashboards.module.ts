@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   NgbToastModule
 } from '@ng-bootstrap/ng-bootstrap';
-import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbNavModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationModule, NgbTypeaheadModule, NgbDropdownModule, NgbNavModule, NgbTooltipModule, NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Feather Icon
@@ -22,7 +22,6 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 //Module
 import { DashboardsRoutingModule } from "./dashboards-routing.module";
 import { SharedModule } from '../../shared/shared.module';
-import { WidgetModule } from '../../shared/widget/widget.module';
 
 
 // Component
@@ -51,9 +50,9 @@ import { JobComponent } from './job/job.component';
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
     SharedModule,
-    WidgetModule,
     NgbPaginationModule,
     NgbTypeaheadModule,
+    NgbProgressbarModule,
     FormsModule,
     ReactiveFormsModule,
     NgbTooltipModule

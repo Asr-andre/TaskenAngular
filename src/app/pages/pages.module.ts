@@ -21,7 +21,6 @@ import lottie from 'lottie-web';
 // Pages Routing
 import { PagesRoutingModule } from "./pages-routing.module";
 import { SharedModule } from "../shared/shared.module";
-import { WidgetModule } from '../shared/widget/widget.module';
 import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { HomeComponent } from './home/home.component';
@@ -49,7 +48,6 @@ import { WidgetsComponent } from './widgets/widgets.component';
     SimplebarAngularModule,
     PagesRoutingModule,
     SharedModule,
-    WidgetModule,
     LightboxModule,
     DashboardsModule,
   ],

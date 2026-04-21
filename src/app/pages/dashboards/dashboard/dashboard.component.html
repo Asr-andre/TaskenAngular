@@ -42,7 +42,38 @@
             <div class="row">
                 @for (stat of statData; track $index) {
                 <div class="col-xl-3 col-md-6">
-                    <app-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon" [persantage]="stat.persantage" [profit]="stat.profit" [link]="stat.link"></app-stat>
+                    <div class="card card-animate">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-0">{{stat.title}}</p>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <h5 class="fs-14 mb-0" [ngClass]=" {'text-success': stat.profit === 'up', 'text-danger': stat.profit === 'down', 'text-muted': stat.profit === 'equal'}">
+                                        <i class="fs-13 align-middle float-start" [ngClass]=" {'ri-arrow-right-up-line': stat.profit === 'up', 'ri-arrow-right-down-line': stat.profit === 'down'}"></i>
+                                        @if(stat.profit == 'up' || stat.profit == 'equal'){ <span>+</span> } @else { <span>-</span> }
+                                        {{stat.persantage}} %
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-end justify-content-between mt-4">
+                                <div>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">
+                                        @if(stat.title == 'TOTAL EARNINGS' || stat.title == 'MY BALANCE'){ <span>$</span> }
+                                        <span [countUp]="stat.value" class="counter-value" [options]="option"></span>
+                                        @if(stat.title == 'TOTAL EARNINGS' || stat.title == 'MY BALANCE'){ <span>K</span> }
+                                        @if(stat.title == 'CUSTOMERS'){ <span>M</span> }
+                                    </h4>
+                                    <a href="javascript:void(0);" class="text-decoration-underline">{{stat.link}}</a>
+                                </div>
+                                <div class="avatar-sm flex-shrink-0">
+                                    <span class="avatar-title rounded fs-3" [ngClass]=" { 'bg-success-subtle': stat.icon === 'bx-dollar-circle', 'bg-info-subtle': stat.icon === 'bx-shopping-bag', 'bg-warning-subtle ': stat.icon === 'bx-user-circle', 'bg-primary-subtle ': stat.icon === 'bx-wallet'}">
+                                        <i class="bx {{stat.icon}}" [ngClass]=" { 'text-success': stat.icon === 'bx-dollar-circle', 'text-info': stat.icon === 'bx-shopping-bag', 'text-warning ': stat.icon === 'bx-user-circle', 'text-primary ': stat.icon === 'bx-wallet'}"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 }
             </div> <!-- end row-->
@@ -178,7 +209,45 @@
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
-                                <app-best-selling [BestSelling]="BestSelling"></app-best-selling>
+                                <table class="table table-hover table-centered align-middle table-nowrap mb-0">
+                                    <tbody>
+                                        @for (data of BestSelling; track $index) {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                        <img src="{{data.image}}" alt="" class="img-fluid d-block" />
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="fs-14 my-1"><a href="javascript:void(0);" class="text-reset">{{data.pName}}</a></h5>
+                                                        <span class="text-muted">{{data.date}}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <h5 class="fs-14 my-1 fw-normal">${{data.price}}</h5>
+                                                <span class="text-muted">Price</span>
+                                            </td>
+                                            <td>
+                                                <h5 class="fs-14 my-1 fw-normal">{{data.orders}}</h5>
+                                                <span class="text-muted">Orders</span>
+                                            </td>
+                                            <td>
+                                                @if(data.stock == 'Out of stock'){
+                                                <h5 class="fs-14 my-1 fw-normal"><span class="badge bg-danger-subtle text-danger">{{data.stock}}</span></h5>
+                                                } @else {
+                                                <h5 class="fs-14 my-1 fw-normal">{{data.stock}}</h5>
+                                                }
+                                                <span class="text-muted">Stock</span>
+                                            </td>
+                                            <td>
+                                                <h5 class="fs-14 my-1 fw-normal">${{data.amount}}</h5>
+                                                <span class="text-muted">Amount</span>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
 
                             <div class="align-items-center mt-4 pt-2 justify-content-between d-flex">
@@ -231,7 +300,38 @@
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
-                                <app-top-selling [TopSelling]="TopSelling"></app-top-selling>
+                                <table class="table table-hover table-centered align-middle table-nowrap mb-0">
+                                    <tbody>
+                                        @for ( data of TopSelling; track $index) {
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0 me-2">
+                                                        <img src="{{data.image}}" alt="" class="avatar-sm p-2" />
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="fs-14 my-1 fw-medium"><a href="javascript:void(0);" class="text-reset">{{data.pName}}</a></h5>
+                                                        <span class="text-muted">{{data.subtitle}}</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">{{data.type}}</span>
+                                            </td>
+                                            <td>
+                                                <p class="mb-0">{{data.stock}}</p>
+                                                <span class="text-muted">Stock</span>
+                                            </td>
+                                            <td>
+                                                <span class="text-muted">${{data.amount}}</span>
+                                            </td>
+                                            <td>
+                                                <h5 class="fs-14 mb-0">{{data.percentage}}%<i class="ri-bar-chart-fill text-success fs-16 align-middle mx-2"></i></h5>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
 
                             <div class="align-items-center mt-4 pt-2 justify-content-between d-flex">
@@ -303,7 +403,47 @@
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
-                                <app-recent-orders [Recentelling]="Recentelling"></app-recent-orders>
+                                <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                    <thead class="text-muted table-light">
+                                        <tr>
+                                            <th scope="col">Order ID</th>
+                                            <th scope="col">Customer</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Vendor</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for ( data of Recentelling; track $index) {
+                                        <tr>
+                                            <td>
+                                                <a href="javascript:void(0);" class="fw-medium link-primary">{{data.id}}</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0 me-2">
+                                                        <img src="{{data.image}}" alt="" class="avatar-xs rounded-circle" />
+                                                    </div>
+                                                    <div class="flex-grow-1">{{data.customer}}</div>
+                                                </div>
+                                            </td>
+                                            <td>{{data.product}}</td>
+                                            <td>
+                                                <span class="text-success">${{data.amount}}</span>
+                                            </td>
+                                            <td>{{data.vendor}}</td>
+                                            <td>
+                                                <span class="badge bg-success-subtle text-success" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Pending', 'bg-danger-subtle text-danger': data.status === 'Unpaid'}">{{data.status}}</span>
+                                            </td>
+                                            <td>
+                                                <h5 class="fs-14 fw-medium mb-0">{{data.rating}}<span class="text-muted fs-11 ms-1">({{data.average}} votes)</span></h5>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div> <!-- .card-->

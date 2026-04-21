@@ -28,16 +28,6 @@ const routes: Routes = [
     {
       path: 'tickets', loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsModule)
     },
-    {
-      path: 'pages', loadChildren: () => import('./extrapages/extraspages.module').then(m => m.ExtraspagesModule)
-    },
-    { path: 'ui', loadChildren: () => import('./ui/ui.module').then(m => m.UiModule) },
-    {
-      path: 'forms', loadChildren: () => import('./form/form.module').then(m => m.FormModule)
-    },
-    {
-      path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule)
-    },
 ];
 
 @NgModule({

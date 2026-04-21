@@ -9,7 +9,7 @@
 }
 
 .home-logo {
-  max-width: 380px;
+  max-width: 600px;
   width: 100%;
   height: auto;
 }
@@ -17,9 +17,11 @@
 .home-link {
   color: #0f2b46;
   font-weight: 500;
+  font-size: 18px;
   text-decoration: none;
+
 }
 
 .home-link:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }

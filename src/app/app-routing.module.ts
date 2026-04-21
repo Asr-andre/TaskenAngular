@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'selecionar-cliente', loadChildren: () => import('./pages/selecionar-cliente/selecionar-cliente.module').then(m => m.SelecionarClienteModule), canActivate: [AuthGuard] },
   { path: '', component: LayoutComponent, loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: () => import('./account/account.module').then(m => m.AccountModule)  },
-  { path: 'pages', loadChildren: () => import('./extraspages/extraspages.module').then(m => m.ExtraspagesModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

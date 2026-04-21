@@ -7,7 +7,25 @@
         <div class="row">
             @for ( stat of statData; track $index) {
             <div class="col-lg-4">
-                <app-projects-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon" [persantage]="stat.persantage" [profit]="stat.profit" [month]="stat.month"></app-projects-stat>
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-sm flex-shrink-0">
+                                <span class="avatar-title  text-primary rounded-2 fs-2" [ngClass]=" { 'bg-primary-subtle': stat.icon === 'briefcase', 'bg-warning-subtle': stat.icon === 'award', 'bg-info-subtle': stat.icon === 'clock'}">
+                                    <i-feather name="{{stat.icon}}" class="feather-icon-align" [ngClass]=" { 'text-primary': stat.icon === 'briefcase', 'text-warning': stat.icon === 'award', 'text-info': stat.icon === 'clock'}"></i-feather>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden ms-3">
+                                <p class="text-uppercase fw-medium text-muted text-truncate mb-3">{{stat.title}}</p>
+                                <div class="d-flex align-items-center mb-3">
+                                    <h4 class="fs-4 flex-grow-1 mb-0"><span [countUp]="stat.value" class="counter-value" [options]="option"></span></h4>
+                                    <span class="badge fs-12" [ngClass]=" {'bg-success-subtle text-success': stat.profit === 'up', 'bg-danger-subtle text-danger': stat.profit === 'down'}"><i class="fs-13 align-middle me-1" [ngClass]=" {'ri-arrow-up-s-line': stat.profit === 'up', 'ri-arrow-down-s-line': stat.profit === 'down'}"></i>{{stat.persantage}} %</span>
+                                </div>
+                                <p class="text-muted text-truncate mb-0">{{stat.month}} this month</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div><!-- end col -->
             }
         </div><!-- end row -->
@@ -160,7 +178,49 @@
             </div><!-- end cardheader -->
             <div class="card-body">
                 <div class="table-responsive table-card">
-                    <app-active-project [ActiveProjects]="ActiveProjects"></app-active-project>
+                    <table class="table table-nowrap table-centered align-middle">
+                        <thead class="bg-light text-muted">
+                            <tr>
+                                <th scope="col">Project Name</th>
+                                <th scope="col">Project Lead</th>
+                                <th scope="col">Progress</th>
+                                <th scope="col">Assignee</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" style="width: 10%;">Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (data of ActiveProjects; track $index) {
+                            <tr>
+                                <td class="fw-medium">{{data.Pname}}</td>
+                                <td>
+                                    <img src="{{data.profile}}" class="avatar-xxs rounded-circle me-1" alt="">
+                                    <a href="javascript: void(0);" class="text-reset">{{data.Uname}}</a>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-1 text-muted fs-13">{{data.progress}}%</div>
+                                        <ngb-progressbar [value]="data.progress" [striped]="true" class="progress progress-sm  flex-grow-1" style="height: 6px;"></ngb-progressbar>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="avatar-group flex-nowrap">
+                                        @for ( user of data.assignee; track $index) {
+                                        <div class="avatar-group-item">
+                                            <a href="javascript: void(0);" class="d-inline-block">
+                                                <img src="{{user.profile}}" alt="" class="rounded-circle avatar-xxs">
+                                            </a>
+                                        </div>
+                                        }
+                                    </div>
+                                </td>
+                                <td><span class="badge" [ngClass]=" {'bg-warning-subtle text-warning': data.status === 'Progress', 'bg-danger-subtle text-danger': data.status === 'Pending', 'bg-success-subtle text-success': data.status === 'Completed'}">{{data.status}}</span>
+                                </td>
+                                <td class="text-muted">{{data.date}}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="align-items-center mt-xl-3 mt-4 justify-content-between d-flex">
@@ -211,7 +271,37 @@
             </div><!-- end card header -->
             <div class="card-body">
                 <div class="table-responsive table-card">
-                    <app-my-task [MyTask]="MyTask"></app-my-task>
+                    <table class="table table-borderless table-nowrap table-centered align-middle mb-0">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Dedline</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Assignee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for ( data of MyTask; track $index) {
+                            <tr>
+                                <td>
+                                    <div class="form-check">
+                                        <input class="form-check-input fs-15" type="checkbox" value="">
+                                        <label class="form-check-label ms-1">
+                                            {{data.name}}
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="text-muted">{{data.dedline}}</td>
+                                <td><span class="badge bg-success-subtle text-success" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Progress', 'bg-danger-subtle text-danger': data.status === 'Pending'}">{{data.status}}</span></td>
+                                <td>
+                                    <a href="javascript: void(0);" class="d-inline-block" data-bs-toggle="tooltip" ngbTooltip="{{data.assignee.name}}" placement="top">
+                                        <img src="{{data.assignee.profile}}" alt="" class="rounded-circle avatar-xxs">
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
                 <div class="mt-3 text-center">
                     <a href="javascript:void(0);" class="text-muted text-decoration-underline">Load More</a>
@@ -247,7 +337,30 @@
             <div class="card-body">
 
                 <div class="table-responsive table-card">
-                    <app-team-members [TeamMembers]="TeamMembers"></app-team-members>
+                    <table class="table table-borderless table-nowrap table-centered align-middle mb-0">
+                        <thead class="table-light text-muted">
+                            <tr>
+                                <th scope="col">Atividade</th>
+                                <th scope="col">Dedline</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Assignee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for ( data of TeamMembers; track $index) {
+                            <tr>
+                                <td>{{data.name}}</td>
+                                <td class="text-muted">{{data.dedline}}</td>
+                                <td><span class="badge bg-success-subtle text-success" [ngClass]=" { 'bg-warning-subtle text-warning': data.status === 'Progress', 'bg-danger-subtle text-danger': data.status === 'Pending'}">{{data.status}}</span></td>
+                                <td>
+                                    <a href="javascript: void(0);" class="d-inline-block" data-bs-toggle="tooltip" ngbTooltip="{{data.assignee.name}}" placement="top">
+                                        <img src="{{data.assignee.profile}}" alt="" class="rounded-circle avatar-xxs">
+                                    </a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div><!-- end cardbody -->
         </div><!-- end card -->

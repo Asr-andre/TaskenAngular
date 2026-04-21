@@ -18,24 +18,105 @@ type StatCard = {
     <div class="row">
       @for (item of stats; track item.title) {
         <div class="col-xxl-3 col-md-6">
-          <app-stat
-            [title]="item.title"
-            [value]="item.value"
-            [icon]="item.icon"
-            [persantage]="item.persantage"
-            [profit]="item.profit"
-            [link]="item.link"
-          ></app-stat>
+          <div class="card card-animate">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1 overflow-hidden">
+                  <p class="text-uppercase fw-medium text-muted text-truncate mb-0">{{ item.title }}</p>
+                </div>
+                <div class="flex-shrink-0">
+                  <h5
+                    class="fs-14 mb-0"
+                    [ngClass]="{ 'text-success': item.profit === 'up', 'text-danger': item.profit === 'down', 'text-muted': item.profit === 'equal' }"
+                  >
+                    <i
+                      class="fs-13 align-middle float-start"
+                      [ngClass]="{ 'ri-arrow-right-up-line': item.profit === 'up', 'ri-arrow-right-down-line': item.profit === 'down' }"
+                    ></i>
+                    @if (item.profit === 'up' || item.profit === 'equal') { <span>+</span> } @else { <span>-</span> }
+                    {{ item.persantage }}
+                  </h5>
+                </div>
+              </div>
+              <div class="d-flex align-items-end justify-content-between mt-4">
+                <div>
+                  <h4 class="fs-22 fw-semibold ff-secondary mb-3">{{ item.value }}</h4>
+                  <a [routerLink]="item.link" class="text-decoration-underline">Ver detalhes</a>
+                </div>
+                <div class="avatar-sm flex-shrink-0">
+                  <span class="avatar-title rounded fs-3 bg-primary-subtle">
+                    <i class="{{ item.icon }} text-primary"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       }
     </div>
 
     <div class="row">
       <div class="col-xxl-6">
-        <app-top-pages [TopPages]="topPages"></app-top-pages>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Top páginas</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table-card">
+              <table class="table align-middle table-borderless table-centered table-nowrap mb-0">
+                <thead class="text-muted table-light">
+                  <tr>
+                    <th scope="col">Página</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col">Usuários</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (data of topPages; track $index) {
+                    <tr>
+                      <td><a href="javascript:void(0);">{{ data.page }}</a></td>
+                      <td>{{ data.active }}</td>
+                      <td>{{ data.users }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-xxl-6">
-        <app-deals-status [DealsStatus]="dealsStatus"></app-deals-status>
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title mb-0">Status</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table-card">
+              <table class="table table-borderless table-hover table-nowrap align-middle mb-0">
+                <thead class="table-light">
+                  <tr class="text-muted">
+                    <th scope="col">Etapa</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Responsável</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Progresso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (data of dealsStatus; track $index) {
+                    <tr>
+                      <td>{{ data.name }}</td>
+                      <td>{{ data.date }}</td>
+                      <td>{{ data.userName }}</td>
+                      <td>{{ data.status }}</td>
+                      <td>{{ data.value }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   `,
