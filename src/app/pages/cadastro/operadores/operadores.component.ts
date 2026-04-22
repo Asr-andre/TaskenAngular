@@ -134,4 +134,18 @@ export class OperadoresComponent implements OnInit {
     this.operadores = this._paginacao.changePage(this.operadoresFiltrados);
   }
 
+  tipoOperador(tipo: string) {
+    switch (tipo) {
+      case 'A':
+        return 'Admin';
+      case 'S':
+        return 'Suporte';
+      case 'P':
+        return 'Programador';
+      case 'F':
+        return 'Financeiro';
+      default:
+        return tipo;
+    }
+  }
 }

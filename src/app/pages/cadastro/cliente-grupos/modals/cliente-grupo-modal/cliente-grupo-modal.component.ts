@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 import { ClienteGrupo } from 'src/app/core/models/cliente-grupo.model';
 import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-cliente-grupo-modal',
@@ -13,7 +13,7 @@ import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service
 })
 export class ClienteGrupoModalComponent {
   @ViewChild('modalClienteGrupo', { static: true }) template!: TemplateRef<any>;
-
+  
   clienteGrupoForm!: FormGroup;
   submitted = false;
   modoEdicao = false;
@@ -27,7 +27,8 @@ export class ClienteGrupoModalComponent {
   constructor(
     private _modal: NgbModal,
     private _fb: FormBuilder,
-    private _clienteGrupo: ClienteGrupoService
+    private _clienteGrupo: ClienteGrupoService,
+    private _toast: ToastService,
   ) {
     this.clienteGrupoForm = this._fb.group({
       grupoId: ['', [Validators.required]],
@@ -93,46 +94,34 @@ export class ClienteGrupoModalComponent {
 
     if (this.modoEdicao) {
       this._clienteGrupo.atualizar(payload).subscribe({
-        next: () => {
-          this._modalRef?.close();
-          Swal.fire({
-            title: 'Sucesso',
-            text: 'Grupo de cliente atualizado com sucesso.',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
-          this.salvo.emit();
+        next: (res) => {
+          if (res.success === true) {
+            this._modalRef?.close();
+            this._toast.success(res.mensagem, 'Sucesso');
+            this.salvo.emit();    
+          } else {
+            this._toast.warning(res.mensagem, 'Atenção');
+          }
         },
         error: () => {
-          Swal.fire({
-            title: 'Erro',
-            text: 'Não foi possível atualizar o grupo de cliente.',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          this._toast.error('Não foi possível atualizar o grupo de cliente.', 'Erro');
         },
       });
       return;
     }
 
     this._clienteGrupo.criar(payload).subscribe({
-      next: () => {
-        this._modalRef?.close();
-        Swal.fire({
-          title: 'Sucesso',
-          text: 'Grupo de cliente criado com sucesso.',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
-        this.salvo.emit();
+      next: (res) => {
+        if (res.success === true) {
+          this._modalRef?.close();
+          this._toast.success(res.mensagem, 'Sucesso');
+          this.salvo.emit();    
+        } else {
+          this._toast.warning(res.mensagem, 'Atenção');
+        }
       },
       error: () => {
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível criar o grupo de cliente.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this._toast.error('Não foi possível criar o grupo de cliente.', 'Erro');
       },
     });
   }

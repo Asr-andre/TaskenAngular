@@ -151,7 +151,7 @@
                       <span class="badge bg-danger-subtle text-danger">Inativo</span>
                     }
                   </td>
-                  <td>{{ item.perfilId }}</td>
+                  <td>{{ tipoOperador(item.perfilId ?? '') }}</td>
                   <td>{{ item.dataUltimoAcesso | date : 'dd/MM/yyyy HH:mm' }}</td>
                   <td>
                     <div class="dropdown" ngbDropdown>
