@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
 import { CountUpModule } from 'ngx-countup';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { SimplebarAngularModule } from 'simplebar-angular';
 // Apex Chart Package
 import { NgApexchartsModule } from 'ng-apexcharts';

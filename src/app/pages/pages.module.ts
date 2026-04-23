@@ -8,7 +8,7 @@ import {
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CountUpModule } from 'ngx-countup';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
@@ -25,15 +25,12 @@ import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
 import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
-import { WidgetsComponent } from './widgets/widgets.component';
-
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ToastsContainer,
-    HomeComponent,
-    WidgetsComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,

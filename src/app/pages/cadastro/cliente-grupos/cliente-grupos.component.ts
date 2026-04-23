@@ -61,7 +61,7 @@ export class ClienteGruposComponent implements OnInit {
       },
       error: () => {
         this.carregando = false;
-        this.toast.error('Não foi possível carregar os grupos de cliente', 'Error');
+        this.toast.error('Não foi possível carregar os grupos de cliente', 'Erro');
       },
     });
   }

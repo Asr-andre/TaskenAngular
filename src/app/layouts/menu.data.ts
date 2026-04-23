@@ -46,10 +46,4 @@ export const MENU_UNIFICADO = [
     icon: 'ri-settings-3-line',
     link: '/configuracao',
   },
-  {
-    id: 3100,
-    label: 'Widgets',
-    icon: 'ri-layout-masonry-line',
-    link: '/widgets',
-  },
 ];

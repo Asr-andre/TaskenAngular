@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { Component, inject, OnInit } from '@angular/core';
 import { PaginationService } from 'src/app/core/services/pagination.service';
 import { OperadorService } from 'src/app/core/services/operador.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { Operador } from 'src/app/core/models/operador.model';
 import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
@@ -13,6 +13,7 @@ import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-stat
 })
 export class OperadoresComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
+  toast = inject(ToastService);
   carregando = true;
 
   termoBusca = '';
@@ -64,12 +65,7 @@ export class OperadoresComponent implements OnInit {
         this.operadores = [];
         this.operadoresFiltrados = [];
         this.carregando = false;
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível carregar os operadores.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível carregar os operadores.', 'Erro');
       },
     });
   }

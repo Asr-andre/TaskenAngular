@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 import { Operador } from 'src/app/core/models/operador.model';
 import { OperadorService } from 'src/app/core/services/operador.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-operador-modal',
@@ -13,6 +13,7 @@ import { OperadorService } from 'src/app/core/services/operador.service';
 })
 export class OperadorModalComponent {
   @ViewChild('modalOperador', { static: true }) template!: TemplateRef<any>;
+  toast = inject(ToastService);
 
   operadorForm!: FormGroup;
   submitted = false;
@@ -115,21 +116,11 @@ export class OperadorModalComponent {
       this._operador.atualizar(payload).subscribe({
         next: () => {
           this._modalRef?.close();
-          Swal.fire({
-            title: 'Sucesso',
-            text: 'Operador atualizado com sucesso.',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.success('Operador atualizado com sucesso.', 'Sucesso');
           this.salvo.emit();
         },
         error: () => {
-          Swal.fire({
-            title: 'Erro',
-            text: 'Não foi possível atualizar o operador.',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.error('Não foi possível atualizar o operador.', 'Erro');
         },
       });
       return;
@@ -138,21 +129,11 @@ export class OperadorModalComponent {
     this._operador.criar(payload).subscribe({
       next: () => {
         this._modalRef?.close();
-        Swal.fire({
-          title: 'Sucesso',
-          text: 'Operador criado com sucesso.',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.success('Operador criado com sucesso.', 'Sucesso');
         this.salvo.emit();
       },
       error: () => {
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível criar o operador.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível criar o operador.', 'Erro');
       },
     });
   }

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SimplebarAngularModule } from 'simplebar-angular';
@@ -8,7 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @Component({
   selector: 'app-dashboard-blog',
   standalone: true,
-  imports: [SharedModule, CommonModule, NgApexchartsModule, SimplebarAngularModule, FeatherIconsModule],
+  imports: [SharedModule, NgApexchartsModule, SimplebarAngularModule, FeatherIconsModule],
   templateUrl: './dashboard-blog.component.html',
   styleUrl: './dashboard-blog.component.scss'
 })

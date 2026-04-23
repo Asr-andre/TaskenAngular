@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { Component, inject, OnInit } from '@angular/core';
 import { Indicacao } from 'src/app/core/models/indicacao.model';
 import { IndicacaoService } from 'src/app/core/services/indicacao.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-indicacoes',
@@ -12,6 +12,7 @@ import { PaginationService } from 'src/app/core/services/pagination.service';
 })
 export class IndicacoesComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
+  toast = inject(ToastService);
   carregando = true;
 
   termoBusca = '';
@@ -59,12 +60,7 @@ export class IndicacoesComponent implements OnInit {
         this.indicacoes = [];
         this.indicacoesFiltradas = [];
         this.carregando = false;
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível carregar as indicações.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível carregar as indicações.', 'Erro');
       },
     });
   }

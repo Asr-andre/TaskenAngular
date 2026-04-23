@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 import { Funcionario } from 'src/app/core/models/funcionario.model';
 import { Operador } from 'src/app/core/models/operador.model';
 import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 import { OperadorService } from 'src/app/core/services/operador.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-funcionario-modal',
@@ -15,6 +15,7 @@ import { OperadorService } from 'src/app/core/services/operador.service';
 })
 export class FuncionarioModalComponent {
   @ViewChild('modalFuncionario', { static: true }) template!: TemplateRef<any>;
+  toast = inject(ToastService);
 
   funcionarioForm!: FormGroup;
   operadores: Operador[] = [];
@@ -146,21 +147,11 @@ export class FuncionarioModalComponent {
       this._funcionario.atualizar(payload).subscribe({
         next: () => {
           this._modalRef?.close();
-          Swal.fire({
-            title: 'Sucesso',
-            text: 'Funcionário atualizado com sucesso.',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.success('Funcionário atualizado com sucesso.', 'Sucesso');
           this.salvo.emit();
         },
         error: () => {
-          Swal.fire({
-            title: 'Erro',
-            text: 'Não foi possível atualizar o funcionário.',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.error('Não foi possível atualizar o funcionário.', 'Erro');
         },
       });
       return;
@@ -169,21 +160,11 @@ export class FuncionarioModalComponent {
     this._funcionario.criar(payload).subscribe({
       next: () => {
         this._modalRef?.close();
-        Swal.fire({
-          title: 'Sucesso',
-          text: 'Funcionário criado com sucesso.',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.success('Funcionário criado com sucesso.', 'Sucesso');
         this.salvo.emit();
       },
       error: () => {
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível criar o funcionário.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível criar o funcionário.', 'Erro');
       },
     });
   }

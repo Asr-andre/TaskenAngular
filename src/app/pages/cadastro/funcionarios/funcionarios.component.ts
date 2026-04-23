@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+import { Component, inject, OnInit } from '@angular/core';
 import { Funcionario } from 'src/app/core/models/funcionario.model';
 import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 import { PaginationService } from 'src/app/core/services/pagination.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 @Component({
@@ -13,6 +13,7 @@ import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-stat
 })
 export class FuncionariosComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
+  toast = inject(ToastService);
   carregando = true;
 
   termoBusca = '';
@@ -63,12 +64,7 @@ export class FuncionariosComponent implements OnInit {
         this.funcionarios = [];
         this.funcionariosFiltrados = [];
         this.carregando = false;
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível carregar os funcionários.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível carregar os funcionários.', 'Erro');
       },
     });
   }

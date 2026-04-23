@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Output, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, inject, Output, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import Swal from 'sweetalert2';
 import { Indicacao } from 'src/app/core/models/indicacao.model';
 import { IndicacaoService } from 'src/app/core/services/indicacao.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-indicacao-modal',
@@ -13,6 +13,7 @@ import { IndicacaoService } from 'src/app/core/services/indicacao.service';
 })
 export class IndicacaoModalComponent {
   @ViewChild('modalIndicacao', { static: true }) template!: TemplateRef<any>;
+  toast = inject(ToastService);
 
   indicacaoForm!: FormGroup;
   submitted = false;
@@ -95,21 +96,11 @@ export class IndicacaoModalComponent {
       this._indicacao.atualizar(payload).subscribe({
         next: () => {
           this._modalRef?.close();
-          Swal.fire({
-            title: 'Sucesso',
-            text: 'Indicação atualizada com sucesso.',
-            icon: 'success',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.success('Indicação atualizada com sucesso.', 'Sucesso');
           this.salvo.emit();
         },
         error: () => {
-          Swal.fire({
-            title: 'Erro',
-            text: 'Não foi possível atualizar a indicação.',
-            icon: 'error',
-            confirmButtonText: 'Ok',
-          });
+          this.toast.error('Não foi possível atualizar a indicação.', 'Erro');
         },
       });
       return;
@@ -118,21 +109,11 @@ export class IndicacaoModalComponent {
     this._indicacao.criar(payload).subscribe({
       next: () => {
         this._modalRef?.close();
-        Swal.fire({
-          title: 'Sucesso',
-          text: 'Indicação criada com sucesso.',
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.success('Indicação criada com sucesso.', 'Sucesso');
         this.salvo.emit();
       },
       error: () => {
-        Swal.fire({
-          title: 'Erro',
-          text: 'Não foi possível criar a indicação.',
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
+        this.toast.error('Não foi possível criar a indicação.', 'Erro');
       },
     });
   }

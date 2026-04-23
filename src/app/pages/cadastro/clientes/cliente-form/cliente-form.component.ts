@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { ClienteContato } from 'src/app/core/models/cliente-contato.model';
 import { ClienteGrupo } from 'src/app/core/models/cliente-grupo.model';
 import { Cliente } from 'src/app/core/models/cliente.model';
@@ -10,6 +9,7 @@ import { ClienteContatoService } from 'src/app/core/services/cliente-contato.ser
 import { ClienteGrupoService } from 'src/app/core/services/cliente-grupo.service';
 import { ClienteService } from 'src/app/core/services/cliente.service';
 import { IndicacaoService } from 'src/app/core/services/indicacao.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 import { FiltroAtivoType, FILTRO_ATIVO } from 'src/app/shared/types/filtros-status.type';
 
 type ContatoUi = ClienteContato & { _novo?: boolean; _editado?: boolean };
@@ -21,6 +21,7 @@ type ContatoUi = ClienteContato & { _novo?: boolean; _editado?: boolean };
   styleUrls: ['./cliente-form.component.scss'],
 })
 export class ClienteFormComponent implements OnInit {
+  toast = inject(ToastService);
   breadCrumbItems!: Array<{}>;
   carregando = true;
   salvando = false;
@@ -165,7 +166,7 @@ export class ClienteFormComponent implements OnInit {
       },
       error: () => {
         this.carregando = false;
-        Swal.fire('Erro', 'Não foi possível carregar o cliente.', 'error');
+        this.toast.error('Não foi possível carregar o cliente.', 'Erro');
       },
     });
   }
@@ -335,7 +336,7 @@ export class ClienteFormComponent implements OnInit {
         next: () => this.salvarContatos(payload.clienteId),
         error: () => {
           this.salvando = false;
-          Swal.fire('Erro', 'Não foi possível atualizar o cliente.', 'error');
+          this.toast.error('Não foi possível atualizar o cliente.', 'Erro');
         },
       });
       return;
@@ -365,7 +366,7 @@ export class ClienteFormComponent implements OnInit {
       next: () => this.tornarEdicao(payload.clienteId),
       error: () => {
         this.salvando = false;
-        Swal.fire('Erro', 'Não foi possível criar o cliente.', 'error');
+        this.toast.error('Não foi possível criar o cliente.', 'Erro');
       },
     });
   }
@@ -406,7 +407,7 @@ export class ClienteFormComponent implements OnInit {
         if (pendentes === 0) {
           if (erro) {
             this.salvando = false;
-            Swal.fire('Atenção', 'Cliente salvo, mas houve erro ao salvar alguns contatos.', 'warning');
+            this.toast.warning('Cliente salvo, mas houve erro ao salvar alguns contatos.', 'Atenção');
             return;
           }
           this.finalizarSucesso();
@@ -427,7 +428,7 @@ export class ClienteFormComponent implements OnInit {
 
   private finalizarSucesso() {
     this.salvando = false;
-    Swal.fire('Sucesso', `Cliente ${this.modoEdicao ? 'atualizado' : 'criado'} com sucesso.`, 'success');
+    this.toast.success(`Cliente ${this.modoEdicao ? 'atualizado' : 'criado'} com sucesso.`, 'Sucesso');
   }
 
   private tornarEdicao(clienteId: number) {
@@ -440,7 +441,7 @@ export class ClienteFormComponent implements OnInit {
     this.carregarContatos(clienteId);
     this.limparContatoForm();
     this.aplicarFiltroContatos();
-    Swal.fire('Sucesso', 'Cliente criado com sucesso. Agora você pode cadastrar os contatos.', 'success');
+    this.toast.success('Cliente criado com sucesso. Agora você pode cadastrar os contatos.', 'Sucesso');
     this._router.navigate(['/cadastro/clientes', clienteId, 'editar'], { replaceUrl: true });
   }
 
