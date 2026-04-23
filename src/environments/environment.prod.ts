@@ -1,15 +1,5 @@
 export const environment = {
   production: true,
   defaultauth: 'api',
-  apiUrl: 'https://localhost:7142',
-  firebaseConfig: {
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
-    measurementId: ''
-  }
+  apiUrl: 'https://localhost:7142'
 };
