@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from 'src/app/store/Authentication/auth.models';
+
+export interface User {
+    username?: string;
+    firstName?: string;
+    token?: string;
+    [key: string]: any;
+}
 
 @Injectable({ providedIn: 'root' })
 export class UserProfileService {

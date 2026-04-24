@@ -22,7 +22,6 @@ import { rootReducer } from './store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 
 @NgModule({ declarations: [
         AppComponent
@@ -42,9 +41,7 @@ import { AuthenticationEffects } from './store/Authentication/authentication.eff
             maxAge: 25, // Retains last 25 states
             logOnly: environment.production, // Restrict extension to log-only mode
         }),
-        EffectsModule.forRoot([
-            AuthenticationEffects,
-        ]),
+        EffectsModule.forRoot([]),
         PagesModule,
         NgPipesModule], providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
