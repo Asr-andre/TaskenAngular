@@ -71,7 +71,6 @@
               "rxjs/internal/operators",
               "moment",
               "lottie-web",
-              "ngx-lightbox",
               "ngx-masonry",
               "leaflet",
               "sweetalert2",

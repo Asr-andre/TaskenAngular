@@ -12,8 +12,6 @@ import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 
-import { LightboxModule } from 'ngx-lightbox';
-
 // Load Icons
 import { defineElement } from "@lordicon/element";
 import lottie from 'lottie-web';
@@ -41,7 +39,6 @@ import { DashboardsModule } from "./dashboards/dashboards.module";
     SimplebarAngularModule,
     PagesRoutingModule,
     SharedModule,
-    LightboxModule,
     DashboardsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// search module
-import { NgPipesModule } from 'ngx-pipes';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -43,7 +40,7 @@ import { EffectsModule } from '@ngrx/effects';
         }),
         EffectsModule.forRoot([]),
         PagesModule,
-        NgPipesModule], providers: [
+        ], providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
     ] })
