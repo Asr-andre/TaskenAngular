@@ -2,11 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import {
-  ClienteContato,
-  ClienteContatoAtualizacao,
-  ClienteContatoCriacao,
-} from '../models/cliente-contato.model';
+import { ClienteContato, ClienteContatoAtualizacao, ClienteContatoCriacao } from '../models/cliente-contato.model';
 import { RespostaApi } from '../models/resposta-api.model';
 
 @Injectable({ providedIn: 'root' })
