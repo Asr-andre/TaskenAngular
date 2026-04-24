@@ -1,4 +1,4 @@
-import { productListModel } from "src/app/store/Ecommerce/ecommerce_model";
+
 
 const Products = [
     {

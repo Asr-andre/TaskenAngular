@@ -29,7 +29,6 @@ import { projectList, document } from "./projectList";
 import { nftwalletData, collectionData, creatorsData, creatorsListData, exploreData, marketplaceData, tradingData, recentMarketData, popularData, rankingData } from "./nft";
 import { remixicons } from "./remixIcon";
 import { swiper, gallery, news, video } from "./search";
-import { BitcoinsellerChart, MicroChart, NestaChart, iTestChart, MetaChart, DigitechChart, SyntyceChart, ZoeticChart, sellerDetals } from "./seller";
 import { sellerDetail } from "./sellerDetail";
 import { COUNTRIES, AssignedData } from "./taskList";
 import { Team } from "./team";
@@ -79,7 +78,6 @@ export {
     rankingData,
     remixicons,
     swiper, gallery, news, video,
-    BitcoinsellerChart, MicroChart, NestaChart, iTestChart, MetaChart, DigitechChart, SyntyceChart, ZoeticChart, sellerDetals,
     sellerDetail,
     COUNTRIES, AssignedData,
     Team,
