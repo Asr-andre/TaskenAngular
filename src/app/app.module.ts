@@ -22,14 +22,6 @@ import { rootReducer } from './store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { ProjectEffects } from './store/Project/project_effect';
-import { TaskEffects } from './store/Task/task_effect';
-import { CRMEffects } from './store/CRM/crm_effect';
-import { CryptoEffects } from './store/Crypto/crypto_effect';
-import { InvoiceEffects } from './store/Invoice/invoice_effect';
-import { FileManagerEffects } from './store/File Manager/filemanager_effect';
-import { ApplicationEffects } from './store/Jobs/jobs_effect';
-import { ApikeyEffects } from './store/APIKey/apikey_effect';
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 
 @NgModule({ declarations: [
@@ -52,14 +44,6 @@ import { AuthenticationEffects } from './store/Authentication/authentication.eff
         }),
         EffectsModule.forRoot([
             AuthenticationEffects,
-            ProjectEffects,
-            TaskEffects,
-            CRMEffects,
-            CryptoEffects,
-            InvoiceEffects,
-            FileManagerEffects,
-            ApplicationEffects,
-            ApikeyEffects
         ]),
         PagesModule,
         NgPipesModule], providers: [

@@ -25,16 +25,10 @@ import { SharedModule } from '../../shared/shared.module';
 
 
 // Component
-import { AnalyticsComponent } from './analytics/analytics.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
 
 @NgModule({
   declarations: [
-    AnalyticsComponent,
-    ProjectsComponent,
-    NftComponent,
     JobComponent
   ],
   imports: [

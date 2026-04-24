@@ -21,15 +21,11 @@ import lottie from 'lottie-web';
 // Pages Routing
 import { PagesRoutingModule } from "./pages-routing.module";
 import { SharedModule } from "../shared/shared.module";
-import { DashboardComponent } from './dashboards/dashboard/dashboard.component';
-import { ToastsContainer } from './dashboards/dashboard/toasts-container.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardsModule } from "./dashboards/dashboards.module";
 
 @NgModule({
   declarations: [
-    DashboardComponent,
-    ToastsContainer,
     HomeComponent
   ],
   imports: [

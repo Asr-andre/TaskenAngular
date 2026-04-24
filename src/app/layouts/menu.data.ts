@@ -10,9 +10,6 @@ export const MENU_UNIFICADO = [
     icon: 'ri-dashboard-2-line',
     isCollapsed: true,
     subItems: [
-      { id: 31, label: 'Painel', link: '/dashboard', parentId: 3, },
-      { id: 32, label: 'Analytics', link: '/analytics', parentId: 3, },
-      { id: 34, label: 'NFT', link: '/nft', parentId: 3, },
       { id: 35, label: 'Vagas', link: '/job', parentId: 3, },
       { id: 36, label: 'Blog', link: '/dashboard-blog', parentId: 3, },
     ],
