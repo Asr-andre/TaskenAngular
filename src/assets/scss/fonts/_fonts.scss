@@ -10,35 +10,35 @@
 
 @font-face {
     font-family: "hkgrotesk";
-    src: url("../../fonts/hkgrotesk-light.eot");
-    src: local('hkgrotesk light'), url("../../fonts/hkgrotesk-light.woff") format("woff");
+    src: local('hkgrotesk light'), url("../../fonts/hkgrotesk-light.woff2") format("woff2");
     font-weight: 300;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "hkgrotesk";
-    src: url("../../fonts/hkgrotesk-regular.eot");
-    src: local('hkgrotesk regular'), url("../../fonts/hkgrotesk-regular.woff") format("woff");
+    src: local('hkgrotesk regular'), url("../../fonts/hkgrotesk-regular.woff2") format("woff2");
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "hkgrotesk";
-    src: url("../../fonts/hkgrotesk-medium.eot");
-    src: local('hkgrotesk medium'), url("../../fonts/hkgrotesk-medium.woff") format("woff");
+    src: local('hkgrotesk medium'), url("../../fonts/hkgrotesk-medium.woff2") format("woff2");
     font-weight: 500;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "hkgrotesk";
-    src: url("../../fonts/hkgrotesk-semibold.eot");
-    src: local('hkgrotesk semibold'), url("../../fonts/hkgrotesk-semibold.woff") format("woff");
+    src: local('hkgrotesk semibold'), url("../../fonts/hkgrotesk-semibold.woff2") format("woff2");
     font-weight: 600;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "hkgrotesk";
-    src: url("../../fonts/hkgrotesk-bold.woff");
-    src: local('hkgrotesk bold'), url("../../fonts/hkgrotesk-bold.woff") format("woff");
+    src: local('hkgrotesk bold'), url("../../fonts/hkgrotesk-bold.woff2") format("woff2");
     font-weight: 700;
+    font-display: swap;
 }

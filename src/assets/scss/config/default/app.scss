@@ -36,7 +36,6 @@ File: Main Css File
 @import "../../components/preloader";
 @import "../../components/forms";
 @import "../../components/widgets";
-@import "../../components/demos";
 @import "../../components/print";
 @import "../../components/ribbons";
 @import "../../components/toast";
@@ -73,28 +72,13 @@ File: Main Css File
 @import "../../plugins/flatpicker";
 
 
-// Pages
+// Pages (only styles needed by this app — Velzon demo pages omitted to cut CSS size)
 @import "../../pages/authentication";
 @import "../../pages/dashboard";
-@import "../../pages/timeline";
-@import "../../pages/gallery";
 @import "../../pages/errors";
-@import "../../pages/profile";
-@import "../../pages/sitemap";
 @import "../../pages/team";
-@import "../../pages/coming-soon";
-@import "../../pages/search-results";
-@import "../../pages/ecommerce";
-@import "../../pages/invoice";
-@import "../../pages/chat";
-@import "../../pages/email";
-@import "../../pages/kanban";
-@import "../../pages/file-manager";
-@import "../../pages/to-do";
-@import "../../pages/jobs";
 
 @import "./angular-custom.scss";
-@import "../../pages/blog";
 
 // RTL Set
 // @import "../../rtl/components-rtl";
