@@ -3,9 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { EventService } from '../../core/services/event.service';
 
 //Logout
-import { AuthenticationService } from '../../core/services/auth.service';
+import { AuthenticationService, DadosAutenticacao } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
-import { TokenStorageService } from '../../core/services/token-storage.service';
 
 import { allNotification, messages } from './data'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +21,6 @@ export class TopbarComponent implements OnInit {
   mode: string | undefined;
   @Output() mobileMenuButtonClicked = new EventEmitter();
   allnotifications: any
-  userData: any;
   totalNotify: number = 0;
   newNotify: number = 0;
   readNotify: number = 0;
@@ -32,16 +30,24 @@ export class TopbarComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, private modalService: NgbModal,
     private authService: AuthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
 
     // Fetch Data
     this.allnotifications = allNotification;
 
     this.messages = messages;
+  }
+
+  /** Objeto estável para o template (strictTemplates); sem sessão, campos vazios. */
+  get userData(): DadosAutenticacao {
+    const u = this.authService.usuarioAtual;
+    if (u) {
+      return u;
+    }
+    return { login: '', token: '', nome: '', tipo: '' };
   }
 
   get ocultaSininho(): boolean {
