@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { rootReducer } from './store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { carregarApiUrlEmRuntime } from './core/initializers/runtime-api-url.factory';
+
 @NgModule({ declarations: [
         AppComponent
     ],
@@ -36,6 +38,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
             logOnly: environment.production, // Restrict extension to log-only mode
         }),
         ], providers: [
+        { provide: APP_INITIALIZER, useFactory: carregarApiUrlEmRuntime, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         provideHttpClient(withInterceptorsFromDi()),
     ] })

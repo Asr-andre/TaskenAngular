@@ -1,0 +1,13 @@
+# URL base da API (ficheiro publicado na raiz do site como "conf.txt").
+# No Windows, ficheiros com extensao .url sao "Atalhos da Internet" — por isso usamos .txt
+# para poder editar no Bloco de Notas.
+#
+# Coloque uma linha com a URL da API, sem barra no fim. Linhas vazias e # sao ignoradas.
+#
+# IIS — erro 500 com web.config e <rewrite>:
+# O IIS da erro 500 (ou 500.19) se existir <rewrite> sem o modulo "URL Rewrite" instalado.
+# Por isso o build NAO inclui web.config automaticamente.
+# Para rotas da SPA (F5, link direto): instale URL Rewrite e use o exemplo
+# "iis-url-rewrite-web.config.example" na pasta publicada (copie para web.config).
+
+https://localhost:7142

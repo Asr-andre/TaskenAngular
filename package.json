@@ -1,12 +1,12 @@
 {
-  "name": "tasken",
+  "name": "task-manager",
   "version": "4.3.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "ng serve TaskManager",
+    "build": "ng build TaskManager --configuration production",
+    "watch": "ng build TaskManager --watch --configuration development",
+    "test": "ng test TaskManager"
   },
   "private": true,
   "dependencies": {

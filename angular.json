@@ -7,7 +7,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "velzon": {
+    "TaskManager": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/velzon",
+            "outputPath": "dist/TaskManager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,6 +32,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              {
+                "glob": "conf.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "iis-url-rewrite-web.config.example",
+                "input": "src",
+                "output": "/"
+              },
               {
                 "glob": "**/*",
                 "input": "src/assets",
@@ -123,10 +133,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "velzon:build:production"
+              "buildTarget": "TaskManager:build:production"
             },
             "development": {
-              "buildTarget": "velzon:build:development"
+              "buildTarget": "TaskManager:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -134,7 +144,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "velzon:build"
+            "buildTarget": "TaskManager:build"
           }
         },
         "test": {

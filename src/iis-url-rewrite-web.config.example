@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  EXEMPLO — nao e lido pelo IIS com este nome.
+  Se precisar de F5 / URL direta nas rotas do Angular:
+  1) Instale "IIS URL Rewrite" (https://www.iis.net/downloads/microsoft/url-rewrite)
+  2) Copie o conteudo deste ficheiro para "web.config" na raiz do site (junto ao index.html).
+-->
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <rule name="Angular SPA" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="index.html" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>

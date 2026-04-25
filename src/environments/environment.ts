@@ -2,6 +2,7 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+/** `apiUrl` e substituido ao arranque a partir de `/conf.txt` na raiz do site (APP_INITIALIZER). */
 export const environment = {
   production: false,
   defaultauth: 'api',

@@ -3,7 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { MENU } from './menu';
 import { MenuItem } from './menu.model';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -120,13 +119,22 @@ export class SidebarComponent implements OnInit {
     this.activateParentDropdown(event.target);
   }
 
-  initActiveMenu() {
-    let pathName = window.location.pathname;
-    // Check if the application is running in production
-    if (environment.production) {
-      // Modify pathName for production build
-      pathName = pathName.replace('/velzon/angular/default', '');
+  /** Remove o prefixo do base href para alinhar com os links do menu (IIS em subpasta, etc.). */
+  private caminhoRelativoApp(caminhoCompleto: string): string {
+    const base = document.querySelector('base')?.getAttribute('href') || '/';
+    try {
+      const basePath = new URL(base, window.location.href).pathname.replace(/\/$/, '') || '';
+      if (basePath && basePath !== '/' && caminhoCompleto.startsWith(basePath)) {
+        return caminhoCompleto.slice(basePath.length) || '/';
+      }
+    } catch {
+      /* ignore */
     }
+    return caminhoCompleto;
+  }
+
+  initActiveMenu() {
+    const pathName = this.caminhoRelativoApp(window.location.pathname);
 
     const active = this.findMenuItem(pathName, this.menuItems)
     this.toggleItem(active)
@@ -136,15 +144,9 @@ export class SidebarComponent implements OnInit {
       let activeItems = items.filter((x: any) => x.classList.contains("active"));
       this.removeActivation(activeItems);
 
-      let matchingMenuItem = items.find((x: any) => {
-        if (environment.production) {
-          let path = x.pathname
-          path = path.replace('/velzon/angular/default', '');
-          return path === pathName;
-        } else {
-          return x.pathname === pathName;
-        }
-
+      const matchingMenuItem = items.find((x: any) => {
+        const path = this.caminhoRelativoApp(x.pathname);
+        return path === pathName;
       });
       if (matchingMenuItem) {
         this.activateParentDropdown(matchingMenuItem);
